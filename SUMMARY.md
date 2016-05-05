@@ -21,3 +21,4 @@
 * [使用MediaPlayer操作iPod中的Music](./mediaplayer/README.md)
 	* [获取iPod资源信息](./mediaplayer/ipod.md)
 	* [播放iPod中的音乐](./mediaplayer/player.md)
+* [参考书目](./bibliography/README.md)
