@@ -5,15 +5,15 @@ CoreAudio是Apple提供的在iOS/OS X（macOS）上进行音频处理的解决�
 
 先看下CoreAudio在iOS中的结构：
 
-![iOS_coreaudio_architecture](./ios_core_audio_architecture.png)
+![iOS_coreaudio_architecture](./images/ios_core_audio_architecture.png)
 
 可以看到CoreAudio是由驱动层之上的各种Service组成，归纳来看主要有：
 
-![iOS_coreaudio_services](./ios_core_audio_services.png)
+![iOS_coreaudio_services](./images/ios_core_audio_services.png)
 
 与这些services对应的Framework提供了使用这些services的接口：
 
-![iOS-coreaudio_frameworks](./ios_core_audio_frameworks.png)
+![iOS-coreaudio_frameworks](./images/ios_core_audio_frameworks.png)
 
 可以看到这里的frameworks与各个service基本是对应的。这些framework除了上面列出来的功能和头文件外，还有其他功能，比如在OS X(macOS)上特有的接口、AVFoundation中和视频相关的接口等，当然还有通过iPod直接播放歌曲的MediaPlayer.framework没有罗列在这里。
 
