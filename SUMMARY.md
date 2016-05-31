@@ -1,6 +1,9 @@
 #Play and Record with CoreAudio
 
 * [CoreAudio是什么](./coreaudio/README.md)
+* [使用MediaPlayer操作iPod中的Music](./mediaplayer/README.md)
+	* [获取iPod资源信息](./mediaplayer/ipod.md)
+	* [播放iPod中的音乐](./mediaplayer/player.md)
 * [AVFoundation中的Audio部分](./avfoundation/README.md)
 	* [使用AVAudioSession管理上下文](./avfoundation/avaudiosession.md)
 	* [使用AVAudioPlayer播放音频](./avfoundation/avaudioplayer.md)
@@ -18,7 +21,4 @@
 	* [录音AUGraph](./audiounit/record.md)
 	* [混音AUGraph](./audiounit/mixer.md)
 * [跨平台的OpenAL](./openal/README.md)
-* [使用MediaPlayer操作iPod中的Music](./mediaplayer/README.md)
-	* [获取iPod资源信息](./mediaplayer/ipod.md)
-	* [播放iPod中的音乐](./mediaplayer/player.md)
 * [参考书目](./bibliography/README.md)
