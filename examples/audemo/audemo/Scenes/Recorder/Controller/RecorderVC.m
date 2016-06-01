@@ -91,6 +91,12 @@
             continue;
         }
         NSString *title = [item valueForKey:MPMediaItemPropertyTitle];
+        NSURL  *url = [item valueForKey:MPMediaItemPropertyAssetURL];
+        NSString *artist = [item valueForKey:MPMediaItemPropertyArtist];
+        NSString *lyrics = [item valueForKey:MPMediaItemPropertyLyrics];
+        MPMediaItemArtwork *artwork = [item valueForProperty: MPMediaItemPropertyArtwork];
+        UIImage *artworkImage = [artwork imageWithSize: CGSizeMake(200, 200)];
+
         NSLog(@"After search with sound: %@ with url %@ artist is %@", title, [item valueForKey:MPMediaItemPropertyAssetURL], [item valueForKey:MPMediaItemPropertyArtist]);
     }
     _slctItems  = [MPMediaItemCollection collectionWithItems:artistQry.items];
