@@ -29,7 +29,7 @@
     _mpPickerVC.showsCloudItems = YES;
     _mpPickerVC.delegate  = self;
     _artistSearchBar.delegate = self;
-    _appMusicPlayer = [MPMusicPlayerController applicationMusicPlayer];
+    _appMusicPlayer = [MPMusicPlayerController systemMusicPlayer];
     
     
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
