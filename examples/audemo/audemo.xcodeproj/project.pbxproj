@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F004B1671D0018500080E883 /* PlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F004B1661D0018500080E883 /* PlayerVC.m */; };
+		F004B1691D00185D0080E883 /* player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F004B1681D00185D0080E883 /* player.storyboard */; };
 		F0E0EA381CF93EDA008379BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E0EA371CF93EDA008379BD /* main.m */; };
 		F0E0EA3B1CF93EDA008379BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E0EA3A1CF93EDA008379BD /* AppDelegate.m */; };
 		F0E0EA3E1CF93EDA008379BD /* BootLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E0EA3D1CF93EDA008379BD /* BootLoader.m */; };
@@ -15,7 +17,6 @@
 		F0E0EA571CF93EDA008379BD /* audemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E0EA561CF93EDA008379BD /* audemoTests.m */; };
 		F0E0EA8B1CF94744008379BD /* RecorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E0EA8A1CF94744008379BD /* RecorderVC.m */; };
 		F0E0EA8D1CF94871008379BD /* recorder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0E0EA8C1CF94871008379BD /* recorder.storyboard */; };
-		F0E0EA8F1CF960F5008379BD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E0EA8E1CF960F5008379BD /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F004B1651D0018500080E883 /* PlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerVC.h; sourceTree = "<group>"; };
+		F004B1661D0018500080E883 /* PlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerVC.m; sourceTree = "<group>"; };
+		F004B1681D00185D0080E883 /* player.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = player.storyboard; sourceTree = "<group>"; };
 		F0E0EA331CF93EDA008379BD /* audemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = audemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0E0EA371CF93EDA008379BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F0E0EA391CF93EDA008379BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0E0EA8F1CF960F5008379BD /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +73,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F0A814AF1D0017ED0016B85C /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				F0A814B01D0017ED0016B85C /* Controller */,
+				F0A814B11D0017ED0016B85C /* Model */,
+				F0A814B21D0017ED0016B85C /* Resource */,
+				F0A814B31D0017ED0016B85C /* View */,
+			);
+			name = Player;
+			path = Scenes/Player;
+			sourceTree = "<group>";
+		};
+		F0A814B01D0017ED0016B85C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F004B1651D0018500080E883 /* PlayerVC.h */,
+				F004B1661D0018500080E883 /* PlayerVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F0A814B11D0017ED0016B85C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F0A814B21D0017ED0016B85C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F0A814B31D0017ED0016B85C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F004B1681D00185D0080E883 /* player.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F0E0EA2A1CF93EDA008379BD = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +189,7 @@
 		F0E0EA441CF93EDA008379BD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F0A814AF1D0017ED0016B85C /* Player */,
 				F0E0EA811CF943A8008379BD /* Recorder */,
 				F0E0EA451CF93EDA008379BD /* readme.h */,
 			);
@@ -298,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0E0EA491CF93EDA008379BD /* Assets.xcassets in Resources */,
+				F004B1691D00185D0080E883 /* player.storyboard in Resources */,
 				F0E0EA8D1CF94871008379BD /* recorder.storyboard in Resources */,
 				F0E0EA4C1CF93EDA008379BD /* LaunchScreen.storyboard in Resources */,
 			);
@@ -321,6 +369,7 @@
 				F0E0EA381CF93EDA008379BD /* main.m in Sources */,
 				F0E0EA8B1CF94744008379BD /* RecorderVC.m in Sources */,
 				F0E0EA3E1CF93EDA008379BD /* BootLoader.m in Sources */,
+				F004B1671D0018500080E883 /* PlayerVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +550,7 @@
 				F0E0EA5D1CF93EDA008379BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F0E0EA5E1CF93EDA008379BD /* Build configuration list for PBXNativeTarget "audemoTests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +559,7 @@
 				F0E0EA601CF93EDA008379BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,27 +1,27 @@
 /*******************************************************************************\
-** audemo:RecorderVC.m
-** Created by CZ(cz.devnet@gmail.com) on 16/5/28
+** audemo:PlayerVC.m
+** Created by CZ(cz.devnet@gmail.com) on 16/6/2
 **
 **  Copyright © 2016年 projm. All rights reserved.
 \*******************************************************************************/
 
 
-#import "RecorderVC.h"
+#import "PlayerVC.h"
 
-@interface RecorderVC ()
+@interface PlayerVC ()
 
 @end
 
-@implementation RecorderVC
+@implementation PlayerVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    // Do any additional setup after loading the view.
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder  {
     if ( self = [super initWithCoder:aDecoder]) {
-        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"录音笔" image:[UIImage imageNamed:@"offline_tab_message"] selectedImage:[UIImage imageNamed:@"offline_tab_message"]];
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"播放器" image:[UIImage imageNamed:@"offline_tab_message"] selectedImage:[UIImage imageNamed:@"offline_tab_message"]];
     }
     return  self;
 }
@@ -30,7 +30,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 /*
 #pragma mark - Navigation

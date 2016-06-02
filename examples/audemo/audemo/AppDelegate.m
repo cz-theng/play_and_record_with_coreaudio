@@ -8,9 +8,12 @@
 
 #import "AppDelegate.h"
 #import "RecorderVC.h"
+#import "PlayerVC.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) RecorderVC *recorderVC;
+@property (strong, nonatomic) PlayerVC * playerVC;
+@property (strong, nonatomic) UITabBarController *rootVC;
 @end
 
 @implementation AppDelegate
@@ -19,8 +22,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     _recorderVC =(RecorderVC *) [[UIStoryboard storyboardWithName:@"recorder" bundle:nil] instantiateViewControllerWithIdentifier:@"recorder_vc"];
+    _playerVC = (PlayerVC *)[[UIStoryboard storyboardWithName:@"player" bundle:nil] instantiateViewControllerWithIdentifier:@"player_vc"];
+    _rootVC = [[UITabBarController alloc] init];
+    _rootVC.viewControllers = @[_playerVC, _recorderVC];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = _recorderVC;
+    self.window.rootViewController = _rootVC;
     [self.window makeKeyAndVisible]; // Should Add This in OC
 
     return YES;

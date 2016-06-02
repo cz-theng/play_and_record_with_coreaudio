@@ -120,4 +120,4 @@ MPMediaTypeAnyAudio| 所有音频资源
 
 所以，在得到了“MPMediaItem”也就等于说是遍历了音乐文件的属性了。
 
-文中Demo可以参见[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/examples/audemo)
+文中Demo可以参见[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/examples/mpdemo)

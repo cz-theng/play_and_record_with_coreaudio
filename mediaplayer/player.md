@@ -202,4 +202,4 @@ MPVolumeView的可用接口非常少，也就是其定制化非常有限。也�
 注意，这里需要调用MPMusicPlayerController的`
 - beginGeneratingPlaybackNotifications`才能在需要的时候发送通知。当不需要的时候调用`- endGeneratingPlaybackNotifications`进行取消,同时也需要调用NSNotificationCenter的removeObserver。
 
-文中Demo可以在[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/examples/audemo)找到。另外还可以参考博客中的[使用MediaPlayer实现一个音乐播放器]()。
+文中Demo可以在[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/examples/mpdemo)找到。另外还可以参考博客中的[使用MediaPlayer实现一个音乐播放器]()。

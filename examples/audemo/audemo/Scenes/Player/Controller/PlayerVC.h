@@ -1,14 +1,13 @@
 /*******************************************************************************\
-** audemo:RecorderVC.h
-** Created by CZ(cz.devnet@gmail.com) on 16/5/28
+** audemo:PlayerVC.h
+** Created by CZ(cz.devnet@gmail.com) on 16/6/2
 **
 **  Copyright © 2016年 projm. All rights reserved.
 \*******************************************************************************/
 
 
 #import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h>
 
-@interface RecorderVC : UIViewController 
+@interface PlayerVC : UIViewController
 
 @end
