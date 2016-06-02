@@ -110,9 +110,96 @@ MPMusicPlayerController实际上是实现了协议“MPMediaPlayback”：
 
 
 ## 使用MPVolumeView设置音量
-本来MPMusicPlayerController是提供一个`volume`的属性接口来控制音量的，但是在iOS7之后，这个就被“Deprecated”（如今微信/QQ都是要求iOS7及以上的时代，这个`volume`真可以寿终正寝了）。
+本来MPMusicPlayerController是提供一个`volume`的属性接口来控制音量的，但是在iOS7之后，这个就被“Deprecated”（如今微信/QQ都是要求iOS7及以上的时代，这个`volume`真可以寿终正寝了）。现在实现这个功能的是“MPVolumeView”这个工具。
+
+“MPVolumeView”从其名称可以看出来他是一个带有既定UI的工具组件，外形是一个表示音量的SliderBar，可以认为是系统的音量键。
+
+![player_mp_volume_view](./images/player_mp_volume_view.png)
+
+MPVolumeView作为一个完整的组件，如果是简单的使用，上面图中的一个Slider就可以控制音量的高低了。拖一个UIView到storyborard上，然后设置类型为"MPVolumeView"即可。
+
+MPVolumeView的可用接口非常少，也就是其定制化非常有限。也就是能定制下滚轮的图片和背景形状。
+首先来看两个控制显示的属性接口：
+
+* showsVolumeSlider ： 是否显示Slider
+* showsRouteButton ： 是否显示滑动轮
+
+正常情况肯定都是显示啦。关键是不想用系统的那个滚轮和背景。"MPVolumeView"提供了`- setRouteButtonImage:forState:`来设置滑动轮的图片。接口很简单，就是对enalbed/disabled/highlighted等状态设置一个UIImage 对象。
+
+
+
+### 使用自己的View
+但是有时时候这样任然不能满足我们的需求（设想下QQ音乐里面的音量按钮）。那怎么办呢？
+
+这时可以考虑一些黑科技，通过OC的class.description可以获得类名。MPVolumeView有三个subview，其中私有类（无法手动创建，也无法使用isKindOfClass方法）MPVolumeSlider用来控制音量大小，继承自UISlider，通过修改Slider的值就等同于设置系统的音量了。
+
+	for (UIView *view in [mpVolumeView subviews]){
+	    if ([view.class.description isEqualToString:@"MPVolumeSlider"]){
+	        volumeViewSlider = (UISlider*)view;
+	        break;
+	    }
+	}
+	
+	// retrieve system volume
+	float systemVolume = volumeViewSlider.value;
+	
+	// change system volume, the value is between 0.0f and 1.0f
+	[volumeViewSlider setValue:1.0f animated:NO];
+
+	// reset system volume
+	[volumeViewSlider setValue:systemVolume animated:NO];
+	
+这样，我们可以按照策划需求绘制一个自己的音量控制View，然后在创建一个MPVolumeView但是不显示他，或者放到屏幕外面去。当用户调整音量时，设置这个slider的值就可以实现调整音量了。
 
 ## 获取下一曲、音量等变化信息
+上面的MPMusicPlayerController在播放音乐列表的时候，如何获得当前播放的曲目来显示其播放信息呢？MPMusicPlayerController提供了属性方法：
 
+* nowPlayingItem ： 当前正在播放的MPMediaItem
+* indexOfNowPlayingItem : 当前正在播放的MPMediaItem的
+
+通过这两个方法可以获取当前播放音乐的信息，但是如何知道当前歌曲切换了呢？MPMusicPlayerController还为我们提供了三个通知：
+
+* MPMusicPlayerControllerPlaybackStateDidChangeNotification : 当播放状态改变时，如停止、正在播放
+* MPMusicPlayerControllerNowPlayingItemDidChangeNotification ： 当切换歌曲时
+* MPMusicPlayerControllerVolumeDidChangeNotification : 当音量改变时
+
+如：
+
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    [notificationCenter  addObserver: self
+                            selector: @selector (onVolumeChange:)
+                                name: MPMusicPlayerControllerVolumeDidChangeNotification
+                              object: _appMusicPlayer];
+    [notificationCenter  addObserver: self
+                            selector: @selector (onStateChange:)
+                                name: MPMusicPlayerControllerPlaybackStateDidChangeNotification
+                              object: _appMusicPlayer];
+    [notificationCenter  addObserver: self
+                            selector: @selector (onNowPlaying:)
+                                name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification
+                              object: _appMusicPlayer];
+	
+	  // take of this
+    [_appMusicPlayer beginGeneratingPlaybackNotifications];
+    
+	  #pragma mark Notifaction
+		- (void) onStateChange: (NSNotification*) notification {
+		    NSLog(@"onStateChange");
+		}
+		
+		- (void) onNowPlaying: (NSNotification*) notification {
+		    NSLog(@"onNowPlaying");
+		    MPMusicPlayerController *player = notification.object;
+		    MPMediaItem *item = [player nowPlayingItem];
+		    NSLog(@"now playing %@", [item valueForKey:MPMediaItemPropertyTitle]);
+		}
+		
+		- (void) onVolumeChange: (NSNotification*) notification {
+		    NSLog(@"onVolumeChange");
+		}
+	
+注意，这里需要调用MPMusicPlayerController的`
+- beginGeneratingPlaybackNotifications`才能在需要的时候发送通知。当不需要的时候调用`- endGeneratingPlaybackNotifications`进行取消,同时也需要调用NSNotificationCenter的removeObserver。
 
 文中Demo可以在[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/examples/audemo)找到。另外还可以参考博客中的[使用MediaPlayer实现一个音乐播放器]()。
