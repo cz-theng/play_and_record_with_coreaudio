@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F004B1671D0018500080E883 /* PlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F004B1661D0018500080E883 /* PlayerVC.m */; };
 		F004B1691D00185D0080E883 /* player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F004B1681D00185D0080E883 /* player.storyboard */; };
+		F012ADF41D1037DE00A6FF31 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F012ADF31D1037DE00A6FF31 /* AudioToolbox.framework */; };
+		F012AE161D103A9200A6FF31 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F012AE151D103A9200A6FF31 /* AVFoundation.framework */; };
 		F0E0EA381CF93EDA008379BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E0EA371CF93EDA008379BD /* main.m */; };
 		F0E0EA3B1CF93EDA008379BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E0EA3A1CF93EDA008379BD /* AppDelegate.m */; };
 		F0E0EA3E1CF93EDA008379BD /* BootLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E0EA3D1CF93EDA008379BD /* BootLoader.m */; };
@@ -33,6 +35,8 @@
 		F004B1651D0018500080E883 /* PlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerVC.h; sourceTree = "<group>"; };
 		F004B1661D0018500080E883 /* PlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerVC.m; sourceTree = "<group>"; };
 		F004B1681D00185D0080E883 /* player.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = player.storyboard; sourceTree = "<group>"; };
+		F012ADF31D1037DE00A6FF31 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F012AE151D103A9200A6FF31 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F0E0EA331CF93EDA008379BD /* audemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = audemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0E0EA371CF93EDA008379BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F0E0EA391CF93EDA008379BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F012AE161D103A9200A6FF31 /* AVFoundation.framework in Frameworks */,
+				F012ADF41D1037DE00A6FF31 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +265,8 @@
 		F0E0EA901CF96103008379BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F012AE151D103A9200A6FF31 /* AVFoundation.framework */,
+				F012ADF31D1037DE00A6FF31 /* AudioToolbox.framework */,
 				F0E0EA8E1CF960F5008379BD /* MediaPlayer.framework */,
 			);
 			name = Frameworks;
