@@ -1,16 +1,15 @@
 /*******************************************************************************\
-** afsdemo:ReaderVC.h
-** Created by CZ(cz.devnet@gmail.com) on 16/6/15
+** ssdemo:PlayerVC.h
+** Created by CZ(cz.devnet@gmail.com) on 16/6/20
 **
 **  Copyright © 2016年 projm. All rights reserved.
 \*******************************************************************************/
 
 
 #import <UIKit/UIKit.h>
-#import <AudioToolBox/AudioFile.h>
-#import <MediaPlayer/MediaPlayer.h>
+@import MediaPlayer;
+@import AudioToolbox;
 
-@interface ReaderVC : UIViewController <MPMediaPickerControllerDelegate, UISearchBarDelegate>
-
+@interface PlayerVC : UIViewController <MPMediaPickerControllerDelegate, UISearchBarDelegate>
 
 @end

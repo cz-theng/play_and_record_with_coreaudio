@@ -16,6 +16,7 @@
 		F098344B1D11677C00FCF6D3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F098344A1D11677C00FCF6D3 /* AudioToolbox.framework */; };
 		F09834531D11679700FCF6D3 /* ReaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F09834521D11679700FCF6D3 /* ReaderVC.m */; };
 		F09834551D1167A900FCF6D3 /* reader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F09834541D1167A900FCF6D3 /* reader.storyboard */; };
+		F09834F01D128FFE00FCF6D3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09834EF1D128FFE00FCF6D3 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		F09834511D11679700FCF6D3 /* ReaderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderVC.h; sourceTree = "<group>"; };
 		F09834521D11679700FCF6D3 /* ReaderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderVC.m; sourceTree = "<group>"; };
 		F09834541D1167A900FCF6D3 /* reader.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = reader.storyboard; sourceTree = "<group>"; };
+		F09834EF1D128FFE00FCF6D3 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F09834F01D128FFE00FCF6D3 /* MediaPlayer.framework in Frameworks */,
 				F098344B1D11677C00FCF6D3 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +76,7 @@
 		F09834131D1166F600FCF6D3 = {
 			isa = PBXGroup;
 			children = (
+				F09834EF1D128FFE00FCF6D3 /* MediaPlayer.framework */,
 				F098344A1D11677C00FCF6D3 /* AudioToolbox.framework */,
 				F098341E1D1166F600FCF6D3 /* afsdemo */,
 				F098343E1D1166F600FCF6D3 /* afsdemoTests */,

@@ -5,57 +5,57 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--ReaderVC-->
-        <scene sceneID="2lO-HH-tmP">
+        <!--PlayerVC-->
+        <scene sceneID="weT-c2-Tls">
             <objects>
-                <viewController storyboardIdentifier="reader_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NIW-6w-48y" customClass="ReaderVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="player_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="una-yy-I50" customClass="PlayerVC" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="F1c-Eb-BHW"/>
-                        <viewControllerLayoutGuide type="bottom" id="Lei-kl-Bfp"/>
+                        <viewControllerLayoutGuide type="top" id="Ubf-xE-rmz"/>
+                        <viewControllerLayoutGuide type="bottom" id="SqE-N1-Mjg"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="blM-gd-rPj">
+                    <view key="view" contentMode="scaleToFill" id="KW9-ch-Jri">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6t-1E-Ogm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGl-Gp-U4u">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="PickMusic"/>
+                                <state key="normal" title="Play"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="47" y="40" width="70" height="30"/>
+                                    <rect key="frame" x="185" y="43" width="30" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="onPickMusic:" destination="NIW-6w-48y" eventType="touchUpInside" id="K3g-QJ-YuL"/>
+                                    <action selector="onPlay:" destination="una-yy-I50" eventType="touchUpInside" id="IGb-iQ-INy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fc5-x9-KNb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFR-W0-yJb">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="ReadFileInfo"/>
+                                <state key="normal" title="Pick"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="47" y="78" width="85" height="30"/>
+                                    <rect key="frame" x="53" y="43" width="30" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="onReadFileInfo:" destination="NIW-6w-48y" eventType="touchUpInside" id="WO1-RR-z7c"/>
+                                    <action selector="onPicker:" destination="una-yy-I50" eventType="touchUpInside" id="rGx-Fd-Hsb"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="V6t-1E-Ogm"/>
-                                <exclude reference="Fc5-x9-KNb"/>
+                                <exclude reference="bGl-Gp-U4u"/>
+                                <exclude reference="EFR-W0-yJb"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="V6t-1E-Ogm"/>
-                                <include reference="Fc5-x9-KNb"/>
+                                <include reference="bGl-Gp-U4u"/>
+                                <include reference="EFR-W0-yJb"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rIP-Fm-Sev" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ghZ-Mh-Qa4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="636" y="513"/>
+            <point key="canvasLocation" x="978" y="360"/>
         </scene>
     </scenes>
 </document>
