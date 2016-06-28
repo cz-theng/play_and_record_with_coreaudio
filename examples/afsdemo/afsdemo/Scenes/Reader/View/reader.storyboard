@@ -21,7 +21,7 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="PickMusic"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="47" y="40" width="70" height="30"/>
+                                    <rect key="frame" x="61" y="41" width="70" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="onPickMusic:" destination="NIW-6w-48y" eventType="touchUpInside" id="K3g-QJ-YuL"/>
@@ -29,12 +29,112 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fc5-x9-KNb">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="ReadFileInfo"/>
+                                <state key="normal" title="ReadUserData"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="47" y="78" width="85" height="30"/>
+                                    <rect key="frame" x="61" y="173" width="100" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="onReadFileInfo:" destination="NIW-6w-48y" eventType="touchUpInside" id="WO1-RR-z7c"/>
+                                    <action selector="onReadUserData:" destination="NIW-6w-48y" eventType="touchUpInside" id="bA6-YB-VtQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Gl-tP-tax">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="ReadGlobalInfo"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="61" y="211" width="105" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onGetGlobalInfo:" destination="NIW-6w-48y" eventType="touchUpInside" id="YiL-WZ-5GA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3p-00-kAI">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="ReadFileContent"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="61" y="260" width="114" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onReadFileContent:" destination="NIW-6w-48y" eventType="touchUpInside" id="JnD-18-PcS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPm-X2-t0q">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="OpenFile"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="61" y="86" width="61" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onOpenFile:" destination="NIW-6w-48y" eventType="touchUpInside" id="d0y-i5-cry"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6v-bT-h25">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="ReadProperty"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="61" y="124" width="95" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onReadProperty:" destination="NIW-6w-48y" eventType="touchUpInside" id="eAz-Yt-aNH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZY-ol-nnf">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="CloseFile"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="61" y="298" width="63" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onCloseFile:" destination="NIW-6w-48y" eventType="touchUpInside" id="28y-lS-bir"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfF-MZ-ysU">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="ExtOpenFile"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="221" y="86" width="83" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onExtOpen:" destination="NIW-6w-48y" eventType="touchUpInside" id="RAy-7E-veF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXh-dv-b1j">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="ExtReadFile"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="222" y="168" width="80" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onExtRead:" destination="NIW-6w-48y" eventType="touchUpInside" id="612-aX-Qck"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Uw-1G-92g">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="ExtSeekFile"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="222" y="217" width="80" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onExtSeek:" destination="NIW-6w-48y" eventType="touchUpInside" id="Ffa-vz-Wka"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amv-L2-EYH">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="ExtCloseFile"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="220" y="260" width="84" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onExtClose:" destination="NIW-6w-48y" eventType="touchUpInside" id="yFl-fV-Rgf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpf-1D-me6">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="ExtReadProperty"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="220" y="124" width="116" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onExtReadProperty:" destination="NIW-6w-48y" eventType="touchUpInside" id="eKC-Ms-aNH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -43,12 +143,32 @@
                             <mask key="subviews">
                                 <exclude reference="V6t-1E-Ogm"/>
                                 <exclude reference="Fc5-x9-KNb"/>
+                                <exclude reference="5Gl-tP-tax"/>
+                                <exclude reference="R3p-00-kAI"/>
+                                <exclude reference="yPm-X2-t0q"/>
+                                <exclude reference="E6v-bT-h25"/>
+                                <exclude reference="cZY-ol-nnf"/>
+                                <exclude reference="vfF-MZ-ysU"/>
+                                <exclude reference="bXh-dv-b1j"/>
+                                <exclude reference="1Uw-1G-92g"/>
+                                <exclude reference="amv-L2-EYH"/>
+                                <exclude reference="Fpf-1D-me6"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="V6t-1E-Ogm"/>
                                 <include reference="Fc5-x9-KNb"/>
+                                <include reference="5Gl-tP-tax"/>
+                                <include reference="R3p-00-kAI"/>
+                                <include reference="yPm-X2-t0q"/>
+                                <include reference="E6v-bT-h25"/>
+                                <include reference="cZY-ol-nnf"/>
+                                <include reference="vfF-MZ-ysU"/>
+                                <include reference="bXh-dv-b1j"/>
+                                <include reference="1Uw-1G-92g"/>
+                                <include reference="amv-L2-EYH"/>
+                                <include reference="Fpf-1D-me6"/>
                             </mask>
                         </variation>
                     </view>

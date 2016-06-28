@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <AudioToolBox/AudioFile.h>
+#import <AudioToolBox/CAFFile.h>
 #import <MediaPlayer/MediaPlayer.h>
+@import CoreAudio;
+@import AudioToolbox;
 
 @interface ReaderVC : UIViewController <MPMediaPickerControllerDelegate, UISearchBarDelegate>
 
