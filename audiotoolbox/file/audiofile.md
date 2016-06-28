@@ -1,4 +1,4 @@
-# 使用Audio File读写音频文件
+G# 使用Audio File读写音频文件
 对于音频文件的读取，我们可以用fopen这样一段buffer一段buffer的段，但是这之后就需要自己去根据文件的头来推断文件的类型、编码格式等，然后进行解析到有效的音频数据，想想这是何等的麻烦。Apple也知道这样的麻烦，所以她在AudioToolBox中提供了音频文件的读写工具接口：“Audio File Services”以及其扩展"Extended Audio File Services"。扩展中的接口提供了音频格式转换的功能，同时也是对常用读取模式的一个Helper接口。想来是Apple在使用过程中也觉得最常用的读取就那么几个步骤，而前者的基础接口过于繁琐了。
 
 ## 获得“Audio File Services”基本属性
@@ -224,5 +224,5 @@ kAudioFilePropertyAlbumArtwork | 专辑名| CFDataRef
 使用“Audio File Service”操作文件，首先其有一定的受用范围，比如文件类型。然后对适用的文件先打开文件，在读取属性确定数据格式，比如最大Packet大小，根据这些信息分配内存读取数据；如果是写入数据，则要设置文件的属性信息，然后调用写入接口写入音频文件，最后调用Close关掉文件，避免资源泄露。
 
 ## 参考资料
-[Apple Core Audio Format Specification 1.0](https://developer.apple.com/library/mac/documentation/MusicAudio/Reference/CAFSpec/CAF_spec/CAF_spec.html#//apple_ref/doc/uid/TP40001862-CH210-BCGHJGEC)
-[Audio File Services Reference](https://developer.apple.com/library/mac/documentation/MusicAudio/Reference/AudioFileConvertRef/index.html#//apple_ref/c/econst/kAudioFileEndOfFileError)
+1. [Apple Core Audio Format Specification 1.0](https://developer.apple.com/library/mac/documentation/MusicAudio/Reference/CAFSpec/CAF_spec/CAF_spec.html#//apple_ref/doc/uid/TP40001862-CH210-BCGHJGEC)
+2. [Audio File Services Reference](https://developer.apple.com/library/mac/documentation/MusicAudio/Reference/AudioFileConvertRef/index.html#//apple_ref/c/econst/kAudioFileEndOfFileError)
