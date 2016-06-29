@@ -18,8 +18,6 @@
 		F09834551D1167A900FCF6D3 /* reader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F09834541D1167A900FCF6D3 /* reader.storyboard */; };
 		F09834F01D128FFE00FCF6D3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09834EF1D128FFE00FCF6D3 /* MediaPlayer.framework */; };
 		F09837941D1AB7DE00FCF6D3 /* 01.caf in Resources */ = {isa = PBXBuildFile; fileRef = F09837931D1AB7DE00FCF6D3 /* 01.caf */; };
-		F09837B11D1B934400FCF6D3 /* caf.caf in Resources */ = {isa = PBXBuildFile; fileRef = F09837B01D1B934400FCF6D3 /* caf.caf */; };
-		F09837B31D1B956100FCF6D3 /* mp3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F09837B21D1B956100FCF6D3 /* mp3.mp3 */; };
 		F09837D01D1D130D00FCF6D3 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09837CF1D1D130D00FCF6D3 /* CoreAudio.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,8 +54,6 @@
 		F09834541D1167A900FCF6D3 /* reader.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = reader.storyboard; sourceTree = "<group>"; };
 		F09834EF1D128FFE00FCF6D3 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		F09837931D1AB7DE00FCF6D3 /* 01.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 01.caf; sourceTree = "<group>"; };
-		F09837B01D1B934400FCF6D3 /* caf.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = caf.caf; sourceTree = "<group>"; };
-		F09837B21D1B956100FCF6D3 /* mp3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mp3.mp3; sourceTree = "<group>"; };
 		F09837CF1D1D130D00FCF6D3 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -227,8 +223,6 @@
 		F09837921D1AB7DE00FCF6D3 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
-				F09837B21D1B956100FCF6D3 /* mp3.mp3 */,
-				F09837B01D1B934400FCF6D3 /* caf.caf */,
 				F09837931D1AB7DE00FCF6D3 /* 01.caf */,
 			);
 			path = sounds;
@@ -317,8 +311,6 @@
 				F09834551D1167A900FCF6D3 /* reader.storyboard in Resources */,
 				F09834321D1166F600FCF6D3 /* Assets.xcassets in Resources */,
 				F09834351D1166F600FCF6D3 /* LaunchScreen.storyboard in Resources */,
-				F09837B31D1B956100FCF6D3 /* mp3.mp3 in Resources */,
-				F09837B11D1B934400FCF6D3 /* caf.caf in Resources */,
 				F09837941D1AB7DE00FCF6D3 /* 01.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
