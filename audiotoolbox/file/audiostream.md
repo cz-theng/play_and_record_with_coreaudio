@@ -54,13 +54,17 @@
 ## 处理回调
 经过了这么多处理，最终的数据会通过回调给我们，就如同在用"AudioFileReadPacketData"读取文件一样。主要有两个回调
 
-### typedef void (*AudioFileStream_PropertyListenerProc) ( void *inClientData, AudioFileStreamID inAudioFileStream, AudioFileStreamPropertyID inPropertyID, UInt32 *ioFlags );
+### AudioFileStream_PropertyListenerProc
+
+	typedef void (*AudioFileStream_PropertyListenerProc) ( void *inClientData, AudioFileStreamID inAudioFileStream, AudioFileStreamPropertyID inPropertyID, UInt32 *ioFlags );
 
 流处理器从源数据涨处理出了AudioFileStreamPropertyID指向的内容，此时可以通过调用“AudioFileStreamGetPropertyInfo”和“AudioFileStreamGetProperty”来获取相关的属性。
 
 这里flags别标记为io，当其为0时表示不缓存属性值，此时通过设置其为kAudioFileStreamPropertyFlag_CacheProperty，这样来控制缓存策略。
 
-### typedef void (*AudioFileStream_PacketsProc) ( void *inClientData, UInt32 inNumberBytes, UInt32 inNumberPackets, const void *inInputData, AudioStreamPacketDescription *inPacketDescriptions );
+### AudioFileStream_PacketsProc 
+	
+	typedef void (*AudioFileStream_PacketsProc) ( void *inClientData, UInt32 inNumberBytes, UInt32 inNumberPackets, const void *inInputData, AudioStreamPacketDescription *inPacketDescriptions );
 
 流处理器从源数据中处理出来一个个Packet数据，其总共有inNumberPackets个包，总长inNumberBytes个字节，数据放在inInputData指向的内存中，每个Packet的数据格式依次在inPacketDescriptions数组中。
 
