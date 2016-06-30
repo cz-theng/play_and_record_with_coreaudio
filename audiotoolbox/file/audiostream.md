@@ -66,9 +66,40 @@
 	
 	typedef void (*AudioFileStream_PacketsProc) ( void *inClientData, UInt32 inNumberBytes, UInt32 inNumberPackets, const void *inInputData, AudioStreamPacketDescription *inPacketDescriptions );
 
-流处理器从源数据中处理出来一个个Packet数据，其总共有inNumberPackets个包，总长inNumberBytes个字节，数据放在inInputData指向的内存中，每个Packet的数据格式依次在inPacketDescriptions数组中。
+流处理器从源数据中处理出来一个个Packet数据，其总共有inNumberPackets个包，总长inNumberBytes个字节，数据放在inInputData指向的内存中，每个Packet的数据格式依次在inPacketDescriptions数组中。按照和"AudioFileReadPacketData"一样的处理音频数据就可以了。
 
 ## 获取属性
+属性值的操作和“AudioFileService”里面基本是完全一样的，分成两个接口，一个获取属性大小等信息：
+
+	OSStatus AudioFileStreamGetPropertyInfo ( AudioFileStreamID inAudioFileStream, AudioFileStreamPropertyID inPropertyID, UInt32 *outPropertyDataSize, Boolean *outWritable );
+	
+获取属性inPropertyID的大小和是否可写值。然后通过：
+
+	OSStatus AudioFileStreamGetProperty ( AudioFileStreamID inAudioFileStream, AudioFileStreamPropertyID inPropertyID, UInt32 *ioPropertyDataSize, void *outPropertyData );
+
+得到属性inPropertyID的值放在outPropertyData中。这里有点点不同的是这个函数可能返回“kAudioFileStreamError_DataUnavailable”表示说这个属性的值还没有读完全，要等下AudioFileStream_PropertyListenerProc再次回调了再去尝试。
+
+属性大概有如下一些：
+
+AudioFileStreamPropertyID | 意义 | 值类型
+kAudioFileStreamProperty_ReadyToProducePackets| 是否解析完了属性部分 | UInt32 0为还没有解析，1为已经到数据部分了
+kAudioFileStreamProperty_FileFormat | 文件类型ID | UInt32
+kAudioFileStreamProperty_DataFormat | 数据内容格式 | AudioStreamBasicDescription    
+kAudioFileStreamProperty_FormatList  |容纳的编码格式| AudioFormatListItem 数组         
+kAudioFileStreamProperty_MagicCookieData | Magic数据 | void *     
+kAudioFileStreamProperty_AudioDataByteCount | 数据字节数目| UInt64   
+kAudioFileStreamProperty_AudioDataPacketCount|数据的包数目 | UInt64
+kAudioFileStreamProperty_MaximumPacketSize | 最大包的字节数 | UInt64    
+kAudioFileStreamProperty_DataOffset | 单前数据便宜 | SInt64          
+kAudioFileStreamProperty_ChannelLayout | 通道结构 | AudioFormatListItem       
+kAudioFileStreamProperty_PacketToFrame | 将包数转换成帧数|AudioFramePacketTranslation中mPacket做输入，mFrame做输出       
+kAudioFileStreamProperty_FrameToPacket | 将帧数转换成包数|AudioFramePacketTranslation中mFrame做输入，mFrameOffsetInPacket，mPacket做输出       
+kAudioFileStreamProperty_PacketToByte  | 将包数转换成字节数| AudioFramePacketTranslation中mPacket做输入，mByte做输出
+kAudioFileStreamProperty_ByteToPacket  | 将字节数转换成包数| AudioFramePacketTranslation中mByte做输入，mPacket和mByteOffsetInPacket做输出       
+kAudioFileStreamProperty_PacketTableInfo | 音频的Table信息| AudioFilePacketTableInfo     
+kAudioFileStreamProperty_PacketSizeUpperBound |理论上最大的Packet大小| UInt32
+kAudioFileStreamProperty_AverageBytesPerPacket|平均Packet大小| UInt32
+kAudioFileStreamProperty_BitRate | 码率|UInt32            
 
 
 ## 总结

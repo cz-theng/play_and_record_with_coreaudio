@@ -118,21 +118,21 @@ inFileTypeHint是打开文件的类型，iOS下可以直接用"0"。outAudioFile
 AudioFilePropertyID | 意义| 结果
 ---|---|---
 kAudioFilePropertyFileFormat  | 音频文件的格式 | char *
-kAudioFilePropertyDataFormat  | audio stream basic description描述的音频数据格式 | AudioStreamPacketDescription
+kAudioFilePropertyDataFormat  | 音频数据格式 | AudioStreamPacketDescription
 kAudioFilePropertyIsOptimized | 是否可以优化| 0/1
 kAudioFilePropertyMagicCookieData | Magic Cookie文件头| char *
 kAudioFilePropertyAudioDataByteCount | 文件长度 | Uint64
 kAudioFilePropertyAudioDataPacketCount | Packet的数目 | Uint64
 kAudioFilePropertyMaximumPacketSize | 最大的Packet大小 | Uint32
-kAudioFilePropertyDataOffset | 数据的便宜量| Uint64
-kAudioFilePropertyChannelLayout | 声道结构 | Uint32
+kAudioFilePropertyDataOffset | 数据的偏移量| Uint64
+kAudioFilePropertyChannelLayout | 声道结构 | AudioFormatListItem
 kAudioFilePropertyDeferSizeUpdates | 是否更新文件头信息 | 1/0
 kAudioFilePropertyMarkerList | 音频中所有markers | CFStringRef表示的Markers列表
 kAudioFilePropertyRegionList | 音频中所有Region  | CFStringRef表示的Region列表
-kAudioFilePropertyPacketToFrame | 将Packet转换成Frame| mFrame和mFrameOffsetInPacket
-kAudioFilePropertyFrameToPacket | 将Frame转换成Packet | mPacket和mFrameOffsetInPacket
-kAudioFilePropertyPacketToByte | 将Packet转换成Byte| mByte
-kAudioFilePropertyByteToPacket | 将Byte转换成Packet|mPacket
+kAudioFilePropertyPacketToFrame | 将包数转换成帧数|AudioFramePacketTranslation中mPacket做输入，mFrame做输出
+kAudioFilePropertyFrameToPacket | 将帧数转换成包数|AudioFramePacketTranslation中mFrame做输入，mFrameOffsetInPacket，mPacket做输出
+kAudioFilePropertyPacketToByte | 将包数转换成字节数| AudioFramePacketTranslation中mPacket做输入，mByte做输出
+kAudioFilePropertyByteToPacket | 将字节数转换成包数| AudioFramePacketTranslation中mByte做输入，mPacket和mByteOffsetInPacket做输出
 kAudioFilePropertyChunkIDs  | 文件中的chunk编码格式 | 4字符编码格式数组
 kAudioFilePropertyInfoDictionary|字典表示的Info | CFDictionary
 kAudioFilePropertyPacketTableInfo |设置PacketTableInfo | PacketTableInfo
