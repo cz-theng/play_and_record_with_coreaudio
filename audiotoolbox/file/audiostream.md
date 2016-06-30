@@ -82,6 +82,7 @@
 属性大概有如下一些：
 
 AudioFileStreamPropertyID | 意义 | 值类型
+---|---|---
 kAudioFileStreamProperty_ReadyToProducePackets| 是否解析完了属性部分 | UInt32 0为还没有解析，1为已经到数据部分了
 kAudioFileStreamProperty_FileFormat | 文件类型ID | UInt32
 kAudioFileStreamProperty_DataFormat | 数据内容格式 | AudioStreamBasicDescription    
