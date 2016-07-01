@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--FormaterVC-->
+        <scene sceneID="TC1-Je-5gh">
+            <objects>
+                <viewController storyboardIdentifier="formater_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uiw-TR-zbg" customClass="FormaterVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nLp-KK-h9K"/>
+                        <viewControllerLayoutGuide type="bottom" id="0iE-82-axr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6yE-1g-D4o">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ahc-ez-xQg">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="PickMusic"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="93" y="61" width="70" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onPickMusic:" destination="uiw-TR-zbg" eventType="touchUpInside" id="sWV-uc-eq0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WhP-3w-gVv">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="AudioFormatInfo"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="116" width="114" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onFormatInfo:" destination="uiw-TR-zbg" eventType="touchUpInside" id="D7H-ds-MIm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpP-SB-tK8">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="AudioBalanceFade"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="214" width="127" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onBalanceFade:" destination="uiw-TR-zbg" eventType="touchUpInside" id="npD-os-2Ft"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJW-AB-xX5">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="AudioPanningInfo"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="261" width="120" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onPanningInfo:" destination="uiw-TR-zbg" eventType="touchUpInside" id="mlV-i9-WvG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzk-eQ-cmn">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="ExtendedAudioFormatInfo"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="308" width="179" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onExtFormatInfo:" destination="uiw-TR-zbg" eventType="touchUpInside" id="O1C-Ry-qkY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hu6-bz-DTN">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="AudioFormatListItem"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="168" width="143" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onFormatListItem:" destination="uiw-TR-zbg" eventType="touchUpInside" id="dpE-6v-CtH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-J3-cpO">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="OpenMusic"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="235" y="61" width="78" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onOpenMusic:" destination="uiw-TR-zbg" eventType="touchUpInside" id="ndf-TH-HZW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Ahc-ez-xQg"/>
+                                <exclude reference="WhP-3w-gVv"/>
+                                <exclude reference="OpP-SB-tK8"/>
+                                <exclude reference="QJW-AB-xX5"/>
+                                <exclude reference="nzk-eQ-cmn"/>
+                                <exclude reference="hu6-bz-DTN"/>
+                                <exclude reference="cS6-J3-cpO"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Ahc-ez-xQg"/>
+                                <include reference="WhP-3w-gVv"/>
+                                <include reference="OpP-SB-tK8"/>
+                                <include reference="QJW-AB-xX5"/>
+                                <include reference="nzk-eQ-cmn"/>
+                                <include reference="hu6-bz-DTN"/>
+                                <include reference="cS6-J3-cpO"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aGB-Sa-EDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="735" y="438.75"/>
+        </scene>
+    </scenes>
+</document>
