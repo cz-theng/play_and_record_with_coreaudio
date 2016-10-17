@@ -56,7 +56,7 @@ AVAudioPlayer可以对音频文件或者音频NSData数据进行播放，通常�
 
 处理启停控制之外，还有音量、通道、时间等常用属性
 
----|---|---
+
 属性|类型|作用
 ---|---|---
 playing| BOOL| 是否在播放音频
@@ -74,7 +74,7 @@ meteringEnabled| BOOL | 是否开启能量统计的开关
 
 另外还有几个Get函数
 
----|---
+
 函数原型|作用
 ---|---
 (float)averagePowerForChannel:(NSUInteger)channelNumber|所指通道上的平均能量值，需要配合meteringEnabled使用
