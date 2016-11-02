@@ -71,22 +71,45 @@
                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view alpha="0.10000000000000001" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PZx-zv-egG" customClass="MusicBarView">
-                                <frame key="frameInset" minX="20" minY="243" width="335" height="204"/>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PZx-zv-egG" customClass="MusicBarView">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Hyu-x8-RgV"/>
                                     <constraint firstAttribute="width" constant="330" id="bSr-YO-J7d"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7FG-pb-byN">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="OdV-bS-1gy"/>
+                                    <constraint firstAttribute="width" constant="60" id="iZL-lu-hEO"/>
+                                </constraints>
+                                <state key="normal" image="btn_backward.png"/>
+                                <connections>
+                                    <action selector="onBackward:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p5M-Wf-BZE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szY-Hg-jAs">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GJX-hR-zGI"/>
+                                    <constraint firstAttribute="width" constant="60" id="Upl-v6-LJi"/>
+                                </constraints>
+                                <state key="normal" image="btn_forward.png"/>
+                                <connections>
+                                    <action selector="onForward:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0nj-xX-fkF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="5UF-WC-AfR" firstAttribute="top" secondItem="PZx-zv-egG" secondAttribute="bottom" constant="20" id="0Xk-M1-HKX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7FG-pb-byN" secondAttribute="bottom" constant="70" id="14W-gL-rek"/>
                             <constraint firstAttribute="trailing" secondItem="tIi-Ei-2dr" secondAttribute="trailing" constant="20" id="8Tc-FM-86b"/>
                             <constraint firstItem="mpL-ma-XKE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ARl-oZ-e8b"/>
+                            <constraint firstItem="7FG-pb-byN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="Aa5-6w-3rc"/>
                             <constraint firstItem="ZtM-n2-6Ci" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FjK-u1-bkA"/>
                             <constraint firstItem="tIi-Ei-2dr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="MH9-uY-8rC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="szY-Hg-jAs" secondAttribute="bottom" constant="70" id="NEo-F7-6gH"/>
+                            <constraint firstAttribute="trailing" secondItem="szY-Hg-jAs" secondAttribute="trailing" constant="30" id="NXk-DH-vag"/>
                             <constraint firstAttribute="trailing" secondItem="mpL-ma-XKE" secondAttribute="trailing" id="RiL-dS-7xK"/>
                             <constraint firstAttribute="trailing" secondItem="ZtM-n2-6Ci" secondAttribute="trailing" id="Rr4-eX-Fxg"/>
                             <constraint firstAttribute="trailing" secondItem="Jxj-Ox-4uP" secondAttribute="trailing" constant="16" id="SLN-rW-LbR"/>
@@ -125,8 +148,10 @@
     <resources>
         <image name="background.png" width="750" height="1334"/>
         <image name="background_bottom.png" width="750" height="424"/>
+        <image name="btn_backward.png" width="128" height="128"/>
         <image name="btn_drawer_h.png" width="72" height="50"/>
         <image name="btn_drawer_n.png" width="72" height="50"/>
+        <image name="btn_forward.png" width="128" height="128"/>
         <image name="btn_play.png" width="128" height="128"/>
     </resources>
 </document>

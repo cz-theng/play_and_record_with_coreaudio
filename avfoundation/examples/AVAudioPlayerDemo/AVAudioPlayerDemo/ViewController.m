@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLbl;
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLbl;
 @property (weak, nonatomic) IBOutlet MusicBarView *musicBarView;
+@property float rate;
 @end
 
 @implementation ViewController
@@ -37,8 +38,23 @@
     _secondTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
     _millTimer =[NSTimer scheduledTimerWithTimeInterval:1.0/10 target:self selector:@selector(millTimerAction:) userInfo:nil repeats:YES];
     _isInitSound = NO;
+    _rate = 1.0;
 }
 
+- (IBAction)onForward:(id)sender {
+    static float step = 0.05;
+    NSTimeInterval newCur = _player.currentTime + _player.duration*step;
+    _player.currentTime = newCur;
+}
+
+- (IBAction)onBackward:(id)sender {
+    static float step = 0.05;
+    NSTimeInterval newCur = _player.currentTime - _player.duration*step;
+    if (newCur<0) {
+        newCur = 0;
+    }
+    _player.currentTime = newCur;
+}
 
 - (void) millTimerAction: (id) sender {
     if (nil != _player &&  _isInitSound) {
@@ -119,7 +135,9 @@
         _isInitSound = YES;
         [_totalTimeLbl setText:[NSString stringWithFormat:@"%02ld:%02ld", (long)_player.duration/60, ((long)_player.duration)%60]];
         _player.delegate = self;
+        _player.enableRate = YES;
         _player.meteringEnabled = YES;
+
     }    
     
     [_infoTV setText:content];

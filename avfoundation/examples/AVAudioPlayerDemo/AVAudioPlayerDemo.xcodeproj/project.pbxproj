@@ -22,6 +22,8 @@
 		F09C45DC1DC1FB9A00610E38 /* btn_play.png in Resources */ = {isa = PBXBuildFile; fileRef = F09C45DA1DC1FB9A00610E38 /* btn_play.png */; };
 		F09C45DE1DC1FD1B00610E38 /* background_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = F09C45DD1DC1FD1B00610E38 /* background_bottom.png */; };
 		F09C45E11DC243FB00610E38 /* MusicBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F09C45E01DC243FB00610E38 /* MusicBarView.m */; };
+		F0FE80FA1DC7616B0052175B /* btn_backward.png in Resources */ = {isa = PBXBuildFile; fileRef = F0FE80F81DC7616B0052175B /* btn_backward.png */; };
+		F0FE80FB1DC7616B0052175B /* btn_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = F0FE80F91DC7616B0052175B /* btn_forward.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		F09C45DD1DC1FD1B00610E38 /* background_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_bottom.png; sourceTree = "<group>"; };
 		F09C45DF1DC243FB00610E38 /* MusicBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicBarView.h; sourceTree = "<group>"; };
 		F09C45E01DC243FB00610E38 /* MusicBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicBarView.m; sourceTree = "<group>"; };
+		F0FE80F81DC7616B0052175B /* btn_backward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_backward.png; sourceTree = "<group>"; };
+		F0FE80F91DC7616B0052175B /* btn_forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_forward.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,8 @@
 		F09C450E1DC1BDED00610E38 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F0FE80F81DC7616B0052175B /* btn_backward.png */,
+				F0FE80F91DC7616B0052175B /* btn_forward.png */,
 				F09C45DD1DC1FD1B00610E38 /* background_bottom.png */,
 				F09C45D91DC1FB9A00610E38 /* btn_pause.png */,
 				F09C45DA1DC1FB9A00610E38 /* btn_play.png */,
@@ -287,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F09C45DC1DC1FB9A00610E38 /* btn_play.png in Resources */,
+				F0FE80FB1DC7616B0052175B /* btn_forward.png in Resources */,
 				F09C45DB1DC1FB9A00610E38 /* btn_pause.png in Resources */,
 				F09C45131DC1D97100610E38 /* btn_drawer_h.png in Resources */,
 				F09C44EA1DC0CA8600610E38 /* LaunchScreen.storyboard in Resources */,
@@ -295,6 +302,7 @@
 				F09C44E71DC0CA8600610E38 /* Assets.xcassets in Resources */,
 				F09C45141DC1D97100610E38 /* btn_drawer_n.png in Resources */,
 				F09C44E51DC0CA8600610E38 /* Main.storyboard in Resources */,
+				F0FE80FA1DC7616B0052175B /* btn_backward.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,6 +562,7 @@
 				F09C45061DC0CA8700610E38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F09C45071DC0CA8700610E38 /* Build configuration list for PBXNativeTarget "AVAudioPlayerDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -562,6 +571,7 @@
 				F09C45091DC0CA8700610E38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F09C450A1DC0CA8700610E38 /* Build configuration list for PBXNativeTarget "AVAudioPlayerDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -570,6 +580,7 @@
 				F09C450C1DC0CA8700610E38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

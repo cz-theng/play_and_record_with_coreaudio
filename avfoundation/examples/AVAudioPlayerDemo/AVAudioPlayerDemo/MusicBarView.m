@@ -27,6 +27,7 @@
 
 - (void) initIvars {
     _count = 7;
+    [self layoutIfNeeded];
     _unitWidth = self.frame.size.width / (2*_count + 1);
     _volumes = [[NSMutableArray alloc] init];
     _volumeViews = [[NSMutableArray alloc] init];
