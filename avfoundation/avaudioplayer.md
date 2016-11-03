@@ -156,7 +156,7 @@ currentTime|NSTimeInterval| 当前播放时长，比如MP3上显示的进度
 
 此时就需要通过AVSession来控制收到中断以及改变输入/输出时的表现了。通过订阅AVSession的`AVAudioSessionInterruptionNotification`来判断中断了还是恢复了，通过订阅`AVAudioSessionRouteChangeNotification`来监控是否有耳机插入等
 
-*AVAudioSessionInterruptionNotification： 
+* AVAudioSessionInterruptionNotification： 
 	当中断时，userInfo中会有“ AVAudioSessionInterruptionTypeBegan” 这个成员，如果是恢复回来，则是"AVAudioSessionInterruptionTypeEnded"
 
 * AVAudioSessionRouteChangeNotification ：
@@ -171,4 +171,4 @@ currentTime|NSTimeInterval| 当前播放时长，比如MP3上显示的进度
 ##参考文档
 1. [AVAudioPlayer Class Reference](https://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVAudioPlayerClassReference/#//apple_ref/occ/instm/AVAudioPlayer/updateMeters)
 2. [Audio Session Programming Guide](https://developer.apple.com/library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/HandlingAudioInterruptions/HandlingAudioInterruptions.html#//apple_ref/doc/uid/TP40007875-CH4-SW1)
-3. [AVAudioSession Class Reference]()
+
