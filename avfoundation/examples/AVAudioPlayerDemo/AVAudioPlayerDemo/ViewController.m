@@ -60,7 +60,6 @@
     if (nil != _player &&  _isInitSound) {
         if(_player.playing) {
             [_player updateMeters];
-            NSLog(@"avgpower:%f", [_player averagePowerForChannel:0]);
             [_musicBarView addValue: ([_player averagePowerForChannel:0]+160)/160/2];
             [_musicBarView updateUI];
         }
@@ -130,11 +129,14 @@
     
     content = title;
     content = [content stringByAppendingFormat:@"\n %@", artist];
-    NSError *error = nil;
+    NSError *error;
     if (nil != _furl) {
         _player = [_player initWithContentsOfURL:_furl error:&error];
+        [_player play];
+        [_player pause];
+        _player = [_player initWithContentsOfURL:_furl error:&error];
         if (nil != error) {
-            NSLog(@"initWithContentsOfURL error:%@", error.localizedDescription);
+            NSLog(@"initWithContentsOfURL with error %@", error.localizedDescription);
             return ;
         }
         _isInitSound = YES;
@@ -142,10 +144,6 @@
         _player.delegate = self;
         _player.enableRate = YES;
         _player.meteringEnabled = YES;
-        _player.numberOfLoops = 1024;
-        for (NSString *key in _player.settings) {
-            NSLog(@"key[%@]: %@", key, [_player.settings objectForKey:key]);
-        }
 
     }    
     
