@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F07995751DD16B590036B66F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F07995741DD16B590036B66F /* main.m */; };
+		F07995781DD16B590036B66F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F07995771DD16B590036B66F /* AppDelegate.m */; };
+		F079957B1DD16B590036B66F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F079957A1DD16B590036B66F /* ViewController.m */; };
+		F079957E1DD16B590036B66F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F079957C1DD16B590036B66F /* Main.storyboard */; };
+		F07995801DD16B590036B66F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F079957F1DD16B590036B66F /* Assets.xcassets */; };
+		F07995831DD16B590036B66F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F07995811DD16B590036B66F /* LaunchScreen.storyboard */; };
+		F079958E1DD16B590036B66F /* AVAudioRecoderDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F079958D1DD16B590036B66F /* AVAudioRecoderDemoTests.m */; };
+		F07995991DD16B590036B66F /* AVAudioRecoderDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F07995981DD16B590036B66F /* AVAudioRecoderDemoUITests.m */; };
+		F07995B01DD16B8B0036B66F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995A81DD16B8B0036B66F /* background.png */; };
+		F07995B11DD16B8B0036B66F /* background_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995A91DD16B8B0036B66F /* background_bottom.png */; };
+		F07995B21DD16B8B0036B66F /* btn_backward.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995AA1DD16B8B0036B66F /* btn_backward.png */; };
+		F07995B31DD16B8B0036B66F /* btn_drawer_h.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995AB1DD16B8B0036B66F /* btn_drawer_h.png */; };
+		F07995B41DD16B8B0036B66F /* btn_drawer_n.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995AC1DD16B8B0036B66F /* btn_drawer_n.png */; };
+		F07995B51DD16B8B0036B66F /* btn_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995AD1DD16B8B0036B66F /* btn_forward.png */; };
+		F07995B61DD16B8B0036B66F /* btn_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995AE1DD16B8B0036B66F /* btn_pause.png */; };
+		F07995B71DD16B8B0036B66F /* btn_play.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995AF1DD16B8B0036B66F /* btn_play.png */; };
+		F07995BA1DD172840036B66F /* btn_microphone_closed.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995B81DD172840036B66F /* btn_microphone_closed.png */; };
+		F07995BB1DD172840036B66F /* btn_microphone_open.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995B91DD172840036B66F /* btn_microphone_open.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F079958A1DD16B590036B66F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F07995681DD16B590036B66F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F079956F1DD16B590036B66F;
+			remoteInfo = AVAudioRecoderDemo;
+		};
+		F07995951DD16B590036B66F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F07995681DD16B590036B66F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F079956F1DD16B590036B66F;
+			remoteInfo = AVAudioRecoderDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F07995701DD16B590036B66F /* AVAudioRecoderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVAudioRecoderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F07995741DD16B590036B66F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F07995761DD16B590036B66F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F07995771DD16B590036B66F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F07995791DD16B590036B66F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F079957A1DD16B590036B66F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F079957D1DD16B590036B66F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F079957F1DD16B590036B66F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F07995821DD16B590036B66F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F07995841DD16B590036B66F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F07995891DD16B590036B66F /* AVAudioRecoderDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVAudioRecoderDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F079958D1DD16B590036B66F /* AVAudioRecoderDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVAudioRecoderDemoTests.m; sourceTree = "<group>"; };
+		F079958F1DD16B590036B66F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F07995941DD16B590036B66F /* AVAudioRecoderDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVAudioRecoderDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F07995981DD16B590036B66F /* AVAudioRecoderDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVAudioRecoderDemoUITests.m; sourceTree = "<group>"; };
+		F079959A1DD16B590036B66F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F07995A81DD16B8B0036B66F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		F07995A91DD16B8B0036B66F /* background_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_bottom.png; sourceTree = "<group>"; };
+		F07995AA1DD16B8B0036B66F /* btn_backward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_backward.png; sourceTree = "<group>"; };
+		F07995AB1DD16B8B0036B66F /* btn_drawer_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_drawer_h.png; sourceTree = "<group>"; };
+		F07995AC1DD16B8B0036B66F /* btn_drawer_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_drawer_n.png; sourceTree = "<group>"; };
+		F07995AD1DD16B8B0036B66F /* btn_forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_forward.png; sourceTree = "<group>"; };
+		F07995AE1DD16B8B0036B66F /* btn_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pause.png; sourceTree = "<group>"; };
+		F07995AF1DD16B8B0036B66F /* btn_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_play.png; sourceTree = "<group>"; };
+		F07995B81DD172840036B66F /* btn_microphone_closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_microphone_closed.png; sourceTree = "<group>"; };
+		F07995B91DD172840036B66F /* btn_microphone_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_microphone_open.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F079956D1DD16B590036B66F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F07995861DD16B590036B66F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F07995911DD16B590036B66F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F07995671DD16B590036B66F = {
+			isa = PBXGroup;
+			children = (
+				F07995721DD16B590036B66F /* AVAudioRecoderDemo */,
+				F079958C1DD16B590036B66F /* AVAudioRecoderDemoTests */,
+				F07995971DD16B590036B66F /* AVAudioRecoderDemoUITests */,
+				F07995711DD16B590036B66F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F07995711DD16B590036B66F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F07995701DD16B590036B66F /* AVAudioRecoderDemo.app */,
+				F07995891DD16B590036B66F /* AVAudioRecoderDemoTests.xctest */,
+				F07995941DD16B590036B66F /* AVAudioRecoderDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F07995721DD16B590036B66F /* AVAudioRecoderDemo */ = {
+			isa = PBXGroup;
+			children = (
+				F07995A61DD16B8B0036B66F /* Resource */,
+				F07995761DD16B590036B66F /* AppDelegate.h */,
+				F07995771DD16B590036B66F /* AppDelegate.m */,
+				F07995791DD16B590036B66F /* ViewController.h */,
+				F079957A1DD16B590036B66F /* ViewController.m */,
+				F079957C1DD16B590036B66F /* Main.storyboard */,
+				F079957F1DD16B590036B66F /* Assets.xcassets */,
+				F07995811DD16B590036B66F /* LaunchScreen.storyboard */,
+				F07995841DD16B590036B66F /* Info.plist */,
+				F07995731DD16B590036B66F /* Supporting Files */,
+			);
+			path = AVAudioRecoderDemo;
+			sourceTree = "<group>";
+		};
+		F07995731DD16B590036B66F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F07995741DD16B590036B66F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F079958C1DD16B590036B66F /* AVAudioRecoderDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				F079958D1DD16B590036B66F /* AVAudioRecoderDemoTests.m */,
+				F079958F1DD16B590036B66F /* Info.plist */,
+			);
+			path = AVAudioRecoderDemoTests;
+			sourceTree = "<group>";
+		};
+		F07995971DD16B590036B66F /* AVAudioRecoderDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F07995981DD16B590036B66F /* AVAudioRecoderDemoUITests.m */,
+				F079959A1DD16B590036B66F /* Info.plist */,
+			);
+			path = AVAudioRecoderDemoUITests;
+			sourceTree = "<group>";
+		};
+		F07995A61DD16B8B0036B66F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F07995A71DD16B8B0036B66F /* images */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F07995A71DD16B8B0036B66F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				F07995B81DD172840036B66F /* btn_microphone_closed.png */,
+				F07995B91DD172840036B66F /* btn_microphone_open.png */,
+				F07995A81DD16B8B0036B66F /* background.png */,
+				F07995A91DD16B8B0036B66F /* background_bottom.png */,
+				F07995AA1DD16B8B0036B66F /* btn_backward.png */,
+				F07995AB1DD16B8B0036B66F /* btn_drawer_h.png */,
+				F07995AC1DD16B8B0036B66F /* btn_drawer_n.png */,
+				F07995AD1DD16B8B0036B66F /* btn_forward.png */,
+				F07995AE1DD16B8B0036B66F /* btn_pause.png */,
+				F07995AF1DD16B8B0036B66F /* btn_play.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F079956F1DD16B590036B66F /* AVAudioRecoderDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F079959D1DD16B590036B66F /* Build configuration list for PBXNativeTarget "AVAudioRecoderDemo" */;
+			buildPhases = (
+				F079956C1DD16B590036B66F /* Sources */,
+				F079956D1DD16B590036B66F /* Frameworks */,
+				F079956E1DD16B590036B66F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AVAudioRecoderDemo;
+			productName = AVAudioRecoderDemo;
+			productReference = F07995701DD16B590036B66F /* AVAudioRecoderDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F07995881DD16B590036B66F /* AVAudioRecoderDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F07995A01DD16B590036B66F /* Build configuration list for PBXNativeTarget "AVAudioRecoderDemoTests" */;
+			buildPhases = (
+				F07995851DD16B590036B66F /* Sources */,
+				F07995861DD16B590036B66F /* Frameworks */,
+				F07995871DD16B590036B66F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F079958B1DD16B590036B66F /* PBXTargetDependency */,
+			);
+			name = AVAudioRecoderDemoTests;
+			productName = AVAudioRecoderDemoTests;
+			productReference = F07995891DD16B590036B66F /* AVAudioRecoderDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F07995931DD16B590036B66F /* AVAudioRecoderDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F07995A31DD16B590036B66F /* Build configuration list for PBXNativeTarget "AVAudioRecoderDemoUITests" */;
+			buildPhases = (
+				F07995901DD16B590036B66F /* Sources */,
+				F07995911DD16B590036B66F /* Frameworks */,
+				F07995921DD16B590036B66F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F07995961DD16B590036B66F /* PBXTargetDependency */,
+			);
+			name = AVAudioRecoderDemoUITests;
+			productName = AVAudioRecoderDemoUITests;
+			productReference = F07995941DD16B590036B66F /* AVAudioRecoderDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F07995681DD16B590036B66F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = projm;
+				TargetAttributes = {
+					F079956F1DD16B590036B66F = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 7ARWKX4JSR;
+						ProvisioningStyle = Automatic;
+					};
+					F07995881DD16B590036B66F = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 7ARWKX4JSR;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F079956F1DD16B590036B66F;
+					};
+					F07995931DD16B590036B66F = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 7ARWKX4JSR;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F079956F1DD16B590036B66F;
+					};
+				};
+			};
+			buildConfigurationList = F079956B1DD16B590036B66F /* Build configuration list for PBXProject "AVAudioRecoderDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F07995671DD16B590036B66F;
+			productRefGroup = F07995711DD16B590036B66F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F079956F1DD16B590036B66F /* AVAudioRecoderDemo */,
+				F07995881DD16B590036B66F /* AVAudioRecoderDemoTests */,
+				F07995931DD16B590036B66F /* AVAudioRecoderDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F079956E1DD16B590036B66F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F07995B41DD16B8B0036B66F /* btn_drawer_n.png in Resources */,
+				F07995B31DD16B8B0036B66F /* btn_drawer_h.png in Resources */,
+				F07995B51DD16B8B0036B66F /* btn_forward.png in Resources */,
+				F07995B71DD16B8B0036B66F /* btn_play.png in Resources */,
+				F07995831DD16B590036B66F /* LaunchScreen.storyboard in Resources */,
+				F07995B21DD16B8B0036B66F /* btn_backward.png in Resources */,
+				F07995BB1DD172840036B66F /* btn_microphone_open.png in Resources */,
+				F07995B01DD16B8B0036B66F /* background.png in Resources */,
+				F07995801DD16B590036B66F /* Assets.xcassets in Resources */,
+				F07995BA1DD172840036B66F /* btn_microphone_closed.png in Resources */,
+				F079957E1DD16B590036B66F /* Main.storyboard in Resources */,
+				F07995B11DD16B8B0036B66F /* background_bottom.png in Resources */,
+				F07995B61DD16B8B0036B66F /* btn_pause.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F07995871DD16B590036B66F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F07995921DD16B590036B66F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F079956C1DD16B590036B66F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F079957B1DD16B590036B66F /* ViewController.m in Sources */,
+				F07995781DD16B590036B66F /* AppDelegate.m in Sources */,
+				F07995751DD16B590036B66F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F07995851DD16B590036B66F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F079958E1DD16B590036B66F /* AVAudioRecoderDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F07995901DD16B590036B66F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F07995991DD16B590036B66F /* AVAudioRecoderDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F079958B1DD16B590036B66F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F079956F1DD16B590036B66F /* AVAudioRecoderDemo */;
+			targetProxy = F079958A1DD16B590036B66F /* PBXContainerItemProxy */;
+		};
+		F07995961DD16B590036B66F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F079956F1DD16B590036B66F /* AVAudioRecoderDemo */;
+			targetProxy = F07995951DD16B590036B66F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F079957C1DD16B590036B66F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F079957D1DD16B590036B66F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F07995811DD16B590036B66F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F07995821DD16B590036B66F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F079959B1DD16B590036B66F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F079959C1DD16B590036B66F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F079959E1DD16B590036B66F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7ARWKX4JSR;
+				INFOPLIST_FILE = AVAudioRecoderDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = club.projm.cz.AVAudioRecoderDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F079959F1DD16B590036B66F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7ARWKX4JSR;
+				INFOPLIST_FILE = AVAudioRecoderDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = club.projm.cz.AVAudioRecoderDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F07995A11DD16B590036B66F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 7ARWKX4JSR;
+				INFOPLIST_FILE = AVAudioRecoderDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = club.projm.cz.AVAudioRecoderDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AVAudioRecoderDemo.app/AVAudioRecoderDemo";
+			};
+			name = Debug;
+		};
+		F07995A21DD16B590036B66F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 7ARWKX4JSR;
+				INFOPLIST_FILE = AVAudioRecoderDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = club.projm.cz.AVAudioRecoderDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AVAudioRecoderDemo.app/AVAudioRecoderDemo";
+			};
+			name = Release;
+		};
+		F07995A41DD16B590036B66F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 7ARWKX4JSR;
+				INFOPLIST_FILE = AVAudioRecoderDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = club.projm.cz.AVAudioRecoderDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = AVAudioRecoderDemo;
+			};
+			name = Debug;
+		};
+		F07995A51DD16B590036B66F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 7ARWKX4JSR;
+				INFOPLIST_FILE = AVAudioRecoderDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = club.projm.cz.AVAudioRecoderDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = AVAudioRecoderDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F079956B1DD16B590036B66F /* Build configuration list for PBXProject "AVAudioRecoderDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F079959B1DD16B590036B66F /* Debug */,
+				F079959C1DD16B590036B66F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F079959D1DD16B590036B66F /* Build configuration list for PBXNativeTarget "AVAudioRecoderDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F079959E1DD16B590036B66F /* Debug */,
+				F079959F1DD16B590036B66F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F07995A01DD16B590036B66F /* Build configuration list for PBXNativeTarget "AVAudioRecoderDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F07995A11DD16B590036B66F /* Debug */,
+				F07995A21DD16B590036B66F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F07995A31DD16B590036B66F /* Build configuration list for PBXNativeTarget "AVAudioRecoderDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F07995A41DD16B590036B66F /* Debug */,
+				F07995A51DD16B590036B66F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F07995681DD16B590036B66F /* Project object */;
+}
