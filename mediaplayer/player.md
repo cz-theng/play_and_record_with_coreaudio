@@ -32,32 +32,32 @@ MPMusicPlayerController分成两种类型：
 
 * playbackState 播放状态，只读属性
 	
-	枚举| 模式
-	---|---
-	MPMusicPlaybackStateStopped | 停止
-	MPMusicPlaybackStatePlaying | 正在播放
-	MPMusicPlaybackStatePaused  | 暂停
-	MPMusicPlaybackStateInterrupted | 被挂起，比如打电话来了
-	MPMusicPlaybackStateSeekingForward | 前进
-	MPMusicPlaybackStateSeekingBackward  | 后退
+枚举| 模式
+---|---
+MPMusicPlaybackStateStopped | 停止
+MPMusicPlaybackStatePlaying | 正在播放
+MPMusicPlaybackStatePaused  | 暂停
+MPMusicPlaybackStateInterrupted | 被挂起，比如打电话来了
+MPMusicPlaybackStateSeekingForward | 前进
+MPMusicPlaybackStateSeekingBackward  | 后退
 	
 * repeatMode 循环模式
 	
-	枚举 | 模式
-	---|---
-	MPMusicRepeatModeDefault | 默认模式，上次的模式记忆
-	MPMusicRepeatModeNone | 不循环
-	MPMusicRepeatModeOne | 单曲循环
-	MPMusicRepeatModeAll | 全部循环
+枚举 | 模式
+---|---
+MPMusicRepeatModeDefault | 默认模式，上次的模式记忆
+MPMusicRepeatModeNone | 不循环
+MPMusicRepeatModeOne | 单曲循环
+MPMusicRepeatModeAll | 全部循环
 	
 * shuffleMode 随机模式
 	 
-	枚举|模式
-	---|---
-	MPMusicShuffleModeDefault | 默认模式，上次记忆模式
-	MPMusicShuffleModeOff | 不随机
-	MPMusicShuffleModeSongs | 所有歌曲
-	MPMusicShuffleModeAlbums | 按照专辑
+枚举|模式
+---|---
+MPMusicShuffleModeDefault | 默认模式，上次记忆模式
+MPMusicShuffleModeOff | 不随机
+MPMusicShuffleModeSongs | 所有歌曲
+MPMusicShuffleModeAlbums | 按照专辑
 	
 ### 播放控制
 MPMusicPlayerController实际上是实现了协议“MPMediaPlayback”：

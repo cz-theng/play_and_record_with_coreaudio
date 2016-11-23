@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--RecorderVC-->
@@ -15,12 +17,12 @@
                         <viewControllerLayoutGuide type="bottom" id="W4y-EW-WIo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oTy-M0-L9o">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qu5-vv-SeF"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFx-xQ-7TT">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Pick"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -32,8 +34,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ia7-Zi-lZs">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Query"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -45,8 +46,7 @@
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" searchBarStyle="prominent" text="" placeholder="歌手" translatesAutoresizingMaskIntoConstraints="NO" id="KjC-Q8-6WT">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -54,8 +54,7 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Mar-th-b0s">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="yuZ-yw-7nS"/>
                                 </constraints>
@@ -78,8 +77,7 @@
                                 </variation>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skV-9H-vIG">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Play"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -91,8 +89,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyI-Tw-0eN">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Next"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -104,8 +101,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3s-8J-toh" customClass="MPVolumeView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="vqU-wF-0GP"/>
                                 </constraints>
@@ -121,8 +117,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdq-gO-SFo">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Previous"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -134,16 +129,18 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="IFx-xQ-7TT" firstAttribute="width" secondItem="ia7-Zi-lZs" secondAttribute="width" id="1Al-Cf-De1"/>
-                            <constraint firstItem="e3s-8J-toh" firstAttribute="top" secondItem="nyI-Tw-0eN" secondAttribute="bottom" constant="10" id="2GX-0m-ZTb"/>
-                            <constraint firstItem="ia7-Zi-lZs" firstAttribute="top" secondItem="9z0-ID-1h4" secondAttribute="bottom" constant="40" id="4Ng-q9-8iy"/>
+                            <constraint firstItem="e3s-8J-toh" firstAttribute="top" secondItem="nyI-Tw-0eN" secondAttribute="bottom" constant="20" id="2GX-0m-ZTb"/>
+                            <constraint firstItem="ia7-Zi-lZs" firstAttribute="top" secondItem="9z0-ID-1h4" secondAttribute="bottom" constant="100" id="4Ng-q9-8iy"/>
+                            <constraint firstItem="W4y-EW-WIo" firstAttribute="top" secondItem="Qu5-vv-SeF" secondAttribute="bottom" id="61A-Fs-qpw"/>
                             <constraint firstItem="Qdq-gO-SFo" firstAttribute="leading" secondItem="oTy-M0-L9o" secondAttribute="leading" constant="30" id="6iR-Nx-Y59"/>
                             <constraint firstAttribute="trailing" secondItem="Mar-th-b0s" secondAttribute="trailing" constant="30" id="9Ny-TP-L12"/>
                             <constraint firstItem="e3s-8J-toh" firstAttribute="leading" secondItem="oTy-M0-L9o" secondAttribute="leading" constant="30" id="CA4-03-Lqv"/>
                             <constraint firstItem="KjC-Q8-6WT" firstAttribute="top" secondItem="ia7-Zi-lZs" secondAttribute="bottom" constant="20" id="DMQ-dQ-H9x"/>
                             <constraint firstItem="KjC-Q8-6WT" firstAttribute="leading" secondItem="oTy-M0-L9o" secondAttribute="leading" constant="30" id="FHd-sT-dqd"/>
+                            <constraint firstAttribute="trailing" secondItem="Qu5-vv-SeF" secondAttribute="trailing" id="MMi-Sk-OCG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nyI-Tw-0eN" secondAttribute="trailing" constant="30" id="NDF-B1-G82"/>
                             <constraint firstAttribute="trailing" secondItem="ia7-Zi-lZs" secondAttribute="trailing" constant="40" id="OXb-70-aZ2"/>
                             <constraint firstItem="skV-9H-vIG" firstAttribute="leading" secondItem="Qdq-gO-SFo" secondAttribute="trailing" constant="30" id="RWk-E0-qGd"/>
@@ -156,7 +153,9 @@
                             <constraint firstAttribute="trailing" secondItem="KjC-Q8-6WT" secondAttribute="trailing" constant="30" id="eiD-s4-F6K"/>
                             <constraint firstItem="nyI-Tw-0eN" firstAttribute="top" secondItem="Mar-th-b0s" secondAttribute="bottom" constant="30" id="gWo-lg-XvC"/>
                             <constraint firstItem="skV-9H-vIG" firstAttribute="top" secondItem="Mar-th-b0s" secondAttribute="bottom" constant="30" id="iKN-Q0-LpQ"/>
-                            <constraint firstItem="IFx-xQ-7TT" firstAttribute="top" secondItem="9z0-ID-1h4" secondAttribute="bottom" constant="40" id="jpV-Ec-D15"/>
+                            <constraint firstItem="IFx-xQ-7TT" firstAttribute="top" secondItem="9z0-ID-1h4" secondAttribute="bottom" constant="100" id="jpV-Ec-D15"/>
+                            <constraint firstItem="Qu5-vv-SeF" firstAttribute="leading" secondItem="oTy-M0-L9o" secondAttribute="leading" id="lZI-wZ-CRS"/>
+                            <constraint firstItem="Qu5-vv-SeF" firstAttribute="top" secondItem="oTy-M0-L9o" secondAttribute="top" id="nhF-QS-xiO"/>
                             <constraint firstItem="Mar-th-b0s" firstAttribute="leading" secondItem="oTy-M0-L9o" secondAttribute="leading" constant="30" id="rYG-pI-zX1"/>
                             <constraint firstItem="Qdq-gO-SFo" firstAttribute="top" secondItem="Mar-th-b0s" secondAttribute="bottom" constant="30" id="rjW-RO-u2t"/>
                             <constraint firstItem="IFx-xQ-7TT" firstAttribute="leading" secondItem="oTy-M0-L9o" secondAttribute="leading" constant="40" id="vy0-Yp-90Y"/>
@@ -244,7 +243,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgO-3l-5Hf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="697.5" y="610.5"/>
+            <point key="canvasLocation" x="696.79999999999995" y="610.34482758620697"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background.png" width="750" height="1334"/>
+    </resources>
 </document>

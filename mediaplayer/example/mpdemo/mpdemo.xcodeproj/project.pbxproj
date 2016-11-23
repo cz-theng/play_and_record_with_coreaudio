@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F02A82701DE5C3A700477FA0 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F02A826F1DE5C3A700477FA0 /* background.png */; };
 		F0A814701D0016220016B85C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A8146F1D0016220016B85C /* main.m */; };
 		F0A814731D0016220016B85C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A814721D0016220016B85C /* AppDelegate.m */; };
 		F0A814761D0016220016B85C /* BootLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A814751D0016220016B85C /* BootLoader.m */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F02A826F1DE5C3A700477FA0 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		F0A8146B1D0016220016B85C /* mpdemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mpdemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A8146F1D0016220016B85C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F0A814711D0016220016B85C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -70,6 +72,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F02A826D1DE5C3A700477FA0 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F02A826E1DE5C3A700477FA0 /* images */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F02A826E1DE5C3A700477FA0 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				F02A826F1DE5C3A700477FA0 /* background.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		F0A814621D0016220016B85C = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +187,7 @@
 		F0A814991D00165C0016B85C /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
+				F02A826D1DE5C3A700477FA0 /* Resource */,
 				F0A8149A1D00165C0016B85C /* Controller */,
 				F0A8149D1D00165C0016B85C /* Model */,
 				F0A8149E1D00165C0016B85C /* Resource */,
@@ -258,6 +277,7 @@
 				TargetAttributes = {
 					F0A8146A1D0016220016B85C = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 7ARWKX4JSR;
 					};
 					F0A814891D0016220016B85C = {
 						CreatedOnToolsVersion = 7.3;
@@ -290,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0A814811D0016220016B85C /* Assets.xcassets in Resources */,
+				F02A82701DE5C3A700477FA0 /* background.png in Resources */,
 				F0A814A21D00165C0016B85C /* recorder.storyboard in Resources */,
 				F0A814841D0016220016B85C /* LaunchScreen.storyboard in Resources */,
 			);
@@ -432,6 +453,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7ARWKX4JSR;
 				INFOPLIST_FILE = mpdemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = club.projm.cz.mpdemo;
@@ -443,6 +465,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7ARWKX4JSR;
 				INFOPLIST_FILE = mpdemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = club.projm.cz.mpdemo;
@@ -493,6 +516,7 @@
 				F0A814951D0016220016B85C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F0A814961D0016220016B85C /* Build configuration list for PBXNativeTarget "mpdemoTests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +525,7 @@
 				F0A814981D0016220016B85C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
