@@ -9,7 +9,7 @@ MediaPlayer提供了两种获取音乐数据文件的方式：
 
 在获得语音文件后就可以交由其他播放工具比如MediaPlayer进行播放了。
 
-## 使用MPMediaPickerController提供的界面选择
+## 1. 使用MPMediaPickerController提供的界面选择
 一帮当使用一些可以设置背景音的App的时候，通常都是有一个设置背景音的菜单按钮，然后点击一下就弹出一个系统音乐的选择界面
 
 ![ipod_pick_menu](./images/ipod_pick_menu.png)
@@ -58,8 +58,11 @@ MPMediaTypeAnyAudio| 所有音频资源
 * BOOL showsCloudItems属性：控制是否显示iCloud上的内容。
 *  NSString *prompt 属性： 控制显示界面上的抬头提示。
 
+> 注意：iOS10之后需要在plist里面增加权限描述
+> 
+> ![plist](./images/plist.png)
 
-## 使用MPMediaQuery构建条件查询
+## 2.使用MPMediaQuery构建条件查询
 
 除了使用上面的系统选择界面选择音乐条目外，还可以通过构建查询条件来查询符合条件的音乐条目。MediaPlayer提供了MPMediaQuery来对资源文件按照其属性进行查询。每个选择条件通过“MPMediaPropertyPredicate”来构建，比如：
 	
@@ -93,7 +96,7 @@ MPMediaTypeAnyAudio| 所有音频资源
     
 没个查询单元是一个“MPMediaItem”对象，通过读取其属性可以获得需要的信息，比如上面模拟的歌名、歌手。
 
-## 音乐文件的Meta信息
+## 3.音乐文件的Meta信息
 
 上面的两种查询结果，一个是MPMediaPickerController提供的的delegate中的MPMediaItemCollection，一个是MPMediaQuery查询结果中的“MPMediaItem”。这两个类都是继承自"MPMediaEntity"
 
@@ -120,4 +123,10 @@ MPMediaTypeAnyAudio| 所有音频资源
 
 所以，在得到了“MPMediaItem”也就等于说是遍历了音乐文件的属性了。
 
-文中Demo可以参见[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/examples/mpdemo)
+文中Demo可以参见[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/mediaplayer/example/mpdemo)
+
+## 4.总结
+通过MPMediaPickerController提供的界面，可以最方便的让用户选择自己手机里面的声音资源；同时也可以枚举这些资源然后通过自己的界面界面进行展示，灵活多变。当需要访问系统音频资源时，首先想到的就应该是这个工具。
+## 参考
+1. [iPod Library Access Programming Guide](https://developer.apple.com/library/content/documentation/Audio/Conceptual/iPodLibraryAccess_Guide/Introduction/Introduction.html)
+2. [MPMediaPickerController class reference](https://developer.apple.com/reference/mediaplayer/mpmediapickercontroller)
