@@ -25,6 +25,7 @@
 		F07995B71DD16B8B0036B66F /* btn_play.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995AF1DD16B8B0036B66F /* btn_play.png */; };
 		F07995BA1DD172840036B66F /* btn_microphone_closed.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995B81DD172840036B66F /* btn_microphone_closed.png */; };
 		F07995BB1DD172840036B66F /* btn_microphone_open.png in Resources */ = {isa = PBXBuildFile; fileRef = F07995B91DD172840036B66F /* btn_microphone_open.png */; };
+		F07995DE1DD18DC30036B66F /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F07995DD1DD18DC30036B66F /* MessageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		F07995AF1DD16B8B0036B66F /* btn_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_play.png; sourceTree = "<group>"; };
 		F07995B81DD172840036B66F /* btn_microphone_closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_microphone_closed.png; sourceTree = "<group>"; };
 		F07995B91DD172840036B66F /* btn_microphone_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_microphone_open.png; sourceTree = "<group>"; };
+		F07995DC1DD18DC30036B66F /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
+		F07995DD1DD18DC30036B66F /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,15 +124,17 @@
 		F07995721DD16B590036B66F /* AVAudioRecoderDemo */ = {
 			isa = PBXGroup;
 			children = (
-				F07995A61DD16B8B0036B66F /* Resource */,
 				F07995761DD16B590036B66F /* AppDelegate.h */,
 				F07995771DD16B590036B66F /* AppDelegate.m */,
 				F07995791DD16B590036B66F /* ViewController.h */,
 				F079957A1DD16B590036B66F /* ViewController.m */,
+				F07995DC1DD18DC30036B66F /* MessageView.h */,
+				F07995DD1DD18DC30036B66F /* MessageView.m */,
 				F079957C1DD16B590036B66F /* Main.storyboard */,
 				F079957F1DD16B590036B66F /* Assets.xcassets */,
 				F07995811DD16B590036B66F /* LaunchScreen.storyboard */,
 				F07995841DD16B590036B66F /* Info.plist */,
+				F07995A61DD16B8B0036B66F /* Resource */,
 				F07995731DD16B590036B66F /* Supporting Files */,
 			);
 			path = AVAudioRecoderDemo;
@@ -332,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F07995DE1DD18DC30036B66F /* MessageView.m in Sources */,
 				F079957B1DD16B590036B66F /* ViewController.m in Sources */,
 				F07995781DD16B590036B66F /* AppDelegate.m in Sources */,
 				F07995751DD16B590036B66F /* main.m in Sources */,
@@ -570,6 +576,7 @@
 				F079959F1DD16B590036B66F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F07995A01DD16B590036B66F /* Build configuration list for PBXNativeTarget "AVAudioRecoderDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -578,6 +585,7 @@
 				F07995A21DD16B590036B66F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F07995A31DD16B590036B66F /* Build configuration list for PBXNativeTarget "AVAudioRecoderDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -586,6 +594,7 @@
 				F07995A51DD16B590036B66F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -30,21 +30,33 @@
                                     <constraint firstAttribute="height" constant="90" id="qMG-ra-wr1"/>
                                 </constraints>
                                 <state key="normal" image="btn_microphone_closed.png"/>
+                                <connections>
+                                    <action selector="onRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="phF-d4-sLP"/>
+                                </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVK-y8-YGC"/>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="CVK-y8-YGC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="3Ko-Aj-Hh8"/>
                             <constraint firstItem="gp1-FQ-jea" firstAttribute="centerX" secondItem="eKs-m3-T6x" secondAttribute="centerX" id="3hl-sz-nvC"/>
+                            <constraint firstItem="eKs-m3-T6x" firstAttribute="top" secondItem="CVK-y8-YGC" secondAttribute="bottom" constant="10" id="CWW-de-7cO"/>
                             <constraint firstItem="eKs-m3-T6x" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DuT-to-K7h"/>
                             <constraint firstAttribute="trailing" secondItem="eKs-m3-T6x" secondAttribute="trailing" id="GOu-UZ-YP7"/>
+                            <constraint firstItem="CVK-y8-YGC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="58" id="Myc-iL-5bY"/>
                             <constraint firstItem="CMg-dn-F6t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NAk-MG-gr6"/>
                             <constraint firstAttribute="trailing" secondItem="CMg-dn-F6t" secondAttribute="trailing" id="RLi-eZ-mk0"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eKs-m3-T6x" secondAttribute="bottom" id="T8J-se-1nW"/>
                             <constraint firstItem="gp1-FQ-jea" firstAttribute="centerY" secondItem="eKs-m3-T6x" secondAttribute="centerY" id="U8k-50-A5p"/>
+                            <constraint firstAttribute="trailing" secondItem="CVK-y8-YGC" secondAttribute="trailing" constant="10" id="Vya-ft-IBB"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CMg-dn-F6t" secondAttribute="bottom" id="Wbz-d9-1cU"/>
                             <constraint firstItem="CMg-dn-F6t" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="lfd-HI-abu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="recordBtn" destination="gp1-FQ-jea" id="q02-TL-sfT"/>
+                        <outlet property="scrollView" destination="CVK-y8-YGC" id="R06-6g-sTY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
