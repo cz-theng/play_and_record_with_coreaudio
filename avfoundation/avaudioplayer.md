@@ -131,12 +131,13 @@ currentTime|NSTimeInterval| 当前播放时长，比如MP3上显示的进度
 
 ##3. 被Deprecate的Delegate
 
-在最原始的版本中，AVAudioPlayerDelegate总共有6个回调，在iOS6.0中废弃掉两个，然后在iOS8.0又废掉两个。马上iOS 10就要出来，距离不用兼容iOS7的日子估计也不远了（LinkedIn现在(20160501)就要求iOS8.0以上了），因此只需要关注这最后存活下来的回调即可。在以前的版本中被抛弃的回调接口，主要是控制播放器在播放的过程中收到中断
+在最原始的版本中，AVAudioPlayerDelegate总共有6个回调，在iOS6.0中废弃掉两个，然后在iOS8.0又废掉两个。iOS 10也已经出来，距离不用兼容iOS7的日子估计也不远了（LinkedIn现在(20160501)就要求iOS8.0以上了），因此只需要关注这最后存活下来的回调即可。在以前的版本中被抛弃的回调接口，主要是控制播放器在播放的过程中收到中断
 
 比如，收到中断：
 
 	- (void)audioPlayerBeginInterruption:(AVAudioPlayer *)player;
 当中断结束时：
+
 	- (void)audioPlayerEndInterruption:(AVAudioPlayer *)player 
                        withOptions:(NSUInteger)flags;
 	- (void)audioPlayerEndInterruption:(AVAudioPlayer *)player;
@@ -162,7 +163,7 @@ currentTime|NSTimeInterval| 当前播放时长，比如MP3上显示的进度
 * AVAudioSessionRouteChangeNotification ：
 	userInfo中包括了“ AVAudioSessionRouteChangeReasonKey”改变原因和 “AVAudioSessionSilenceSecondaryAudioHintTypeKey”表示改变的目标。
 
-关于AVAudioSession的使用，可以参考[使用AVAudioSession管理上下文](../avfoundation/avaudiosession.html)。
+关于AVAudioSession的使用，可以参考[3.3使用AVAudioSession管理上下文](../avfoundation/avaudiosession.html)。
 
 ##5. 总结
 总的来说，使用AVAudioPlayer播放声音是App中首要的选择方案，比如背景音、试听等场景。其使用简单，基本功能都有，既可以播放本地文件，也可以播放从网络上下载到内存中的音频内容。 
