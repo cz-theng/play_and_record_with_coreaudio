@@ -12,7 +12,7 @@ Media Player既然叫做“Player”那必然是提供播放媒体的功能的�
 * 播放/暂停
 * 循环方式
 
-## 使用MPMusicPlayerController播放音乐列表
+## 1.使用MPMusicPlayerController播放音乐列表
 
 ### 创建MPMusicPlayerController对象
 MPMusicPlayerController分成两种类型：
@@ -22,7 +22,7 @@ MPMusicPlayerController分成两种类型：
 通过调用`+ applicationMusicPlayer`创建一个应用级别的“MPMusicPlayerController”；通过调用`+ systemMusicPlayer`获取系统内建的“MPMusicPlayerController”也就是系统的“音乐”App。
 
 ### 设置播放列表
-获得了“MPMusicPlayerController”之后，就可以设置播放列表了。还记得之前[获取iPod资源信息]()中介绍的“MPMediaQuery”和“MPMediaItemCollection”，分别是通过系统选择界面和查询条件查询的方式得到的结果。这里设置播放列表有两种方法，分别对应上面的两种结果：
+获得了“MPMusicPlayerController”之后，就可以设置播放列表了。还记得之前[2.1 获取iPod资源信息](../mediaplayer/ipod.html)中介绍的“MPMediaQuery”和“MPMediaItemCollection”，分别是通过系统选择界面和查询条件查询的方式得到的结果。这里设置播放列表有两种方法，分别对应上面的两种结果：
 
 * - (void)setQueueWithQuery:(MPMediaQuery *)query ： 直接传入一个过滤后的查询结果
 * - (void)setQueueWithItemCollection:(MPMediaItemCollection *)itemCollection ： 传入一个MPMediaItem的集合
@@ -109,7 +109,7 @@ MPMusicPlayerController实际上是实现了协议“MPMediaPlayback”：
 * - skipToPreviousItem ： 上一曲
 
 
-## 使用MPVolumeView设置音量
+## 2. 使用MPVolumeView设置音量
 本来MPMusicPlayerController是提供一个`volume`的属性接口来控制音量的，但是在iOS7之后，这个就被“Deprecated”（如今微信/QQ都是要求iOS7及以上的时代，这个`volume`真可以寿终正寝了）。现在实现这个功能的是“MPVolumeView”这个工具。
 
 “MPVolumeView”从其名称可以看出来他是一个带有既定UI的工具组件，外形是一个表示音量的SliderBar，可以认为是系统的音量键。
@@ -202,4 +202,4 @@ MPVolumeView的可用接口非常少，也就是其定制化非常有限。也�
 注意，这里需要调用MPMusicPlayerController的`
 - beginGeneratingPlaybackNotifications`才能在需要的时候发送通知。当不需要的时候调用`- endGeneratingPlaybackNotifications`进行取消,同时也需要调用NSNotificationCenter的removeObserver。
 
-文中Demo可以在[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/examples/mpdemo)找到。另外还可以参考博客中的[使用MediaPlayer实现一个音乐播放器]()。
+文中Demo可以在[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/mediaplayer/example/mpdemo)找到。

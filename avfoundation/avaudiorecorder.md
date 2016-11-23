@@ -61,7 +61,7 @@ stop|- (void)stop|停止录音
 
 其实，很多时候是没有检查`record`的返回值，上面仔细观察下，录制是有返回值的而停止和暂停是没有的。这里会返现`record`返回了"NO"，写入文件的仅仅是音频文件头。
 
-对于AVAudioPlayer我们不需要做任何配置，直接用就好，但是对于AVAudioRecorder还要引入一个AVAudioSession的概念，他控制了当前系统是否可以录音、是否可以播放等，详细的介绍可以参见[3.3 使用AVAudioSession管理上下文](../avfoundation/avaudiosession.md)。这里在录音前，我们设置
+对于AVAudioPlayer我们不需要做任何配置，直接用就好，但是对于AVAudioRecorder还要引入一个AVAudioSession的概念，他控制了当前系统是否可以录音、是否可以播放等，详细的介绍可以参见[3.3 使用AVAudioSession管理上下文](../avfoundation/avaudiosession.html)。这里在录音前，我们设置
 
 	[[AVAudioSession sharedInstance]setActive:YES error:&error];// only need once
 	
