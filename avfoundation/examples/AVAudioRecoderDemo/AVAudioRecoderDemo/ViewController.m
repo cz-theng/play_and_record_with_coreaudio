@@ -63,6 +63,8 @@
     _msgHeight = 30;
     
     [self updateMessages];
+    
+    
 }
 
 - (void) messageTouched:(id) sender {
@@ -99,6 +101,7 @@
 }
 
 - (void) setAudioSession {
+    AVAudioSessionCategoryOptionAllowBluetooth
     NSError *error;
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setActive:YES error:&error];
