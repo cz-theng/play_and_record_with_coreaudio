@@ -160,16 +160,78 @@ AVAudioSessionModeVideoChat | AVAudioSessionCategoryPlayAndRecord
 > 
 > 但是在iOS9及以下就只能在Category上调了，其实本质是一样的，可以认为是个API糖，接口封装。
 
-## 录音权限请求	
+## 系统中断响应
+上面说的这些Category啊、Option啊以及Mode都是对自己作为播放主体时的表现，但是假设，现在正在播放着，突然来电话了、闹钟响了或者你在后台放歌但是用户启动其他App用上面的方法影响的时候，我们的App该如何表现呢？最常用的场景当然是先暂停，待恢复的时候再继续。那我们的App要如何感知到这个终端以及何时恢复呢？
 
-## 中断响应
+AVAudioSession提供了多种Notifications来进行此类状况的通知。其中将来电话、闹铃响等都归结为一般性的中断，用
+`AVAudioSessionInterruptionNotification `来通知。其回调回来的userInfo主要包含两个键：
+
+* AVAudioSessionInterruptionTypeKey： 取值为`AVAudioSessionInterruptionTypeBegan`表示中断开始，我们应该暂停播放和采集，取值为`AVAudioSessionInterruptionTypeEnded`表示中断结束，我们可以继续播放和采集。
+* AVAudioSessionInterruptionOptionKey： 当前只有一种值`
+AVAudioSessionInterruptionOptionShouldResume`表示此时也应该恢复继续播放和采集。
+
+而将其他App占据AudioSession的时候用`AVAudioSessionSilenceSecondaryAudioHintNotification `来进行通知。其回调回来的userInfo键为：
+
+	AVAudioSessionSilenceSecondaryAudioHintTypeKey
+可能包含的值：
+* AVAudioSessionSilenceSecondaryAudioHintTypeBegin： 表示其他App开始占据Session
+* AVAudioSessionSilenceSecondaryAudioHintTypeEnd: 表示其他App开始释放Session
+	
 
 ## 外设改变
 
-## 获取系统的硬件参数
+除了其他App和系统服务，会对我们的App产生影响以外，用户的手也会对我们产生影响。默认情况下，AudioSession会在App启动时选择一个最优的输出方案，比如插入耳机的时候，就用耳机。但是这个过程中，用户可能拔出耳机，我们App要如何感知这样的情况呢？
+
+同样AVAudioSession也是通过Notifications来进行此类状况的通知。
+
+假设有这样的App：
+
+![route_change](./images/route_change.png)
+
+最开始在录音时，用户插入和拔出耳机我们都停止录音，这里通过Notification来通知有新设备了，或者设备被退出了，然后我们控制停止录音。或者在播放时，当耳机被拔出出时，Notification给了通知，我们先暂停音乐播放，待耳机插回时，在继续播放。
+
+
+
+在NSNotificationCenter中对AVAudioSessionRouteChangeNotification进行注册。在其userInfo中有键：
+
+* AVAudioSessionRouteChangeReasonKey ： 表示改变的原因
+枚举值|意义
+---|---
+AVAudioSessionRouteChangeReasonUnknown | 未知原因
+AVAudioSessionRouteChangeReasonNewDeviceAvailable | 有新设备可用
+AVAudioSessionRouteChangeReasonOldDeviceUnavailable | 老设备不可用
+AVAudioSessionRouteChangeReasonCategoryChange | 类别改变了
+AVAudioSessionRouteChangeReasonOverride | App重置了输出设置
+AVAudioSessionRouteChangeReasonWakeFromSleep |  从睡眠状态呼醒
+AVAudioSessionRouteChangeReasonNoSuitableRouteForCategory | 当前Category下没有合适的设备
+AVAudioSessionRouteChangeReasonRouteConfigurationChange | Rotuer的配置改变了
+
+* AVAudioSessionSilenceSecondaryAudioHintTypeKey： 和上面的中断意义意义。
+
+## 录音权限请求	
+在iOS10之后，进行录音都需要在plist里面配置:
+
+![plist_microphone](./images/plist_microphone.png)
+
+当然，在程序运行的过程也可以检测是否有麦克风的权限。通过函数：
+
+	typedef void (^PermissionBlock)(BOOL granted);
+	
+	- (void)requestRecordPermission:(PermissionBlock)response
+结果在Block中的"granted"进行返回。比如如下代码：
+
+	[[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+	    if (granted) {
+	        NSLog(@"Microphone is available!");
+	    } else {
+	        NSLog(@"Microphone is not  available!");
+	        return ;
+	    }
+	}];	
 
 
 ## 总结：
+AVAudioSession构建了一个音频使用生命周期的上下文。当前状态是否可以录音、对其他App有怎样的影响、是否响应系统的静音键、如何感知来电话了等都可以通过它来实现。尤为重要的是AVAudioSession不仅可以和AVFoundation中的AVAudioPlyaer/AVAudioRecorder配合，其他录音/播放工具比如AudioUnit、AudioQueueService也都需要他进行录音、静音等上下文配合。
 
 ## 参考文档
 1. [Audio Session Programming Guide](https://developer.apple.com/library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007875-CH1-SW1)

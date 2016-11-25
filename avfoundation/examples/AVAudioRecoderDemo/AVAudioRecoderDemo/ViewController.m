@@ -101,7 +101,6 @@
 }
 
 - (void) setAudioSession {
-    AVAudioSessionCategoryOptionAllowBluetooth
     NSError *error;
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setActive:YES error:&error];
@@ -114,6 +113,16 @@
 }
 
 - (IBAction)onRecord:(id)sender {
+    
+    [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+        if (granted) {
+            NSLog(@"Microphone is available!");
+        } else {
+            NSLog(@"Microphone is not  available!");
+            return ;
+        }
+    }];
+    
     static BOOL clicked = NO;
     if (! clicked) {
         [_recordBtn setImage:[UIImage imageNamed:@"btn_microphone_open"] forState:UIControlStateNormal];
