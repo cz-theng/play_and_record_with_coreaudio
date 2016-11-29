@@ -1,6 +1,4 @@
 # 使用AVAudioSession管理上下文
-
-# iOS音频掌柜-- AVAudioSession
 音频输出作为硬件资源，对于iOS系统来说是唯一的，那么要如何协调和各个App之间对这个稀缺的硬件持有关系呢？
 
 iOS给出的解决方案是"AVAudioSession" ，通过它可以实现对App当前上下文音频资源的控制，比如
