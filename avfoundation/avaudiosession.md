@@ -1,4 +1,6 @@
 # 使用AVAudioSession管理上下文
+
+# iOS音频掌柜-- AVAudioSession
 音频输出作为硬件资源，对于iOS系统来说是唯一的，那么要如何协调和各个App之间对这个稀缺的硬件持有关系呢？
 
 iOS给出的解决方案是"AVAudioSession" ，通过它可以实现对App当前上下文音频资源的控制，比如
@@ -14,7 +16,7 @@ iOS给出的解决方案是"AVAudioSession" ，通过它可以实现对App当前
 
 这些场景的时候，就可以考虑一下“AVAudioSession”了。
 
-在很久以前（其实也是不是太久--iOS7以前）还有个[AudioSession](https://developer.apple.com/library/ios/documentation/AudioToolbox/Reference/AudioSessionServicesReference/)的存在，其功能与AVAudioSession类似，但是在iOS7以后就已经被标记为
+在很久以前（其实也是不是太久--iOS7以前）还有个[AudioSession](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/avfoundation/examples/AVAudioSessionDemo)的存在，其功能与AVAudioSession类似，但是在iOS7以后就已经被标记为
 “Not Applicable”,所以如果Google到了说AudioSession的内容而不是用的AVAudioSession，那么就可以直接PASS了，当然如果要兼容iOS6
 就另当别论了，不过现在QQ/微信都是要求iOS7的情况下，是否需要兼容iOS6就看老板们的意思吧。
 
@@ -27,7 +29,13 @@ iOS给出的解决方案是"AVAudioSession" ，通过它可以实现对App当前
 * 当用户按了手机的锁屏键或者手机自动锁屏了，此时如果正在播放音频，那么播放会静音并被暂停。
 * 如果你的App在开始播放的时候，此时QQ音乐等其他App正在播放，那么其他播放器会被静音并暂停。
 
-默认的行为相当于设置了Category为“AVAudioSessionCategorySoloAmbient”
+默认的行为相当于设置了Category为“AVAudioSessionCategorySoloAmbient” 
+
+来看[Demo](https://github.com/cz-it/myblog/tree/master/blog/iOS/avfoundation/session/example/AVAudioSessionDemo)。
+
+![demo_player](./images/demo_player.png)
+
+通过这播放器demo可以验证上面的默认Session行为。
 
 ## AVAudioSession
 AVAudioSession以一个单例实体的形式存在，通过类方法：
@@ -51,6 +59,16 @@ AVAudioSession以一个单例实体的形式存在，通过类方法：
 > 这里的options传入`AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation`	即可。
 > 
 > 当然，也可以通过`otherAudioPlaying `变量来提前判断当前是否有其他App在播放音频。
+
+可以通过：
+
+	@property(readonly) NSString *category;
+属性，获取当前的Category，比如上面的播放其，默认是
+
+	 NSLog(@"Current Category:%@", [AVAudioSession sharedInstance].category);
+输出：
+
+	Current Category:AVAudioSessionCategorySoloAmbien
 
 ## 七大Category
 AVAudioSession主要能控制App的哪些表现以及如何控制的呢？首先AVAudioSession将使用音频的场景分成七大类，通过设置Session为不同的类别，可以控制：
@@ -89,23 +107,33 @@ AVAudioSessionCategorySoloAmbient|是|是|只用于播放
 可以通过：
 	
 	@property(readonly) NSArray<NSString *> *availableCategories;
-属性，查看当前设备支持哪些类别，然后再进行设置，从而保证传入参数的合法，减少错误的可能。	
+属性，查看当前设备支持哪些类别，然后再进行设置，从而保证传入参数的合法，减少错误的可能。
+
+比如修改上面的Demo例子:
+
+        NSLog(@"Current Category:%@", [AVAudioSession sharedInstance].category);
+        NSError *error = nil;
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+        if (nil != error) {
+            NSLog(@"set Option error %@", error.localizedDescription);
+        }
+        NSLog(@"Current Category:%@", [AVAudioSession sharedInstance].category);
+
+此时在播放音乐的时候，再去按下静音键，会发现，音乐还在继续播放，不会被静音。        
 
 ## 类别的选项
 上面介绍的这个七大类别，可以认为是设定了七种主场景，而这七类肯定是不能满足开发者所有的需求的。CoreAudio提供的方法是，首先定下七种的一种基调，然后在进行微调。CoreAudio为每种Category都提供了些许选项来进行微调。
-
-
 在设置完类别后，可以通过	
 
 	@property(readonly) AVAudioSessionCategoryOptions categoryOptions;
-属性，查看当前类别有哪些选项，检查完选项合法性再进行传入，可以减少出错。
+属性，查看当前类别设置了哪些选项，注意这里的返回值是AVAudioSessionCategoryOptions，实际是多个options的“|”运算。默认情况下是0。
 
 选项|适用类别| 作用
 ---|---|---
-AVAudioSessionCategoryOptionMixWithOthers|AVAudioSessionCategoryPlayAndRecord, AVAudioSessionCategoryPlayback, and  AVAudioSessionCategoryMultiRoute|
-AVAudioSessionCategoryOptionDuckOthers | AVAudioSessionCategoryAmbient, AVAudioSessionCategoryPlayAndRecord, AVAudioSessionCategoryPlayback, and AVAudioSessionCategoryMultiRoute |
-AVAudioSessionCategoryOptionAllowBluetooth| AVAudioSessionCategoryRecord and AVAudioSessionCategoryPlayAndRecord| 
-AVAudioSessionCategoryOptionDefaultToSpeaker |AVAudioSessionCategoryPlayAndRecord|
+AVAudioSessionCategoryOptionMixWithOthers|AVAudioSessionCategoryPlayAndRecord, AVAudioSessionCategoryPlayback, and  AVAudioSessionCategoryMultiRoute| 是否可以和其他后台App进行混音
+AVAudioSessionCategoryOptionDuckOthers | AVAudioSessionCategoryAmbient, AVAudioSessionCategoryPlayAndRecord, AVAudioSessionCategoryPlayback, and AVAudioSessionCategoryMultiRoute | 是否压低其他App声音
+AVAudioSessionCategoryOptionAllowBluetooth| AVAudioSessionCategoryRecord and AVAudioSessionCategoryPlayAndRecord| 是否支持蓝牙耳机
+AVAudioSessionCategoryOptionDefaultToSpeaker |AVAudioSessionCategoryPlayAndRecord| 是否默认用免提声音
 目前主要的选项有这几种，都有对应的使用场景，除此之外，在iOS9还提供了`AVAudioSessionCategoryOptionInterruptSpokenAudioAndMixWithOthers`最新的iOS10又新加了两个`AVAudioSessionCategoryOptionAllowBluetoothA2DP`	、`AVAudioSessionCategoryOptionAllowAirPlay`用来支持蓝牙A2DP耳机和AirPlay。
 
 来看每个选项的基本作用：
@@ -119,21 +147,31 @@ AVAudioSessionCategoryOptionDefaultToSpeaker |AVAudioSessionCategoryPlayAndRecor
 	- (BOOL)setCategory:(NSString *)category withOptions:(AVAudioSessionCategoryOptions)options error:(NSError **)outError 
 来对当前的类别进行选项的设置。
 
+比如Demo中：
+
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&error];
+        if (nil != error) {
+            NSLog(@"set Option error %@", error.localizedDescription);
+        }
+        options = [[AVAudioSession sharedInstance] categoryOptions];
+        NSLog(@"Category[%@] has %lu options",  [AVAudioSession sharedInstance].category, options);
+
+此时，先打开QQ音乐播放器，然后再开始进行播放，会发现，QQ和我们的播放器都在播放，并且进行了自动混音。
 
 不过这个过程，感觉CoreAudio缺少一个`setOption`的接口，既然已经是当前处于的Category，干嘛还要再设置选项的时候再指定Category呢？？疑惑。。。
 
 ## 七大模式
 刚讲完七大类别，现在再来七大模式。通过上面的七大类别，我们基本覆盖了常用的主场景，在每个主场景中可以通过Option进行微调。为此CoreAudio提供了七大比较常见微调后的子场景。叫做各个类别的模式。
 
-模式|适用的类别|作用
+模式|适用的类别|场景
 ---|---|---
 AVAudioSessionModeDefault|所有类别| 默认的模式
-AVAudioSessionModeVoiceChat | AVAudioSessionCategoryPlayAndRecord
-AVAudioSessionModeGameChat | AVAudioSessionCategoryPlayAndRecord
-AVAudioSessionModeVideoRecording |AVAudioSessionCategoryPlayAndRecord AVAudioSessionCategoryRecord 
-AVAudioSessionModeMoviePlayback |AVAudioSessionCategoryPlayback
-AVAudioSessionModeMeasurement |AVAudioSessionCategoryPlayAndRecord AVAudioSessionCategoryRecord AVAudioSessionCategoryPlayback
-AVAudioSessionModeVideoChat | AVAudioSessionCategoryPlayAndRecord
+AVAudioSessionModeVoiceChat | AVAudioSessionCategoryPlayAndRecord |VoIP
+AVAudioSessionModeGameChat | AVAudioSessionCategoryPlayAndRecord | 游戏录制，由GKVoiceChat自动设置，无需手动调用
+AVAudioSessionModeVideoRecording |AVAudioSessionCategoryPlayAndRecord AVAudioSessionCategoryRecord  | 录制视频时
+AVAudioSessionModeMoviePlayback |AVAudioSessionCategoryPlayback | 视频播放
+AVAudioSessionModeMeasurement |AVAudioSessionCategoryPlayAndRecord AVAudioSessionCategoryRecord AVAudioSessionCategoryPlayback| 最小系统
+AVAudioSessionModeVideoChat | AVAudioSessionCategoryPlayAndRecord | 视频通话
 
 每个模式有其适用的类别，所以，并不是有“七七 四十九”种组合。如果当前处于的类别下没有这个模式，那么是设置不成功的。设置完Category后可以通过：
 
@@ -143,11 +181,11 @@ AVAudioSessionModeVideoChat | AVAudioSessionCategoryPlayAndRecord
 来看具体应用：
 
 * AVAudioSessionModeDefault： 每种类别默认的就是这个模式，所有要想还原的话，就设置成这个模式。
-* AVAudioSessionModeVoiceChat：主要用于VoIP场景，此时系统会选择最佳的输入设备，比如插上耳机就使用耳机上的麦克风进行采集。并且会设置类别的选项为"AVAudioSessionCategoryOptionAllowBluetooth"从而支持蓝牙耳机。
+* AVAudioSessionModeVoiceChat：主要用于VoIP场景，此时系统会选择最佳的输入设备，比如插上耳机就使用耳机上的麦克风进行采集。此时有个副作用，他会设置类别的选项为"AVAudioSessionCategoryOptionAllowBluetooth"从而支持蓝牙耳机。
 * AVAudioSessionModeVideoChat ： 主要用于视频通话，比如QQ视频、FaceTime。时系统也会选择最佳的输入设备，比如插上耳机就使用耳机上的麦克风进行采集并且会设置类别的选项为"AVAudioSessionCategoryOptionAllowBluetooth" 和 "AVAudioSessionCategoryOptionDefaultToSpeaker"。
-* AVAudioSessionModeGameChat ： 适用于游戏App的采集和播放，比如“GKVoiceChat”对象
-* AVAudioSessionModeMeasurement： 最小化的受用系统的采集和播放功能
-另外几种和音频APP关系不大，主要配合AVFoundation中视频采集时一起适用。
+* AVAudioSessionModeGameChat ： 适用于游戏App的采集和播放，比如“GKVoiceChat”对象，一般不需要手动设置
+
+另外几种和音频APP关系不大，一般我们只需要关注VoIP或者视频通话即可。
 
 通过调用：
 
@@ -208,30 +246,10 @@ AVAudioSessionRouteChangeReasonRouteConfigurationChange | Rotuer的配置改变�
 
 * AVAudioSessionSilenceSecondaryAudioHintTypeKey： 和上面的中断意义意义。
 
-## 录音权限请求	
-在iOS10之后，进行录音都需要在plist里面配置:
-
-![plist_microphone](./images/plist_microphone.png)
-
-当然，在程序运行的过程也可以检测是否有麦克风的权限。通过函数：
-
-	typedef void (^PermissionBlock)(BOOL granted);
-	
-	- (void)requestRecordPermission:(PermissionBlock)response
-结果在Block中的"granted"进行返回。比如如下代码：
-
-	[[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
-	    if (granted) {
-	        NSLog(@"Microphone is available!");
-	    } else {
-	        NSLog(@"Microphone is not  available!");
-	        return ;
-	    }
-	}];	
-
-
 ## 总结：
 AVAudioSession构建了一个音频使用生命周期的上下文。当前状态是否可以录音、对其他App有怎样的影响、是否响应系统的静音键、如何感知来电话了等都可以通过它来实现。尤为重要的是AVAudioSession不仅可以和AVFoundation中的AVAudioPlyaer/AVAudioRecorder配合，其他录音/播放工具比如AudioUnit、AudioQueueService也都需要他进行录音、静音等上下文配合。
+
+文中Demo参见[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/avfoundation/examples/AVAudioSessionDemo)
 
 ## 参考文档
 1. [Audio Session Programming Guide](https://developer.apple.com/library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007875-CH1-SW1)
