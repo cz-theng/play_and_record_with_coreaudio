@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="sqF-qC-MOc"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5S0-if-fVF">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="CAP-To-guW"/>
+                                    <constraint firstAttribute="width" constant="20" id="bYm-T1-XRc"/>
+                                </constraints>
+                                <state key="normal" image="btn_drawer_n.png"/>
+                                <connections>
+                                    <action selector="onPick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lhe-WE-2kj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pb-t5-gOB">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SWm-7J-pag"/>
+                                </constraints>
+                                <state key="normal" title="OpenFile"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onOpenFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dZk-Ef-YyD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N35-eU-cnh">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="d1P-Yi-6ds"/>
+                                </constraints>
+                                <state key="normal" title="ReadProperty"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onReadProperty:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xwz-AQ-jAF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFf-6p-hbk">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ReadUserData"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onReadUserData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lb8-0r-ZGh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGb-ec-MCj">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="CloseFile"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onCloseFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ae-Dp-vbT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JE8-gG-0uO">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ReadGlobalInfo"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onReadGlobalInfo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pft-Yt-frx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9v-CX-fgr">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ReadFileContent"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onReadFileContent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZEk-rg-Sub"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="N35-eU-cnh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="1ZB-BA-q2R"/>
+                            <constraint firstItem="WFf-6p-hbk" firstAttribute="width" secondItem="H9v-CX-fgr" secondAttribute="width" id="1ht-el-7Nh"/>
+                            <constraint firstItem="JE8-gG-0uO" firstAttribute="height" secondItem="N35-eU-cnh" secondAttribute="height" id="3kH-CP-5ja"/>
+                            <constraint firstItem="WFf-6p-hbk" firstAttribute="top" secondItem="N35-eU-cnh" secondAttribute="bottom" constant="30" id="58Y-BJ-GHZ"/>
+                            <constraint firstItem="N35-eU-cnh" firstAttribute="top" secondItem="5pb-t5-gOB" secondAttribute="bottom" constant="30" id="6RU-2d-iTW"/>
+                            <constraint firstItem="5S0-if-fVF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Ayo-c9-3H7"/>
+                            <constraint firstAttribute="trailing" secondItem="5S0-if-fVF" secondAttribute="trailing" constant="16" id="C4m-fb-tq6"/>
+                            <constraint firstItem="5pb-t5-gOB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="E8a-dv-LcE"/>
+                            <constraint firstAttribute="trailing" secondItem="H9v-CX-fgr" secondAttribute="trailing" constant="16" id="G0v-M7-j59"/>
+                            <constraint firstAttribute="trailing" secondItem="rGb-ec-MCj" secondAttribute="trailing" constant="16" id="LaH-oG-fBb"/>
+                            <constraint firstItem="sqF-qC-MOc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Pxk-F3-auu"/>
+                            <constraint firstItem="5pb-t5-gOB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="WQg-qN-6Nn"/>
+                            <constraint firstItem="N35-eU-cnh" firstAttribute="width" secondItem="JE8-gG-0uO" secondAttribute="width" id="a7Q-49-4oh"/>
+                            <constraint firstItem="rGb-ec-MCj" firstAttribute="height" secondItem="5pb-t5-gOB" secondAttribute="height" id="bbv-DL-MYh"/>
+                            <constraint firstItem="sqF-qC-MOc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="c6J-co-X67"/>
+                            <constraint firstItem="WFf-6p-hbk" firstAttribute="height" secondItem="5pb-t5-gOB" secondAttribute="height" id="cX3-tF-lgd"/>
+                            <constraint firstAttribute="trailing" secondItem="sqF-qC-MOc" secondAttribute="trailing" id="csc-WQ-DAQ"/>
+                            <constraint firstItem="JE8-gG-0uO" firstAttribute="top" secondItem="rGb-ec-MCj" secondAttribute="bottom" constant="30" id="mbP-2B-2R9"/>
+                            <constraint firstAttribute="trailing" secondItem="JE8-gG-0uO" secondAttribute="trailing" constant="16" id="nQh-da-Hdo"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sqF-qC-MOc" secondAttribute="bottom" id="ooo-cz-Xwf"/>
+                            <constraint firstItem="rGb-ec-MCj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="pX5-3C-mVq"/>
+                            <constraint firstItem="5pb-t5-gOB" firstAttribute="width" secondItem="rGb-ec-MCj" secondAttribute="width" id="rzg-yQ-kK1"/>
+                            <constraint firstItem="WFf-6p-hbk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="sXc-hZ-PDE"/>
+                            <constraint firstItem="H9v-CX-fgr" firstAttribute="height" secondItem="5pb-t5-gOB" secondAttribute="height" id="tU9-eu-oJS"/>
+                            <constraint firstItem="H9v-CX-fgr" firstAttribute="top" secondItem="JE8-gG-0uO" secondAttribute="bottom" constant="30" id="vtR-48-CLV"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background.png" width="750" height="1334"/>
+        <image name="btn_drawer_n.png" width="72" height="50"/>
+    </resources>
+</document>
