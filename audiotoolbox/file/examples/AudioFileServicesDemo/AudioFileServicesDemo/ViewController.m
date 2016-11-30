@@ -10,17 +10,17 @@
 
 
 #define VErr(err, msg)  do {\
-if(nil != err) {\
-NSLog(@"[ERR]:%@--%@", (msg), [err localizedDescription]);\
-return ;\
-}\
+    if(nil != err) {\
+        NSLog(@"[ERR]:%@--%@", (msg), [err localizedDescription]);\
+        return ;\
+    }\
 } while(0)
 
 #define VStatus(err, msg) do {\
-if(noErr != err) {\
-NSLog(@"[ERR-%d]:%@", err, (msg));\
-return ;\
-}\
+    if(noErr != err) {\
+        NSLog(@"[ERR-%d]:%@", err, (msg));\
+        return ;\
+    }\
 } while(0)
 
 @interface ViewController (){
