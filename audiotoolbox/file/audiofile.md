@@ -47,7 +47,7 @@
 
 两个函数先将`UInt32 inSpecifierSize, void *inSpecifier`忽略掉，这样比较好理解，当获取InfoSize的时候传入一个AudioFilePropertyID 然后属性的大小值在outDataSize被返回；而当获得具体的Info的时候，则用ioDataSize指定传入buffer的大小和返回值的大小，具体的值存在outPropertyData中。
 
-而“Specifier”也是一个buffer加上长度，在不同的AudioFilePropertyID中，需要指定不同的值，比如上面，开始用“0”和“NULL”，当要查询OSType的文件名称时，传入`sizeof(OSType), types+i`，也就是要查询的OSType的内容。
+而“Specifier”也是一个buffer加上长度，在不同的AudioFilePropertyID中，需要指定不同的值，比如上面，开始用“0”和"NULL"，当要查询OSType的文件名称时，传入`sizeof(OSType), types+i`，也就是要查询的OSType的内容。
 
 AudioFilePropertyID | 意义| 结果 | Specifier组合
 ---|---|---|---
