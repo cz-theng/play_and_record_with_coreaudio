@@ -1,7 +1,7 @@
 # 使用Audio File读写音频文件
 对于音频文件的读取，我们可以用fopen这样一段buffer一段buffer的段，但是这之后就需要自己去根据文件的头来推断文件的类型、编码格式等，然后进行解析到有效的音频数据，想想这是何等的麻烦。Apple也知道这样的麻烦，所以她在AudioToolBox中提供了音频文件的读写工具接口：“Audio File Services”以及其扩展"Extended Audio File Services"。扩展中的接口提供了音频格式转换的功能，同时也是对常用读取模式的一个Helper接口。想来是Apple在使用过程中也觉得最常用的读取就那么几个步骤，而前者的基础接口过于繁琐了。
 
-使用“Audio File Services”时，我们需要先根据系统和文件属性，比如文件类型，长度等，然后再决定如何进行读取。比如[Demo]() 中的按钮，先打开文件，然后读取文件属性，再读取文件内容，最后将文件关闭。
+使用“Audio File Services”时，我们需要先根据系统和文件属性，比如文件类型，长度等，然后再决定如何进行读取。比如[Demo](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/audiotoolbox/file/examples/AudioFileServicesDemo) 中的按钮，先打开文件，然后读取文件属性，再读取文件内容，最后将文件关闭。
 
 ![audio_file_demo](./images/audio_file_demo.png)
 
