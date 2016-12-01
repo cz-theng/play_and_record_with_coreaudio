@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		217057641DF087FB000EB41D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217057631DF087FB000EB41D /* OpenAL.framework */; };
 		21AB75401DF06EC700F868D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AB753F1DF06EC700F868D0 /* main.m */; };
 		21AB75431DF06EC700F868D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AB75421DF06EC700F868D0 /* AppDelegate.m */; };
 		21AB75461DF06EC700F868D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AB75451DF06EC700F868D0 /* ViewController.m */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		217057631DF087FB000EB41D /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		21AB753B1DF06EC700F868D0 /* OpenALPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenALPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21AB753F1DF06EC700F868D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		21AB75411DF06EC700F868D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				217057641DF087FB000EB41D /* OpenAL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +63,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		217057621DF087FB000EB41D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				217057631DF087FB000EB41D /* OpenAL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		21AB75321DF06EC700F868D0 = {
 			isa = PBXGroup;
 			children = (
 				21AB753D1DF06EC700F868D0 /* OpenALPlayerDemo */,
 				21AB75571DF06EC700F868D0 /* OpenALPlayerDemoTests */,
 				21AB753C1DF06EC700F868D0 /* Products */,
+				217057621DF087FB000EB41D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -416,6 +428,7 @@
 				21AB755F1DF06EC700F868D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21AB75601DF06EC700F868D0 /* Build configuration list for PBXNativeTarget "OpenALPlayerDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +437,7 @@
 				21AB75621DF06EC700F868D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
