@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="eNu-2a-4ym"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbx-rl-hpH">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="a4v-ge-JsV"/>
+                                    <constraint firstAttribute="width" constant="30" id="weE-Xq-cxA"/>
+                                </constraints>
+                                <state key="normal" image="btn_drawer_n.png"/>
+                                <connections>
+                                    <action selector="onPickMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jOW-a5-MXp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5O-xA-bl8">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="GLP-ES-pzz"/>
+                                </constraints>
+                                <state key="normal" title="ExtOpenFile"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onExtOpen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gDO-6Q-BJo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SO8-p9-pWg">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ExtReadProperity"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onReadProperity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zdu-rw-FbX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOG-R8-IXV">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ExtReadFile"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onRead:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oh6-no-x2W"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXr-Rj-ypK">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ExtCloseFile"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onExtClose:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5aV-bG-idH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97L-4a-i14">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ExtSeekFile"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onSeek:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AsY-Y6-ORk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kXr-Rj-ypK" firstAttribute="width" secondItem="Z5O-xA-bl8" secondAttribute="width" id="0Q8-dQ-x9r"/>
+                            <constraint firstItem="Z5O-xA-bl8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="BDh-q7-7ik"/>
+                            <constraint firstItem="SO8-p9-pWg" firstAttribute="top" secondItem="Z5O-xA-bl8" secondAttribute="bottom" constant="30" id="DYw-v3-eFi"/>
+                            <constraint firstItem="97L-4a-i14" firstAttribute="top" secondItem="SO8-p9-pWg" secondAttribute="bottom" constant="30" id="DtJ-Og-Lym"/>
+                            <constraint firstAttribute="trailing" secondItem="SO8-p9-pWg" secondAttribute="trailing" constant="60" id="G6g-cC-avf"/>
+                            <constraint firstItem="97L-4a-i14" firstAttribute="height" secondItem="Z5O-xA-bl8" secondAttribute="height" id="Hcb-2h-nCa"/>
+                            <constraint firstAttribute="trailing" secondItem="pbx-rl-hpH" secondAttribute="trailing" constant="16" id="MVC-ZZ-O57"/>
+                            <constraint firstItem="pbx-rl-hpH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="MZC-Jk-mBz"/>
+                            <constraint firstAttribute="trailing" secondItem="97L-4a-i14" secondAttribute="trailing" constant="16" id="RMS-Qx-UqM"/>
+                            <constraint firstItem="VOG-R8-IXV" firstAttribute="top" secondItem="SO8-p9-pWg" secondAttribute="bottom" constant="30" id="U5e-LR-Vve"/>
+                            <constraint firstItem="eNu-2a-4ym" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="a7d-uJ-0cL"/>
+                            <constraint firstItem="eNu-2a-4ym" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="axe-iz-F2D"/>
+                            <constraint firstAttribute="trailing" secondItem="eNu-2a-4ym" secondAttribute="trailing" id="erp-sl-jsU"/>
+                            <constraint firstItem="SO8-p9-pWg" firstAttribute="height" secondItem="Z5O-xA-bl8" secondAttribute="height" id="es5-OU-9Yt"/>
+                            <constraint firstItem="Z5O-xA-bl8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="110" id="hMY-96-Th2"/>
+                            <constraint firstItem="97L-4a-i14" firstAttribute="width" secondItem="VOG-R8-IXV" secondAttribute="width" id="iYC-A5-hte"/>
+                            <constraint firstItem="VOG-R8-IXV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="ipk-AV-TR1"/>
+                            <constraint firstItem="VOG-R8-IXV" firstAttribute="height" secondItem="Z5O-xA-bl8" secondAttribute="height" id="kfg-6G-Pkd"/>
+                            <constraint firstItem="kXr-Rj-ypK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="110" id="mZK-Od-nJN"/>
+                            <constraint firstAttribute="trailing" secondItem="kXr-Rj-ypK" secondAttribute="trailing" constant="16" id="nfA-4T-9zu"/>
+                            <constraint firstItem="kXr-Rj-ypK" firstAttribute="height" secondItem="Z5O-xA-bl8" secondAttribute="height" id="r3V-KD-E3R"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eNu-2a-4ym" secondAttribute="bottom" id="xUB-Cq-S9I"/>
+                            <constraint firstItem="SO8-p9-pWg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="60" id="yYd-9e-Juk"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background.png" width="750" height="1334"/>
+        <image name="btn_drawer_n.png" width="72" height="50"/>
+    </resources>
+</document>
