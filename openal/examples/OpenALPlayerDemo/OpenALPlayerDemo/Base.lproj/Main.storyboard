@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +17,49 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="VpZ-Ve-NU0"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="KIj-iV-3Si">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="Jru-LT-vHD"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECe-uO-MFo">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="1Uf-kf-8JB"/>
+                                    <constraint firstAttribute="height" constant="45" id="obJ-j9-xVl"/>
+                                </constraints>
+                                <state key="normal" image="btn_play.png"/>
+                                <connections>
+                                    <action selector="onPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ehn-Hq-kF6"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="KIj-iV-3Si" secondAttribute="trailing" id="N65-Xg-Uoj"/>
+                            <constraint firstAttribute="trailing" secondItem="VpZ-Ve-NU0" secondAttribute="trailing" id="S1X-Uw-Cfi"/>
+                            <constraint firstItem="KIj-iV-3Si" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Sjx-NQ-Ujl"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VpZ-Ve-NU0" secondAttribute="bottom" id="UUy-iq-RBn"/>
+                            <constraint firstItem="ECe-uO-MFo" firstAttribute="centerX" secondItem="KIj-iV-3Si" secondAttribute="centerX" id="YQj-59-ueE"/>
+                            <constraint firstItem="VpZ-Ve-NU0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZM0-of-v2J"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="KIj-iV-3Si" secondAttribute="bottom" id="gqS-Uk-y7l"/>
+                            <constraint firstItem="VpZ-Ve-NU0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="odX-Im-c2m"/>
+                            <constraint firstItem="ECe-uO-MFo" firstAttribute="centerY" secondItem="KIj-iV-3Si" secondAttribute="centerY" id="s70-zN-PCL"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playBtn" destination="ECe-uO-MFo" id="wKr-GH-Bwj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="104.7976011994003"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background.png" width="750" height="1334"/>
+        <image name="background_bottom.png" width="750" height="424"/>
+        <image name="btn_play.png" width="128" height="128"/>
+    </resources>
 </document>
