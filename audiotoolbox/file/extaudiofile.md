@@ -3,13 +3,15 @@
 
 Apple也注意到了这样一套基本的API虽然强大，但是在最多的使用场景只用到了其中一些固定的模式，所以他又提供了一套更简洁的API："Extended Audio File Services"。扩展中的接口提供了音频格式转换的功能，同时也是对常用读取模式的一个Helper接口。如例子中的按钮提示：
 
+![ext_audio_file_demo](./images/ext_audio_file_demo.png)
 
+Demo参见[GitHub]()
 
 ## 打开文件
 和之前的"Audio File Service"一样，在操作音频数据之前首先要打开文件：
 
 	OSStatus ExtAudioFileOpenURL ( CFURLRef inURL, ExtAudioFileRef _Nullable *outExtAudioFile );
-稍微注意下会发现这里的Open和之前的Open已经文件的Open都不一样，他没有权限参数，接口非常简单，一个路径和一个输出的文件描述符结果，那到底是可读还是可写呢？上面说到Ext考虑的是通常情况，而一般对于音频我们都是读为主，所以Aplle的这个接口专门用来读音频文件内容。
+稍微注意下会发现这里的Open和之前的Open以及文件的Open都不一样，他没有权限参数，接口非常简单，一个路径和一个输出的文件描述符结果，那到底是可读还是可写呢？上面说到Ext考虑的是通常情况，而一般对于音频我们都是读为主，所以Aplle的这个接口专门用来读音频文件内容。
 
 那如果要写怎么办呢？有两种方法，一种是用其包装的打开并写的接口：
 
@@ -34,7 +36,7 @@ Apple也注意到了这样一套基本的API虽然强大，但是在最多的使
 直接传入ExtAudioFileRef表示的文件描述符，返回值参见Apple文档[Result Codes](https://developer.apple.com/library/mac/documentation/MusicAudio/Reference/ExtendedAudioFileServicesReference/index.html#//apple_ref/c/func/ExtAudioFileDispose)
 
 ## 读取属性
-和其他属性操作一样，Ext接口提供的属性操作也是分为两步，先获取属性基本信息，如大小：
+和“Audio ToolBox”的其他属性操作一样，Ext接口提供的属性操作也是分为两步，先获取属性基本信息，如大小：
 	
 	OSStatus ExtAudioFileGetPropertyInfo ( ExtAudioFileRef inExtAudioFile, ExtAudioFilePropertyID inPropertyID, UInt32 *outSize, Boolean *outWritable );
 	
@@ -50,8 +52,9 @@ Apple也注意到了这样一套基本的API虽然强大，但是在最多的使
 
 而“ExtAudioFileGetProperty”和“ExtAudioFileSetProperty”也与“AudioFileGetProperty”和“AudioFileSetProperty“保持一致，获取/设置文件inExtAudioFile的ExtAudioFilePropertyID属性。只是其属性的意义会不一样。
 
+
 ExtAudioFilePropertyID | 意义| 结果数据类型 | 是否可读写
----|---|--
+---|---|---|---
 kExtAudioFileProperty_FileDataFormat|源音频数据的格式|    AudioStreamBasicDescription  | 只读
 kExtAudioFileProperty_FileChannelLayout| 源音频数据的通道格式| AudioChannelLayout | 读写
 kExtAudioFileProperty_ClientDataFormat  | 读出来后的音频数据的格式|AudioStreamBasicDescription| 读写
@@ -69,7 +72,7 @@ kExtAudioFileProperty_IOBufferSizeBytes |编解码使用的缓冲区大小|UInt3
 kExtAudioFileProperty_IOBuffer          |编解码使用的缓冲区|void *| 读写
 kExtAudioFileProperty_PacketTable       |设置PacketTable| AudioFilePacketTableInfo| 读写
 
-这里列了一大堆属性的值，看的人发慌。咨询看下属性名，其实也是有规律可循的，而且是一个必须知道的点。这里的大部分属性可以分为
+这里列了一大堆属性的值，看的人发慌。仔细看下属性名，其实也是有规律可循的，而且有一个必须知道的点。这里的大部分属性可以分为
 
 * kExtAudioFileProperty_Xxxx : 源文件的相关属性，也就是原来什么格式的数据（MP3/AAC），他的基本属性。
 * kExtAudioFileProperty_ClientXxx: 读出时的数据格式，Ext在读出时会自动帮我们做编解码操作，这个是处理后的结果
@@ -158,7 +161,7 @@ kExtAudioFileProperty_PacketTable       |设置PacketTable| AudioFilePacketTable
 
 和fopen对应的有fseek一样，这里也有个seek接口，以帧数为单位：
 
-	OSStatus ExtAudioFileSeek ( ExtAudioFileRef inExtAudioFile, SInt64 inFrameOffset );
+		OSStatus ExtAudioFileSeek ( ExtAudioFileRef inExtAudioFile, SInt64 inFrameOffset );
 也很简单，将文件inExtAudioFile seek到inFrameOffset帧数位置。
 
     stts = ExtAudioFileTell(extMusicFD_, &curPos);
