@@ -5,7 +5,7 @@ Apple也注意到了这样一套基本的API虽然强大，但是在最多的使
 
 ![ext_audio_file_demo](./images/ext_audio_file_demo.png)
 
-Demo参见[GitHub]()
+Demo参见[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/audiotoolbox/file/examples/ExtAudioFileServicesDemo)
 
 ## 打开文件
 和之前的"Audio File Service"一样，在操作音频数据之前首先要打开文件：
