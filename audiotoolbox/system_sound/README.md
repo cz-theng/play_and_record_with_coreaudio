@@ -1,7 +1,7 @@
 # 4.4 系统音播放
 有的时候在App的使用中，我们只是想给用户一个提示，比如微信消息来了，滴一下；用户收到好友邀请了，震动一下。拿微信消息这个场景举例子就很直观了。对于这样的场景，Apple提供了更简洁的接口给开发者来使用，而不用那些复杂的播放音乐媒体的操作。
 
-##一键播放提示音
+## 一键播放提示音
 先看一个例子，在界面上增加一个按钮，并绑定按钮的点击事件到下面的逻辑：
 
     NSURL *furl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"alert" ofType:@"wav"]];
@@ -29,8 +29,10 @@
 	kAudioServicesSystemSoundUnspecifiedError
 	kAudioServicesSystemSoundClientTimedOutError
 	
+Demo参考[GitHub]()	
+	
 ##  System Sound Services提供的接口
-###基本使用
+### 基本使用
 在上面的例子中，我们使用了
 
 	void AudioServicesPlayAlertSound ( SystemSoundID inSystemSoundID )
@@ -54,7 +56,7 @@
 
 其实到这里，“System Sound Services”的核心功能就没有了。就两个API，一个创建音频文件句柄，一个播放（有两个播放方式可以选择），这也就是为什么开始的时候说Apple为播放提示音提供了简单的接口，你不需要用AVAudioSession去设置播放模式，也不用响应静音中断来控制震动。两个接口就完成了功能。
 
-###回调和属性
+### 回调和属性
 当然强大的“System Sound Services”也提供了一些其他功能，比如要知道什么时候提示音播放完毕了，如果App被强退，声音是否继续播放（有这样的需求么？）。
 
 	OSStatus AudioServicesAddSystemSoundCompletion ( SystemSoundID inSystemSoundID, CFRunLoopRef inRunLoop, CFStringRef inRunLoopMode, AudioServicesSystemSoundCompletionProc inCompletionRoutine, void *inClientData );
@@ -108,3 +110,7 @@ Apple为播放提示音提供了一套简介的接口，创建文件，然后播
 如果还想知道提示音什么时间播放结束，还可以通过回调的方式获得通知，另外也可以设置属性自定义播放行为。
 
 有点需要了解的时，播放都是异步的并且是可多次触发的。什么意思？比如间隔100ms调用Play，你会发现提示音被播了多次，且重叠在一起。蛮好玩的，这也验证了这个是系统的提供的"Services"，play只是提交任务给系统，由他来调度执行。
+
+## 参考
+1. [System Sound Services](https://developer.apple.com/reference/audiotoolbox/1657326-system_sound_services)
+2. [OSStatus](https://www.osstatus.com/)

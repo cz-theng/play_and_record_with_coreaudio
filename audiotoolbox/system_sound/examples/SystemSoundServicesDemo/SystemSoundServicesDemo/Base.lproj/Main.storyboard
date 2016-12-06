@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="61j-G3-TFv"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="3ZQ-K0-6p5">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="ykq-jq-u61"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvA-XJ-0U6">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="ZGK-Ic-vLd"/>
+                                    <constraint firstAttribute="height" constant="45" id="wr3-wz-ijk"/>
+                                </constraints>
+                                <state key="normal" image="btn_play.png"/>
+                                <connections>
+                                    <action selector="onPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4n8-If-vgC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2UH-sW-dtP">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="8vb-vf-xFe"/>
+                                    <constraint firstAttribute="width" constant="30" id="jLC-SF-mnv"/>
+                                </constraints>
+                                <state key="normal" image="btn_drawer_n.png"/>
+                                <connections>
+                                    <action selector="onPickMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uQB-gc-33y"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2UH-sW-dtP" secondAttribute="trailing" constant="16" id="0VE-oI-KQC"/>
+                            <constraint firstItem="kvA-XJ-0U6" firstAttribute="centerY" secondItem="3ZQ-K0-6p5" secondAttribute="centerY" id="EpV-B3-zwK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="61j-G3-TFv" secondAttribute="bottom" id="FKz-ac-fuN"/>
+                            <constraint firstItem="2UH-sW-dtP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="PDB-sb-qDq"/>
+                            <constraint firstItem="3ZQ-K0-6p5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Q10-qQ-vsP"/>
+                            <constraint firstItem="61j-G3-TFv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Sno-5Y-wcq"/>
+                            <constraint firstItem="kvA-XJ-0U6" firstAttribute="centerX" secondItem="3ZQ-K0-6p5" secondAttribute="centerX" id="YnL-1P-fxx"/>
+                            <constraint firstAttribute="trailing" secondItem="61j-G3-TFv" secondAttribute="trailing" id="cDw-uR-EAN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3ZQ-K0-6p5" secondAttribute="bottom" id="dZc-CZ-m1B"/>
+                            <constraint firstItem="61j-G3-TFv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nva-4A-XnD"/>
+                            <constraint firstAttribute="trailing" secondItem="3ZQ-K0-6p5" secondAttribute="trailing" id="y2e-m7-OTd"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background.png" width="750" height="1334"/>
+        <image name="background_bottom.png" width="750" height="424"/>
+        <image name="btn_drawer_n.png" width="72" height="50"/>
+        <image name="btn_play.png" width="128" height="128"/>
+    </resources>
+</document>
