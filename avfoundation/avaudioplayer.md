@@ -10,7 +10,7 @@
 * 获取资源文件时长
 等，更厉害的时，通过他还可以实现多个音频文件的混音播放，并可以进行同步设置。
 
-## 1. 播放器 Demo
+## 播放器 Demo
 先看一个例子，一个模拟播放器。
 
 ![avaudioplayer_demo](./images/avaudioplayer_demo.png) 
@@ -19,7 +19,7 @@ Demo的代码可以在[GitHub](https://github.com/cz-it/play_and_record_with_cor
 
 从上面的截图可以看到，Demo演示了，播放一首歌并提供了快进、回播、暂停、时长显示、能量波图等AVAudioPlayer提供的功能。
 
-## 2. 使用AVAudioPlayer播放一段音频
+## 使用AVAudioPlayer播放一段音频
 AVAudioPlayer的使用，需要先用音频数据进行初始化，在初始化的过程AVAudioPlayer会对数据进行解析。既可以从文件中直接读取，也可以是从网上下载并用NSData存储的一段数据，分别对应：
 
 	- (instancetype)initWithContentsOfURL:(NSURL *)url 
@@ -61,7 +61,7 @@ stop| - (void)stop; | 停止播放，不会记录播放状态
 
 有了这几个接口就可以用AVAudioPlayer完成段音频的播放了。
 
-##3. 播放器控制
+## 播放器控制
 AVAudioPlayer提供了一系列的属性，来控制播放器的表现。比如
 
 属性|类型|作用
@@ -129,7 +129,7 @@ currentTime|NSTimeInterval| 当前播放时长，比如MP3上显示的进度
 
 那这两个接口的意义是什么呢？一个绝对时间，那最容易想到的就是同步问题了。是的，这个主要就是用来做同步的，比如两个AVAudioPlayer要同时播放两段声音从而让他们形成混音，那如何同时呢？就可以在这里通过`- playAtTime:`延迟到指定时间同时播放。既然是延迟，那么这个值就不能低于当前的`deviceCurrentTime `
 
-##3. 被Deprecate的Delegate
+## 被Deprecate的Delegate
 
 在最原始的版本中，AVAudioPlayerDelegate总共有6个回调，在iOS6.0中废弃掉两个，然后在iOS8.0又废掉两个。iOS 10也已经出来，距离不用兼容iOS7的日子估计也不远了（LinkedIn现在(20160501)就要求iOS8.0以上了），因此只需要关注这最后存活下来的回调即可。在以前的版本中被抛弃的回调接口，主要是控制播放器在播放的过程中收到中断
 
@@ -165,11 +165,11 @@ currentTime|NSTimeInterval| 当前播放时长，比如MP3上显示的进度
 
 关于AVAudioSession的使用，可以参考[3.3使用AVAudioSession管理上下文](../avfoundation/avaudiosession.html)。
 
-##5. 总结
+##  总结
 总的来说，使用AVAudioPlayer播放声音是App中首要的选择方案，比如背景音、试听等场景。其使用简单，基本功能都有，既可以播放本地文件，也可以播放从网络上下载到内存中的音频内容。 
 但是对于实时流的播放，则有点力不从心，当然也可以一段数据一段数据的去播，不过CoreAudio还为我们提供了其他解决方案，比如后面介绍的AudioQueueService。
 
-##参考文档
+## 参考文档
 1. [AVAudioPlayer Class Reference](https://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVAudioPlayerClassReference/#//apple_ref/occ/instm/AVAudioPlayer/updateMeters)
 2. [Audio Session Programming Guide](https://developer.apple.com/library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/HandlingAudioInterruptions/HandlingAudioInterruptions.html#//apple_ref/doc/uid/TP40007875-CH4-SW1)
 

@@ -2,7 +2,7 @@
 在iOS上播放音频我们通过AVAudioPlayer可以很方便的解决了，但是如果要录音该怎么办呢？CoreAudio同样也提供了一套非常简便但是功能强大的工具：AVAudioRecorder。
 
 AVAudioRecorder通过系统麦克风将声音录制到本地文件，类似微信语音的效果。
-## 1. 微信录音Demo
+## 微信录音Demo
 先看个例子，模拟微信语音消息的Demo：
 
 ![avaudiorecorder_demo](./images/avaudiorecorder_demo.png)
@@ -11,7 +11,7 @@ Demo的代码可以在[GitHub](https://github.com/cz-it/play_and_record_with_cor
 
 上面的Demo演示了点击按钮，开始进行录音，在点击按钮，录音结束。然后通过语音便条显示语音文件的时长，当点击语音便条时，进行对应录音文件的播放。当然这里的音频播放用了前面的[3.1 使用AVAudioPlayer播放音频](../avfoundation/avaudioplayer.html)中介绍的播放方法。
 
-## 2. 使用AVAudioRecorder录制一段音频
+## 使用AVAudioRecorder录制一段音频
 和AVAudioPlayer一样，使用AVAudioRecorder进行录制的时，必须指定要录制到的文件，并且不同的是，AVAudioRecorder必须将录制的音频数据存入到文件中，不能像AVAudioPlayer从NSData中读取一样存入到NSData中。所以创建一个AVAudioRecorder需要指定一个存入的文件，同时因为此时我们是音频的创作者，所以还需要指定音频的格式，比如编码器、采样率、通道数等
 用构造方法：
 
@@ -83,7 +83,7 @@ stop|- (void)stop|停止录音
 
 用这几个接口，配合前面介绍的AVAudioPlayer就可以实现一个录音并播放的Demo了。
 
-## 4. 录音数据格式设置	
+##  录音数据格式设置	
 上面的AVAudioRecorder使用确实很简单，但就是那个初始化时候的配置比较不容易理解。Apple将其分成了几大类。
 
 ### 通用格式设置
@@ -129,7 +129,7 @@ stop|- (void)stop|停止录音
 * AVSampleRateConverterAlgorithmKey
 	字符串表示采样侧率，默认为`AVSampleRateConverterAlgorithm_Normal `，或者设置成Mastering `AVSampleRateConverterAlgorithm_Mastering `
 
-## 3. 录音器控制
+## 录音器控制
 
 ### 控制录制策略
 在拍照或者拍摄视频的时候，一般会有个倒计时后开始录音的功能，AVAudioRecorder也支持延时录制。
@@ -185,7 +185,7 @@ settings|NSDictornary |构造的时候给的设置
 
 > 注意：每次调用之前需先调用`- (void)updateMeters;`否则获取的值会不变。
 
-## 4. 被Deprecate的Delegate
+## 被Deprecate的Delegate
 
 和AVAudioPlayerDelegate一样在最原始的版本中，AVAudioRecorderDelegate总共有6个回调，在iOS6.0中废弃掉两个，然后在iOS8.0又废掉两个。在以前的版本中被抛弃的回调接口，主要也是控制播放器在播放的过程中收到中断
 
@@ -208,7 +208,7 @@ settings|NSDictornary |构造的时候给的设置
 
 关于AVAudioSession的使用，可以参考[3.3 使用AVAudioSession管理上下文](../avfoundation/avaudiosession.html)。
 
-## 5. 总结
+## 总结
 AVAudioRecorder提供了一种不仅可以采集声音，还可以自动进行编码存文件的录音侧率。因为需要进行产生音频数据并进行编码，所以需要提供配置来对采集的声音进行采样率、编码等属性的设置。
 
 进行录音的时候，还需要通过AudioSession将当前Session的Category设置成Record或者PlayAndRecord才能激活系统进行音频采集。
