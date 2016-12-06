@@ -68,6 +68,8 @@
 
 流处理器从源数据中处理出来一个个Packet数据，其总共有inNumberPackets个包，总长inNumberBytes个字节，数据放在inInputData指向的内存中，每个Packet的数据格式依次在inPacketDescriptions数组中。按照和"AudioFileReadPacketData"一样的处理音频数据就可以了。
 
+文中Demo参见[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/audiotoolbox/file/examples/AudioFileStreamServices)
+
 ## 获取属性
 属性值的操作和“AudioFileService”里面基本是完全一样的，分成两个接口，一个获取属性大小等信息：
 
