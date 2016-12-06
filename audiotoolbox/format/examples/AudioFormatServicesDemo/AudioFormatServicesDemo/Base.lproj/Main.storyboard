@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +17,135 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="c6F-of-oeL"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7c-dN-HB2">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="NIe-rq-A5y"/>
+                                    <constraint firstAttribute="width" constant="30" id="Rxp-BX-qOg"/>
+                                </constraints>
+                                <state key="normal" image="btn_drawer_n.png"/>
+                                <connections>
+                                    <action selector="onPickerMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K4Q-To-TnP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgc-4t-5NW">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Audio Panning Info"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onPanningInfo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mvj-ch-W83"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQf-Nb-ksb">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Audio Balance Fade"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onBalanceFade:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sw2-sZ-6Gd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ceo-e2-xy5">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Audio Format Info"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onFormatInfo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xql-h5-uMt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBD-PS-uBk">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Audio Format List Items"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onFormatListItems:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dGp-MU-KHN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOU-xc-9nC">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Extended Audio Format Info"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onFormatExtInfo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XgH-8k-46o"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqH-Gt-22J">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="jKu-MN-QB3"/>
+                                </constraints>
+                                <state key="normal" title="Open Music"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onOpenMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VpX-rL-WmR"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sOU-xc-9nC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="0Mj-EY-NrM"/>
+                            <constraint firstItem="GQf-Nb-ksb" firstAttribute="height" secondItem="RqH-Gt-22J" secondAttribute="height" id="0UH-cW-vPv"/>
+                            <constraint firstItem="sOU-xc-9nC" firstAttribute="top" secondItem="zgc-4t-5NW" secondAttribute="bottom" constant="30" id="3C3-uS-5gq"/>
+                            <constraint firstAttribute="trailing" secondItem="GQf-Nb-ksb" secondAttribute="trailing" constant="30" id="BFk-P0-3Eo"/>
+                            <constraint firstAttribute="trailing" secondItem="zgc-4t-5NW" secondAttribute="trailing" constant="30" id="C7F-FH-sjs"/>
+                            <constraint firstItem="zgc-4t-5NW" firstAttribute="height" secondItem="RqH-Gt-22J" secondAttribute="height" id="F2I-zx-X0i"/>
+                            <constraint firstItem="Ceo-e2-xy5" firstAttribute="top" secondItem="RqH-Gt-22J" secondAttribute="bottom" constant="30" id="GEB-6q-TgK"/>
+                            <constraint firstItem="c7c-dN-HB2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="HaP-6z-RTZ"/>
+                            <constraint firstAttribute="trailing" secondItem="c7c-dN-HB2" secondAttribute="trailing" constant="16" id="MNe-4J-6at"/>
+                            <constraint firstItem="Ceo-e2-xy5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="Okm-MV-kWs"/>
+                            <constraint firstAttribute="trailing" secondItem="c6F-of-oeL" secondAttribute="trailing" id="QF2-sw-I5l"/>
+                            <constraint firstItem="c6F-of-oeL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Qdk-AO-cf7"/>
+                            <constraint firstItem="GQf-Nb-ksb" firstAttribute="top" secondItem="UBD-PS-uBk" secondAttribute="bottom" constant="30" id="SPs-az-U9P"/>
+                            <constraint firstItem="c6F-of-oeL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="UzC-Q8-wbe"/>
+                            <constraint firstItem="Ceo-e2-xy5" firstAttribute="height" secondItem="RqH-Gt-22J" secondAttribute="height" id="YWw-sr-r6c"/>
+                            <constraint firstAttribute="trailing" secondItem="UBD-PS-uBk" secondAttribute="trailing" constant="30" id="ac4-Ge-VX2"/>
+                            <constraint firstItem="RqH-Gt-22J" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="akb-mF-wRZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Ceo-e2-xy5" secondAttribute="trailing" constant="30" id="bmL-OH-CKa"/>
+                            <constraint firstItem="UBD-PS-uBk" firstAttribute="top" secondItem="Ceo-e2-xy5" secondAttribute="bottom" constant="30" id="cAE-8E-g12"/>
+                            <constraint firstItem="zgc-4t-5NW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="eBZ-hA-whq"/>
+                            <constraint firstItem="RqH-Gt-22J" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="110" id="gfe-Bu-UYD"/>
+                            <constraint firstAttribute="trailing" secondItem="RqH-Gt-22J" secondAttribute="trailing" constant="30" id="jSA-5w-sPu"/>
+                            <constraint firstItem="zgc-4t-5NW" firstAttribute="top" secondItem="GQf-Nb-ksb" secondAttribute="bottom" constant="30" id="m9g-1x-PAj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="c6F-of-oeL" secondAttribute="bottom" id="mt4-mq-vfP"/>
+                            <constraint firstItem="UBD-PS-uBk" firstAttribute="height" secondItem="RqH-Gt-22J" secondAttribute="height" id="oJQ-7m-V0R"/>
+                            <constraint firstAttribute="trailing" secondItem="sOU-xc-9nC" secondAttribute="trailing" constant="30" id="oeH-EW-pr4"/>
+                            <constraint firstItem="UBD-PS-uBk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="rJw-cd-gXI"/>
+                            <constraint firstItem="sOU-xc-9nC" firstAttribute="height" secondItem="RqH-Gt-22J" secondAttribute="height" id="xdm-U7-ng3"/>
+                            <constraint firstItem="GQf-Nb-ksb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="yh2-5J-vF7"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background.png" width="750" height="1334"/>
+        <image name="btn_drawer_n.png" width="72" height="50"/>
+    </resources>
 </document>

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@import AudioToolbox;
+@import MediaPlayer;
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <MPMediaPickerControllerDelegate>
 
 
 @end
