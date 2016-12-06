@@ -61,7 +61,7 @@
         }
         options = [[AVAudioSession sharedInstance] categoryOptions];
         NSLog(@"Category[%@] has %lu options",  [AVAudioSession sharedInstance].category, options);
-        AVAudioSessionModeDefault
+    
         if (nil != _player ) {
             [_player play];
         }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="pas-m8-G32"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="05G-zh-Yai">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="L1O-ct-4o1"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKK-Cd-TIs">
+                                <frame key="frameInset" minX="155" minY="547" width="45" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="651-DD-iI2"/>
+                                    <constraint firstAttribute="width" constant="45" id="j0s-W7-pXa"/>
+                                </constraints>
+                                <state key="normal" image="btn_play.png"/>
+                                <connections>
+                                    <action selector="onPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oyf-ej-Wvd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDz-jX-oqX">
+                                <frame key="frameInset" minX="339" minY="35" width="20" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="get-tw-cIf"/>
+                                    <constraint firstAttribute="width" constant="25" id="lk5-NK-Zbf"/>
+                                </constraints>
+                                <state key="normal" image="btn_drawer_n.png"/>
+                                <connections>
+                                    <action selector="onOpen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dcf-Mw-M1G"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="YDz-jX-oqX" secondAttribute="trailing" constant="16" id="2Iz-U8-Mmn"/>
+                            <constraint firstItem="05G-zh-Yai" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="43C-D2-AD8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="05G-zh-Yai" secondAttribute="bottom" id="JfW-ey-Edf"/>
+                            <constraint firstItem="pas-m8-G32" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LAs-ak-Ne8"/>
+                            <constraint firstItem="YDz-jX-oqX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="PTX-ay-XSb"/>
+                            <constraint firstItem="pas-m8-G32" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TXn-cr-sVW"/>
+                            <constraint firstAttribute="trailing" secondItem="pas-m8-G32" secondAttribute="trailing" id="YjC-Wt-VeF"/>
+                            <constraint firstItem="GKK-Cd-TIs" firstAttribute="centerX" secondItem="05G-zh-Yai" secondAttribute="centerX" id="cCM-lS-VOh"/>
+                            <constraint firstItem="GKK-Cd-TIs" firstAttribute="centerY" secondItem="05G-zh-Yai" secondAttribute="centerY" id="mno-Du-XrX"/>
+                            <constraint firstAttribute="trailing" secondItem="05G-zh-Yai" secondAttribute="trailing" id="vdX-xB-JZC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pas-m8-G32" secondAttribute="bottom" id="za3-mn-Md5"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="24.800000000000001" y="35.532233883058474"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background.png" width="750" height="1334"/>
+        <image name="background_bottom.png" width="750" height="424"/>
+        <image name="btn_drawer_n.png" width="72" height="50"/>
+        <image name="btn_play.png" width="128" height="128"/>
+    </resources>
+</document>

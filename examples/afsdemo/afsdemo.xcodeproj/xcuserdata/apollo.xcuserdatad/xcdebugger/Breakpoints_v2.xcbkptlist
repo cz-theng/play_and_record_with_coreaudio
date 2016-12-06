@@ -16,7 +16,7 @@
             startingLineNumber = "108"
             endingLineNumber = "108"
             landmarkName = "-onReadProperty:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,7 +32,7 @@
             startingLineNumber = "198"
             endingLineNumber = "198"
             landmarkName = "-onReadFileContent:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -48,7 +48,7 @@
             startingLineNumber = "299"
             endingLineNumber = "299"
             landmarkName = "-onExtSeek:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
