@@ -99,8 +99,8 @@
         return;
     }
     
-    //ALCchar * devices = alcGetString(NULL, ALC_DEVICE_SPECIFIER);
-    ALCchar * devices = alcGetString(NULL, ALC_DEFAULT_ALL_DEVICES_SPECIFIER);
+    ALCchar * devices = alcGetString(NULL, ALC_DEVICE_SPECIFIER);
+    //ALCchar * devices = alcGetString(NULL, ALC_DEFAULT_ALL_DEVICES_SPECIFIER);
     const ALCchar *device = devices, *next = devices + 1;
     size_t len = 0;
     
@@ -140,7 +140,7 @@
     if (alGetError() != AL_NO_ERROR) {
         return NO;
     }
-    
+    /*
     alSourcef(sources, AL_PITCH, 1);
     // check for errors
     alSourcef(sources, AL_GAIN, 1);
@@ -150,7 +150,7 @@
     alSource3f(sources, AL_VELOCITY, 0, 0, 0);
     // check for errors
     alSourcei(sources, AL_LOOPING, AL_FALSE);
-    
+    */
     alSourcei(sources, AL_BUFFER, buffers); // bind buffer[0] to source[0]
     if (alGetError() != AL_NO_ERROR) {
         return NO;
@@ -191,11 +191,36 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     alDeleteSources(1, &sources);
+    if (alGetError() != AL_NO_ERROR) {
+        NSLog(@"alDeleteSources error");
+        return;
+    }
+    // you'd better check the error
     alDeleteBuffers(1, &buffers);
+    if (alGetError() != AL_NO_ERROR) {
+        NSLog(@"alDeleteBuffers error");
+        return;
+    }
     ALCdevice *device = alcGetContextsDevice(mainContext);
+    if (NULL == device) {
+        NSLog(@"alcGetContextsDevice error");
+        return ;
+    }
     alcMakeContextCurrent(NULL);
+    if (alGetError() != AL_NO_ERROR) {
+        NSLog(@"alcMakeContextCurrent error");
+        return;
+    }
     alcDestroyContext(mainContext);
+    if (alGetError() != AL_NO_ERROR) {
+        NSLog(@"alcDestroyContext error");
+        return;
+    }
     alcCloseDevice(device);
+    if (alGetError() != AL_NO_ERROR) {
+        NSLog(@"alcCloseDevice error");
+        return;
+    }
 }
 
 
