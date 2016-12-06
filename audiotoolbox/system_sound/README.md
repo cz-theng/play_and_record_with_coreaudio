@@ -11,6 +11,10 @@
     AudioServicesPlayAlertSound(ssfd_);
 
 
+Demo参考[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/audiotoolbox/system_sound/examples/SystemSoundServicesDemo)
+
+![ss_demo](./images/ss_demo.png)
+
 这里VStatus是定义的一个检查OSStatus返回值的宏。这里仅仅是简单判断了`kAudioServicesNoError`
 	
 	#define VErr(err, msg)  do {\
@@ -29,7 +33,7 @@
 	kAudioServicesSystemSoundUnspecifiedError
 	kAudioServicesSystemSoundClientTimedOutError
 	
-Demo参考[GitHub]()	
+	
 	
 ##  System Sound Services提供的接口
 ### 基本使用
