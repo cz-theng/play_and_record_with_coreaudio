@@ -114,6 +114,9 @@
 }
 
 -(BOOL) initBuffers{
+    
+    
+    
     alGetError(); // for clear
     alGenBuffers(1, &buffers); // only one buffer
     if (alGetError() != AL_NO_ERROR) {
