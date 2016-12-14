@@ -173,7 +173,7 @@
 ## 总结
 “Audio Queue Services”提供了一套高级的C/C++的接口，通过Queue对象来管理存放音频的数据的各个Buffer，当需要取数据进行播放的时候，就从队列中Dequeue Buffer出来播放，而我们要做的就是不听的往Buffer队列中送数据，想播什么数据就送什么数据，这样既可以从AudioFile中获得源数据、也可以从AudioStream中甚至自己解析源数据得到PCM数据进行快进、快退、点播等复杂操作了。
 
-文中Demo参考[GitHub]()
+文中Demo参考[GitHub](https://github.com/cz-it/play_and_record_with_coreaudio/tree/master/audiotoolbox/audioqueue/examples/AudioQueueReaderDemo)
 
 ## 参考：
 
