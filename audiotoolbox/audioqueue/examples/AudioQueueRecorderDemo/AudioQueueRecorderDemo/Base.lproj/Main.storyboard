@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +17,86 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="SPj-kH-8oY"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="DAB-Ex-MQo">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="138" id="2Kd-bz-cmx"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihf-ff-cYr">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="aeN-sO-h2R"/>
+                                    <constraint firstAttribute="width" constant="65" id="gXR-SU-HY7"/>
+                                </constraints>
+                                <state key="normal" image="btn_microphone_open.png"/>
+                                <connections>
+                                    <action selector="onRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vMx-Mv-pb4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgE-YS-1lK">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="F44-Hk-Y6P"/>
+                                </constraints>
+                                <state key="normal" title="Prepare"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onPrepare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3tE-K8-8WN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BlS-9p-aLA">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="NCA-Em-7mQ"/>
+                                </constraints>
+                                <state key="normal" title="Play Your Recorder Voice"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JhN-pM-Hij"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BlS-9p-aLA" secondAttribute="trailing" constant="30" id="11U-0i-DZc"/>
+                            <constraint firstAttribute="trailing" secondItem="sgE-YS-1lK" secondAttribute="trailing" constant="30" id="3YE-rA-a0B"/>
+                            <constraint firstItem="SPj-kH-8oY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4mD-Jo-hD1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SPj-kH-8oY" secondAttribute="bottom" id="BOb-VO-8ra"/>
+                            <constraint firstItem="ihf-ff-cYr" firstAttribute="centerX" secondItem="DAB-Ex-MQo" secondAttribute="centerX" id="C6X-B6-7Wg"/>
+                            <constraint firstItem="sgE-YS-1lK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="KQ2-W6-oxT"/>
+                            <constraint firstItem="BlS-9p-aLA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="Num-dH-ClG"/>
+                            <constraint firstItem="DAB-Ex-MQo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ub0-Pi-I8H"/>
+                            <constraint firstItem="SPj-kH-8oY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YhY-cJ-LV8"/>
+                            <constraint firstAttribute="trailing" secondItem="DAB-Ex-MQo" secondAttribute="trailing" id="auy-2G-0B6"/>
+                            <constraint firstAttribute="trailing" secondItem="SPj-kH-8oY" secondAttribute="trailing" id="dV4-b4-z7z"/>
+                            <constraint firstItem="sgE-YS-1lK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="68" id="evU-Fa-UTT"/>
+                            <constraint firstItem="ihf-ff-cYr" firstAttribute="centerY" secondItem="DAB-Ex-MQo" secondAttribute="centerY" id="pbE-kQ-484"/>
+                            <constraint firstItem="BlS-9p-aLA" firstAttribute="top" secondItem="sgE-YS-1lK" secondAttribute="bottom" constant="30" id="tZ6-Sj-HKO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DAB-Ex-MQo" secondAttribute="bottom" id="tpD-PK-U94"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="prepareBtn" destination="sgE-YS-1lK" id="BwJ-AG-7yB"/>
+                        <outlet property="recordBtn" destination="ihf-ff-cYr" id="P80-Lg-zBh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background.png" width="750" height="1334"/>
+        <image name="background_bottom.png" width="750" height="424"/>
+        <image name="btn_microphone_open.png" width="266" height="266"/>
+    </resources>
 </document>
