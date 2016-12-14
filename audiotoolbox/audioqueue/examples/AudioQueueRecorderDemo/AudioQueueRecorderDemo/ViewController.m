@@ -30,10 +30,19 @@
     }\
 } while(0)
 
-@interface ViewController ()
+
+void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer, const AudioTimeStamp * inStartTime, UInt32                          inNumberPacketDescriptions, const AudioStreamPacketDescription *inPacketDescs)
+{
+    struct RecorderStat *recorderStat = (struct RecorderStat *) inUserData;
+}
+
+@interface ViewController () {
+    struct RecorderStat recorderStat_;
+}
+
 @property (weak, nonatomic) IBOutlet UIButton *recordBtn;
 @property (weak, nonatomic) IBOutlet UIButton *prepareBtn;
-
+@property (strong, nonatomic) NSString *filePath;
 @end
 
 @implementation ViewController
@@ -41,6 +50,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    _filePath = [NSString stringWithFormat:@"%@/%@", docDir, @"voice.mp3"];
 }
 
 - (void) setAudioSession: (int) mode {
@@ -70,7 +81,26 @@
 
 
 - (BOOL) prepareAudioRecorder {
-
+    // step 1: set up the format of recording
+    recorderStat_.mDataFormat.mFormatID =  kAudioFormatMPEGLayer3;
+    recorderStat_.mDataFormat.mSampleRate = 441000;
+    recorderStat_.mDataFormat.mChannelsPerFrame = 2;
+    recorderStat_.mDataFormat.mBitsPerChannel = 16;
+    recorderStat_.mDataFormat.mFramesPerPacket = 1;
+    recorderStat_.mDataFormat.mBytesPerFrame = recorderStat_.mDataFormat.mChannelsPerFrame * recorderStat_.mDataFormat.mBitsPerChannel / 8;
+    recorderStat_.mDataFormat.mBytesPerPacket = recorderStat_.mDataFormat.mBytesPerFrame * recorderStat_.mDataFormat.mFramesPerPacket;
+    
+    // step 2: create audio file
+    NSURL * tmpURL = [NSURL URLWithString:_filePath];
+    CFURLRef url = (__bridge CFURLRef) tmpURL;
+    OSStatus stts = AudioFileOpenURL(url, kAudioFileWritePermission, 0, &recorderStat_.mAudioFile);
+    VStatusBOOL(stts, @"AudioFileOpenURL");
+    NSLog(@"open file %@ success!", url);
+    
+    // step 3: create audio intpu queue
+    stts = AudioQueueNewInput(&recorderStat_.mDataFormat, impAudioQueueInputCallback, &recorderStat_,CFRunLoopGetCurrent(), kCFRunLoopCommonModes, 0, &recorderStat_.mQueue);
+    VStatusBOOL(stts, @"AudioQueueNewInput");
+    
     return YES;
 }
 

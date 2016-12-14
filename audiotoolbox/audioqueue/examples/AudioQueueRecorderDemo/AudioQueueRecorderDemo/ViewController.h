@@ -17,7 +17,7 @@ enum {
     kNumberPackages = 10*1000,
 };
 
-struct PlayerStat
+struct RecorderStat
 {
     AudioStreamBasicDescription   mDataFormat;
     AudioQueueRef                 mQueue;
