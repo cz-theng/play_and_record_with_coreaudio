@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="g49-RE-yUT"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="H0R-it-exS">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Y3p-V1-ZvB"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xnw-5p-OST">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Hzu-UA-wAB"/>
+                                    <constraint firstAttribute="width" constant="30" id="VUk-E4-aqJ"/>
+                                </constraints>
+                                <state key="normal" image="btn_drawer_n.png"/>
+                                <connections>
+                                    <action selector="onPickMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9lb-o1-t8L"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjG-6w-yMn">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="4M4-l7-f1w"/>
+                                    <constraint firstAttribute="height" constant="45" id="pWe-W2-yM4"/>
+                                </constraints>
+                                <state key="normal" image="btn_play.png"/>
+                                <connections>
+                                    <action selector="onPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="giN-GN-iif"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91G-wi-icb">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Fds-J5-8r0"/>
+                                </constraints>
+                                <state key="normal" title="Prepare"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onPrepare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="76c-EN-PaV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cjG-6w-yMn" firstAttribute="centerX" secondItem="H0R-it-exS" secondAttribute="centerX" id="FAm-gG-mX7"/>
+                            <constraint firstItem="g49-RE-yUT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="GVY-eV-3oz"/>
+                            <constraint firstItem="Xnw-5p-OST" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="LQK-LY-64e"/>
+                            <constraint firstAttribute="trailing" secondItem="H0R-it-exS" secondAttribute="trailing" id="Phu-Cn-nYH"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="H0R-it-exS" secondAttribute="bottom" id="Qzw-rD-KqE"/>
+                            <constraint firstItem="g49-RE-yUT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="a9w-d9-4NW"/>
+                            <constraint firstItem="H0R-it-exS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aRi-Kx-1KY"/>
+                            <constraint firstItem="91G-wi-icb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="foR-KX-QFF"/>
+                            <constraint firstItem="91G-wi-icb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="68" id="kTB-De-gKK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="g49-RE-yUT" secondAttribute="bottom" id="kmV-in-28c"/>
+                            <constraint firstAttribute="trailing" secondItem="g49-RE-yUT" secondAttribute="trailing" id="qi3-gZ-dDq"/>
+                            <constraint firstItem="cjG-6w-yMn" firstAttribute="centerY" secondItem="H0R-it-exS" secondAttribute="centerY" id="uWJ-3I-mXL"/>
+                            <constraint firstAttribute="trailing" secondItem="91G-wi-icb" secondAttribute="trailing" constant="30" id="x3a-kH-zhM"/>
+                            <constraint firstAttribute="trailing" secondItem="Xnw-5p-OST" secondAttribute="trailing" constant="16" id="xfh-U2-ZmS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playBtn" destination="cjG-6w-yMn" id="ghu-x2-kdG"/>
+                        <outlet property="prepareBtn" destination="91G-wi-icb" id="1KG-sE-JUs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background.png" width="750" height="1334"/>
+        <image name="background_bottom.png" width="750" height="424"/>
+        <image name="btn_drawer_n.png" width="72" height="50"/>
+        <image name="btn_play.png" width="128" height="128"/>
+    </resources>
+</document>

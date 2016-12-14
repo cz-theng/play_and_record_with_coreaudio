@@ -1,5 +1,9 @@
 # 4.2.1 获取格式内容
 
+## 获取的方法
+
+## 属性的键值
+
 AudioFormatPropertyID| 意义 |输入数据| 输出结果
 ---|---|---|---
 kAudioFormatProperty_FormatInfo | 获取magic cookie的格式信息 | 音频文件的Magic值 |AudioStreamBasicDescription（至少会返回mFormatID字段）
@@ -122,5 +126,8 @@ kAudioFormatProperty_ID3TagToDictionary
 	    NSLog(@"channel layout tag is %d", item->mChannelLayoutTag);
 	}
 内存释放需要自己手动处理下。
+
+
+
 ## 参考
 1. [Audio Format Services Reference](https://developer.apple.com/library/mac/documentation/AudioToolbox/Reference/AudioFormatServicesReference/index.html#//apple_ref/doc/constant_group/Audio_Format_Property_Identifiers)

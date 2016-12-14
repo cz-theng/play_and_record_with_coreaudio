@@ -15,7 +15,7 @@ Auido Queue是iOS上用来录音和播放的软件对象，也就是通过它我
 
 其位于AudioUnit之上，较为上层的接口。之前的[CoreAudio基本结构]()也介绍了，如果是播放网络流或者片段的内存音频数据，可以考虑用这里的AudioQueue.
 
-##1. AuidoQueue
+## AuidoQueue
 AudioQueue主要分成用于录制功能的InputQueue由`AudioQueueNewInput`生成和用于播放功能的OutputQueue由`AudioQueueNewOutput`	生成。每个Queue包含了用于缓存数据的AudioQueuBuffer队列，一个状态回调，以及描述音频数据格式的描述符。
 
 这里为什么是Buffer队列呢？来看个图
@@ -29,7 +29,7 @@ AudioQueue主要分成用于录制功能的InputQueue由`AudioQueueNewInput`生�
 
 除了使用`AudioQueueEnqueueBuffer`还可以使用`AudioQueueEnqueueBufferWithParameters`对Buffer内容进行一些设置。
 
-##2. AudioQueueBuffer
+## AudioQueueBuffer
 
 用来缓存录音采集到的或者播放中的缓冲音频数据。其定义为:
 
@@ -43,7 +43,7 @@ AudioQueue主要分成用于录制功能的InputQueue由`AudioQueueNewInput`生�
 	
 通过调用`AudioQueueAllocateBuffer`创建一个AudioQueueBuffer。当使用完之后，使用`AudioQueueDispose`进行释放，注意这里AudioToolBox提供的AudioQueueService是一套C接口，和AVFoundation的Objecitve-C接口不一样，不能依赖ARC进行内存管理，所以在使用之后一定记得要调用这个Dispose接口释放资源，否则容易造成内存泄露问题。
 	
-##3. 录音的流程
+## 录音的流程
 使用AduioQueue的过程中，有几个数据是要全局保存的，因为是C接口，所以可以将其用struct组织起来，或者放到`{}`中作为成员。
 
 	AudioFileID fd;
@@ -75,7 +75,7 @@ AudioQueue主要分成用于录制功能的InputQueue由`AudioQueueNewInput`生�
 之后就是用`AudioQueueStart`启动Queue开始录音，`AudioQueueStart`停止queue，`AudioQueuePause`暂停录音以及`AudioQueueDispose`回收资源。
 
 
-##4. 播放的流程
+## 播放的流程
 对于播放，也是一样，需要准备一些上下文数据，
 
 	AudioFileID fd;
@@ -99,8 +99,8 @@ AudioQueue主要分成用于录制功能的InputQueue由`AudioQueueNewInput`生�
 
 和录制一样，控制开始、暂停、停止以及回收资源的接口：`AudioQueueStart`，`AudioQueueStart`，`AudioQueuePause`以及`AudioQueueDispose`
 
-##总结
+## 总结
 这里只是对AudioQueueService的组成部分和使用过程进行了描述，还是比较抽象的。看完之后也不知道怎么时候，后面两篇文章依次介绍了如何使用这里介绍的流程进行录制和播放。
-##参考文档
+## 参考文档
 1. [Audio Queue Services Programming Guide](https://developer.apple.com/library/mac/documentation/MusicAudio/Conceptual/AudioQueueProgrammingGuide/AboutAudioQueues/AboutAudioQueues.html#//apple_ref/doc/uid/TP40005343-CH5-SW1)
 2. [Core Audio Overview](https://developer.apple.com/library/mac/documentation/MusicAudio/Conceptual/CoreAudioOverview/Introduction/Introduction.html)
