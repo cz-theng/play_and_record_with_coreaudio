@@ -118,33 +118,8 @@
     }
     
     alSource3f(carSource, AL_DIRECTION, -1, 0, 0);
-    if (error != AL_NO_ERROR) {
-        NSLog(@"AL_DIRECTION Error is %d", error);
-        return NO;
-    }
     alSource3f(carSource, AL_POSITION, 0, 0, 0);
-    if (error != AL_NO_ERROR) {
-        NSLog(@"AL_POSITION Error is %d", error);
-        return NO;
-    }
-/*
-    alSource3f(carSource, AL_VELOCITY, 0, 100, 0);
-    if (error != AL_NO_ERROR) {
-        NSLog(@"AL_VELOCITY Error is %d", error);
-        return NO;
-    }
-    alSourcei(carSource, AL_SOURCE_TYPE, AL_STREAMING);
-    if (error != AL_NO_ERROR) {
-        NSLog(@"AL_SOURCE_TYPE Error is %d", error);
-        return NO;
-    }
- */
     alSourcei(carSource, AL_BUFFER, carBuffer);
-    error = alGetError();
-    if (error != AL_NO_ERROR) {
-        NSLog(@"AL_BUFFER Error is %d", error);
-        return NO;
-    }
     
     /** dog **/
     alGenSources(1, &dogSource);
