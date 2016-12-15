@@ -143,36 +143,16 @@
     if (alGetError() != AL_NO_ERROR) {
         return NO;
     }
-    /*
-    alSourcef(sources, AL_PITCH, 1);
-    // check for errors
-    alSourcef(sources, AL_GAIN, 1);
-    // check for errors
-    alSource3f(sources, AL_POSITION, 0, 0, 0);
-    // check for errors
-    alSource3f(sources, AL_VELOCITY, 0, 0, 0);
-    // check for errors
-    alSourcei(sources, AL_LOOPING, AL_FALSE);
-    */
+
     alSourcei(sources, AL_BUFFER, buffers); // bind buffer[0] to source[0]
     if (alGetError() != AL_NO_ERROR) {
         return NO;
     }
-    
 
-    
     return YES;
 }
 
 -(BOOL) initListeners {
-    return YES;
-    ALfloat listenerOri[] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f };
-    
-    alListener3f(AL_POSITION, 0, 0, 1.0f);
-    // check for errors
-    alListener3f(AL_VELOCITY, 0, 0, 0);
-    // check for errors
-    alListenerfv(AL_ORIENTATION, listenerOri);
     return YES;
 }
 

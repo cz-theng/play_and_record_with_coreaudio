@@ -35,6 +35,7 @@ OC中的getter。同样buffer表示一个Buffer对象，param表示对应的属�
 OpenAL为Buffer设计的属性有：
 
 属性| 类型 | 意义
+---|---|---
 AL_FREQUENCY | int| 采样率
 AL_BITS |int | 位深度AL_CHANNELS |int| 通道数AL_SIZE | int| 数据大小
 AL_DATA |int| 数据原始位置指针
@@ -54,7 +55,8 @@ AL_DATA |int| 数据原始位置指针
 Buffer创建好之后，本身是没有任何音频数据的，需要我们自己为其填充将要播放的数据：
 
 	void alBufferData(      ALuint buffer,      ALenum format,      const ALvoid *data,      ALsizei size,      ALsizei freq	);
-这里buffer表示要填充的Buffer对象，format是一个表示位深度的枚举，data为具体的PCM数据，size自然是PCM数据的长度，最后的freq是PCM数据的采样率。 format的枚举有	
+这里buffer表示要填充的Buffer对象，format是一个表示位深度的枚举，data为具体的PCM数据，size自然是PCM数据的长度，最后的freq是PCM数据的采样率。 format的枚举有	：
+
 * AL_FORMAT_MONO8 ： 8位的MONO数据* AL_FORMAT_MONO16 ： 16位MONO数据
 * AL_FORMAT_STEREO8 ： 8为STEREO数据
 * AL_FORMAT_STEREO16 ： 16位STEREO数据。
@@ -74,6 +76,7 @@ Buffer创建好之后，本身是没有任何音频数据的，需要我们自�
 OpenAL为Source提供的属性有：
 
 属性| 类型| 意义
+---|---|---
 AL_PITCH |int | 音高倍数AL_GAIN |float| 声音的增益
 AL_MAX_DISTANCE| float|最远距离AL_ROLLOFF_FACTOR |float |衰减速率
 AL_REFERENCE_DISTANCE |float| 声音音量降低一半的距离AL_MIN_GAIN|float|最小增益
@@ -170,7 +173,7 @@ Listener比较简单，只要设置其在空间中的位置和移动就可以了
 	alListener3f(AL_POSITION, 0, 0, 0);
 	alListener3f(AL_VELOCITY, 0, 0, 0);
 	alListenerfv(AL_ORIENTATION, listenerOri);
-这里首先设置位置为原点，速度为0禁止不动，然后用两个（x,y,z）		/(x/y/z)来表示朝向。
+这里首先设置位置为原点，速度为0禁止不动，然后用两个（x,y,z）		/(x/y/z)来表示朝向，前者表示"at"后者表示"up"。
 
 
 ## 总结

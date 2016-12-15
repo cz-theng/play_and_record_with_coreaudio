@@ -28,6 +28,6 @@
 * [6. 跨平台的OpenAL](./openal/README.md)
 	* [6.1 播放裸数据](./openal/player.md)
 	* [6.2 属性设置](./openal/openal_setting.md)
-	* [6.3 营造汽车离去的效果](./openal/car_go_effect.md)
+	* [6.3 3D效果营造](./openal/3d_effect.md)
 
 * [参考文献](./bibliography/README.md)
