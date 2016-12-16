@@ -79,12 +79,12 @@ OpenAL构建的音频场景是有一个或者多个的声源（Source）和一�
    }
 通过`alGetError ()`获得类似errno的值，然后进行判断：
 
-错误码 | 十进制值| 十六进制| 意义 ---|---|---|---
-AL_INVALID_NAME||0xA001| 参数错误
-AL_INVALID_ENUM | | 0xA002| 枚举参数错误
-AL_INVALID_VALUE| | 0xA003 | 枚举值错误
-AL_INVALID_OPERATION| | 0xA004|不适合的操作
-AL_OUT_OF_MEMORY | | 0xA005| 内存越界
+错误码|值|意义
+AL_INVALID_NAME|0xA001| 参数错误
+AL_INVALID_ENUM|0xA002| 枚举参数错误
+AL_INVALID_VALUE|0xA003 | 枚举值错误
+AL_INVALID_OPERATION|0xA004|不适合的操作
+AL_OUT_OF_MEMORY |0xA005| 内存越界
 
 ## Buffer
 接着我们要从WAV中读取PCM数据来填充到Buffer中供Source声源使用。Demo中我们借助了我们自己实现的WAV解析工具，从WAV中解析出来具体的PCM数据、采样率以及数据位深度值。

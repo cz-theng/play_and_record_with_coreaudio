@@ -18,14 +18,14 @@
 
 #define VStatus(err, msg) do {\
     if(noErr != err) {\
-        NSLog(@"[ERR-%d]:%@", err, (msg));\
+        NSLog(@"[ERR:%d]:%@", err, (msg));\
         return ;\
     }\
 } while(0)
 
 #define VStatusBOOL(err, msg) do {\
     if(noErr != err) {\
-        NSLog(@"[ERR-%d]:%@", err, (msg));\
+        NSLog(@"[ERR:%d]:%@", err, (msg));\
         return NO;\
     }\
 } while(0)
@@ -34,6 +34,21 @@
 void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer, const AudioTimeStamp * inStartTime, UInt32                          inNumberPacketDescriptions, const AudioStreamPacketDescription *inPacketDescs)
 {
     struct RecorderStat *recorderStat = (struct RecorderStat *) inUserData;
+    
+    if (! recorderStat->mIsRunning) {
+        return ;
+    }
+    
+    if (0 == inNumberPacketDescriptions && recorderStat->mDataFormat.mBytesPerPacket != 0) { // for CBR
+        inNumberPacketDescriptions = recorderStat->bufferByteSize/recorderStat->mDataFormat.mBytesPerPacket;
+    }
+    
+    OSStatus stt = AudioFileWritePackets(recorderStat->mAudioFile, false, recorderStat->bufferByteSize, inPacketDescs, recorderStat->mCurrentPacket, &inNumberPacketDescriptions, inBuffer->mAudioData);
+    VStatus(stt, @"AudioFileWritePackets error");
+    
+    recorderStat->mCurrentPacket += inNumberPacketDescriptions;
+    stt = AudioQueueEnqueueBuffer(recorderStat->mQueue, inBuffer, 0, NULL);
+    VStatus(stt, @"AudioQueueEnqueueBuffer error");
 }
 
 @interface ViewController () {
@@ -43,6 +58,7 @@ void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQu
 @property (weak, nonatomic) IBOutlet UIButton *recordBtn;
 @property (weak, nonatomic) IBOutlet UIButton *prepareBtn;
 @property (strong, nonatomic) NSString *filePath;
+@property (strong, nonatomic) AVAudioPlayer *player;
 @end
 
 @implementation ViewController
@@ -69,7 +85,7 @@ void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQu
     if (1 == mode) {
         category = AVAudioSessionCategoryRecord;
     } else {
-        category = AVAudioSessionCategoryAmbient;
+        category = AVAudioSessionCategorySoloAmbient;
     }
     
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryRecord error:&error];
@@ -79,32 +95,67 @@ void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQu
     }
 }
 
+- (BOOL) preparePlayer: (NSURL *) fileName {
+    NSError *error = nil;
+    _player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileName error:&error];
+    if (nil != error) {
+        NSLog(@"create player[%@] error:%@", fileName, error.localizedDescription);
+        return NO;
+    }
+    return YES;
+}
+
+
 
 - (BOOL) prepareAudioRecorder {
+    OSStatus stts  = noErr;
     // step 1: set up the format of recording
-    recorderStat_.mDataFormat.mFormatID =  kAudioFormatMPEGLayer3;
-    recorderStat_.mDataFormat.mSampleRate = 441000;
+    recorderStat_.mDataFormat.mFormatID =  kAudioFormatMPEG4AAC;
+    recorderStat_.mDataFormat.mSampleRate = 44100.0;
     recorderStat_.mDataFormat.mChannelsPerFrame = 2;
     recorderStat_.mDataFormat.mBitsPerChannel = 16;
     recorderStat_.mDataFormat.mFramesPerPacket = 1;
     recorderStat_.mDataFormat.mBytesPerFrame = recorderStat_.mDataFormat.mChannelsPerFrame * recorderStat_.mDataFormat.mBitsPerChannel / 8;
     recorderStat_.mDataFormat.mBytesPerPacket = recorderStat_.mDataFormat.mBytesPerFrame * recorderStat_.mDataFormat.mFramesPerPacket;
-    
-    // step 2: create audio file
-    NSURL * tmpURL = [NSURL URLWithString:_filePath];
-    CFURLRef url = (__bridge CFURLRef) tmpURL;
-    OSStatus stts = AudioFileOpenURL(url, kAudioFileWritePermission, 0, &recorderStat_.mAudioFile);
-    VStatusBOOL(stts, @"AudioFileOpenURL");
-    NSLog(@"open file %@ success!", url);
-    
-    // step 3: create audio intpu queue
+    recorderStat_.mDataFormat.mFormatFlags = kLinearPCMFormatFlagIsPacked | kLinearPCMFormatFlagIsSignedInteger | kAudioFormatFlagIsBigEndian;
+
+    // step 2: create audio intpu queue
     stts = AudioQueueNewInput(&recorderStat_.mDataFormat, impAudioQueueInputCallback, &recorderStat_,CFRunLoopGetCurrent(), kCFRunLoopCommonModes, 0, &recorderStat_.mQueue);
     VStatusBOOL(stts, @"AudioQueueNewInput");
     
+    // step 3: get the detail format
+    UInt32 dataFormatSize = sizeof (recorderStat_.mDataFormat);
+    stts = AudioQueueGetProperty(recorderStat_.mQueue, kAudioQueueProperty_StreamDescription, &recorderStat_.mDataFormat, &dataFormatSize);
+    VStatusBOOL(stts, @"AudioQueueGetProperty-AudioQueueGetProperty");
+    
+    // step 4: create audio file
+    NSURL * tmpURL = [NSURL URLWithString:_filePath];
+    CFURLRef url = (__bridge CFURLRef) tmpURL;    
+    stts = AudioFileCreateWithURL(url, kAudioFileAAC_ADTSType, &recorderStat_.mDataFormat, kAudioFileFlags_EraseFile, &recorderStat_.mAudioFile);
+    VStatusBOOL(stts, @"AudioFileOpenURL");
+    NSLog(@"open file %@ success!", url);
+    
+    // step 5: prepare buffers and buffer queue
+    recorderStat_.bufferByteSize = kNumberPackages * recorderStat_.mDataFormat.mBytesPerPacket;
+    for (int i=0; i<kNumberBuffers; i++) {
+        AudioQueueAllocateBuffer(recorderStat_.mQueue, recorderStat_.bufferByteSize, &recorderStat_.mBuffers[0]);
+        AudioQueueEnqueueBuffer(recorderStat_.mQueue, recorderStat_.mBuffers[i], 0, NULL);
+    }
+
     return YES;
 }
 
 - (BOOL) disposeAudioRecorder {
+    if (recorderStat_.mQueue) {
+        AudioQueueDispose(recorderStat_.mQueue, false);
+        recorderStat_.mQueue = NULL;
+    }
+
+    if (recorderStat_.mAudioFile) {
+        AudioFileClose(recorderStat_.mAudioFile);
+        recorderStat_.mAudioFile = NULL;
+    }
+
     return YES;
 }
 
@@ -137,14 +188,23 @@ void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQu
 
 - (void) startRecord {
     [self setAudioSession:1];
+    OSStatus stts =  AudioQueueStart(recorderStat_.mQueue, NULL);
+    VStatus(stts, @"AudioQueueStart error");
+    recorderStat_.mIsRunning = true;
 }
 
 - (void) stopRecord {
     [self setAudioSession:2];
+    OSStatus stts = AudioQueueStop(recorderStat_.mQueue, true);
+    VStatus(stts, @"AudioQueueStop error");
+    recorderStat_.mIsRunning = false;
 }
 
 - (IBAction)onPlay:(id)sender {
     [self setAudioSession:2];
+    [self preparePlayer:[NSURL URLWithString:_filePath]];
+
+    [_player play];
 }
 
 - (IBAction)onRecord:(id)sender {
