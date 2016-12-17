@@ -1,7 +1,0 @@
-错误码|十进制值|十六进制|意义 
----|---|---|---
-AL_INVALID_NAME||0xA001||参数错误
-AL_INVALID_ENUM||0xA002||枚举参数错误
-AL_INVALID_VALUE||0xA003||枚举值错误
-AL_INVALID_OPERATION||0xA004||不适合的操作
-AL_OUT_OF_MEMORY||0xA005||内存越界
