@@ -1,4 +1,4 @@
-# 低延时的Audio Unit
+#世界最底层的Audio Unit
 在OS X(macOS)上面，Audio Unit绝对是个主角，用来对这种硬件扩展进行低延迟的音频采集等功能，而在iOS上，则是一个比较底层的接口，后面说的OpenAL也是基于Audio Unit进行采集和播放的，可以近似的认为Audio Unit就是对硬件驱动的封装，通过他获取麦克风采集的音频数据或者将数据通过他送到扬声器进行播放。
 一般情况下比如播放背景音，直接使用MediaPlayer或者AVAudioPlayer就可以了，AudioUnit在iOS上主要用于对时延要求比较高的场景，比如实时语音、VoIP的场景。
 
