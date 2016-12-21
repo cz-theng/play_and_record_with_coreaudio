@@ -143,14 +143,16 @@ AudioQueueGetProperty依旧是AudioToolBox的风格，给个长度给个地址�
     recorderStat->mCurrentPacket += inNumberPacketDescriptions;
     stt = AudioQueueEnqueueBuffer(recorderStat->mQueue, inBuffer, 0, NULL);
     VStatus(stt, @"AudioQueueEnqueueBuffer error");	                           
-首先将自定义数据转换成我们的State对象。然后因为我们后续要进行本地播放，我们这里将其写入到文件了。所以在“Prepare”的部分，我们增加了一个打开文件的操作  
-	   // step 4: create audio file
+
+首先将自定义数据转换成我们的State对象。然后因为我们后续要进行本地播放，我们这里将其写入到文件了。所以在“Prepare”的部分，我们增加了一个打开文件的操作:
+
     NSURL * tmpURL = [NSURL URLWithString:_filePath];
     CFURLRef url = (__bridge CFURLRef) tmpURL;    
     stts = AudioFileCreateWithURL(url, kAudioFileAIFFType, &recorderStat_.mDataFormat, kAudioFileFlags_EraseFile, &recorderStat_.mAudioFile);
     VStatusBOOL(stts, @"AudioFileOpenURL");    
-    NSLog(@"open file %@ success!", url);
-     然后这里对于CBR做了个强制设置Packet大小为：
+    NSLog(@"open file %@ success!", url); 
+
+这里对于CBR做了个强制设置Packet大小为:
 	
 		recorderStat->bufferByteSize/recorderStat->mDataFormat.mBytesPerPacket
 
