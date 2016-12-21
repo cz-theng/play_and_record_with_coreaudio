@@ -61,13 +61,106 @@ VoIP 输入输出 | kAudioUnitType_Output  | kAudioUnitSubType_VoiceProcessingIO
 前面说过了。AudioUnit单独是无法工作的，需要组建一个“Audio Unit Graph”，所以对AudioUnit的操作，基本通过“[Audio Unit Processing Graph Services](https://developer.apple.com/reference/audiotoolbox/1669790-audio_unit_processing_graph_serv)”接口就可以完成了，当如如果需要特殊的对某个Unit的修改，还可以用“[Audio Unit Component Services](https://developer.apple.com/reference/audiounit/1653800-audio_unit_component_services?language=objc)”进行设置。而AudioUnit的创建、打开和关闭则是通过“[Audio Component Services](https://developer.apple.com/reference/audiounit/1653552-audio_component_services?language=objc)”
 
 ### 单独创建AudioUnit
+AudioUnit作为系统资源，需要使用时，可以通过指定条件，来获得一个具体的"AudioComponent"，也就是Audio组件，可以认为是具体的硬件设备。所以首先需要指定条件，也就是上面介绍的AudioUnit的属性。所以第一步需要更具需要指定一个`AudioComponentDescription `比如，这里我们要创建一个RemoteIO类型Unit:
+
+	AudioComponentDescription ioUnitDescription;
+	ioUnitDescription.componentType          = kAudioUnitType_Output;
+	ioUnitDescription.componentSubType       = kAudioUnitSubType_RemoteIO;
+	ioUnitDescription.componentManufacturer  = kAudioUnitManufacturer_Apple;
+	ioUnitDescription.componentFlags         = 0;
+	ioUnitDescription.componentFlagsMask     = 0;
+按照上面的表格进行赋值。
+
+这里类型为"AudioComponentDescription"，根据名字字面来看，其实际上是类型`AudioComponent`的描述，也就是Audio组件，所以通过方法：
+
+	audioComponent AudioComponentFindNext ( AudioComponent  inComponent, const AudioComponentDescription *   inDesc)
+可以从系统中获取到符合描述条件的组件。这里“inComponent”可以认为是一个链表，如果给NULL，就会从系统中找到第一个符合inDesc描述的Component，如果为其赋值，则从其之后进行寻找，比如如下代码可以找出来所有符合条件的：
+
+	audioComponent component = AudioComponentFindNext(NULL, & ioUnitDescription);
+	for (; component !=NULL;component=AudioComponentFindNext(component, & ioUnitDescription) ) {
+		// your component
+	}
+通过遍历可以得到每个符合条件的Component。在得到Component以后就可以创建我们的AudioUnit了。通过调用：
+
+	OSStatus AudioComponentInstanceNew(AudioComponent  inComponent, AudioComponentInstance *outInstance)
+	
+传入上面得到的	AudioComponent，输出就是真实的AudioComponentInstance实例。当然这里需要检查OSStatus。
+
+哎，那说好的AudioUnit呢？这个需要看文件了，在"AudioComponent.h"中有定义：
+
+	typedef AudioComponentInstance AudioUnit;
+	
+AudioUnit实际上就是	AudioComponentInstance。所以在Apple的官方文档中是这样的：
+
+	AudioUnit ioUnitInstance;
+	AudioComponentInstanceNew (foundIoUnitReference, &ioUnitInstance);
+直接给的就是AudioUnit。所以可以认为	`AudioComponentInstanceNew`创建了一个AudioUnit。
 
 ### 通过AUGraph创建AudioUnit
+除了通过给定条件创建一个AudioUnit之外，还有一种更简洁常用的方法。在前面介绍中我们说道，AudioUnit的使用主要通过AUGraph，它可以认为是多个AudioUnit的组合串联而成的一个有向图，所以还可以通过描述一个图结构来直接创建所有的Node上的AudioUnit。
+
+首先通过：
+
+	OSStatus NewAUGraph(AUGraph * outGraph)；
+	
+创建一个	AUGraph，然后通过方法：
+
+	OSStatus AUGraphAddNode(AUGraph inGraph, const AudioComponentDescription *inDescription, AUNode *	outNode)
+	
+传入上面的创建的outGraph。以及之前的描述信息ioUnitDescription，得到输出AUNode。这个Node表示在图中的一个节点，而这个安排好的节点里面包含了需要的“AudioComponent”。那要怎么得到他呢？我们还有函数：
+
+
+	OSStatus AUGraphNodeInfo(AUGraph inGraph, AUNode inNode, AudioComponentDescription *outDescription,	AudioUnit *outAudioUnit)；
+传入上面的outGraph，以及之前的描述信息ioUnitDescription。还有前面的Node，就可以得到需要的AudioUnit了。
+
+虽然是绕了一圈，但是还是得到了那个需要的AudioUnit。
 
 ## AudioUnit的结构
 
-## AUGraph管理器
+虽然获得了AudioUnit，那么AudioUnit到底是什么，怎么用呢？从上面的typedef知道，AudioUnit实际上就是一个AudioComponentInstance示例对象。我们可以认为他是一个具体的物理硬件对象，结构如下：
 
+![audio_unit_structure](./images/audio_unit_structure.png)
+
+如图所示，一个AudioUnit由scopes和elements组成。可以认为Scope是AudioUnit的一个组成方面，而Element则也是一个组成方面，也就是从两个方面来看待。每个Unit都有一个输入scope和一个输出scope，输入scope用于向Unit中输入数据，有了输入自然还有个输出，输出处理的数据。我们可以将他们相信成坐标系上的X/Y坐标，由他们来指定一个具体的对象。
+
+## AudioUnit 属性
+如果按照上面的AUGraph的构建，其实一个图就构建好了。那为何还要获取AudioUnit呢？因为每个Unit还有很多属性可以配置，在使用过程中需要进行配置，比如采样率、数据格式等。通过方法：
+
+	OSStatus AudioUnitSetProperty(AudioUnit inUnit, AudioUnitPropertyID inID, AudioUnitScope inScope, AudioUnitElement inElement, const void *inData, UInt32 inDataSize)；
+
+这里传入Unit对象以及需要设置的scope和element表示的区域的属性值。和通常的C函数一样，这里值通过buffer和length来指定。
+
+有设置自然需要读取：
+
+	OSStatus AudioUnitGetProperty(AudioUnit inUnit, AudioUnitPropertyID inID, AudioUnitScope inScope, AudioUnitElement inElement, void *outData, UInt32 *ioDataSize)
+	
+这里和设置一样，通过scope和element表示要获取的对象，属性ID表示要获取的属性，输出内容从outData给出，而ioDataSize是个“value-result”参数，输入表示buffer长度，输出表述属性数据长度。
+
+那我们要如何确定分配多大的内存合适呢？这里可以调用：
+
+	OSStatus AudioUnitGetPropertyInfo(AudioUnit inUnit,AudioUnitPropertyID  inID, AudioUnitScope inScope, AudioUnitElement inElement, UInt32 *outDataSize,Boolean *outWritable)
+
+这里来获得指定scope和element的属性的长度以及是否可以写入。
+
+除此之外，还可以通过：
+
+	OSStatus AudioUnitAddPropertyListener(AudioUnit inUnit, AudioUnitPropertyID inID, AudioUnitPropertyListenerProc inProc, void *inProcUserData)	
+	
+为属性添加一个
+
+	void	(*AudioUnitPropertyListenerProc)(void *inRefCon, AudioUnit inUnit, AudioUnitPropertyID inID, AudioUnitScope	 inScope, AudioUnitElement inElement);
+
+这样的回调，当Unit对应scope和element的属性变化是，可以实时的获取。	
+## AUGraph的构建
+通常一个最简单的AUGraph的结构是这样的：
+
+![augraph_structure](./images/augraph_structure.png)
+直接从麦克风获得采集到的数据，然后不做任何处理从输出scope送到麦克风进行播放。对于IO Unit来说，Element 1 表示输入，而Element 0表示输出。
+
+一个AUGraph通常至少需要一个IO Unit用来做输入输出功能
+
+
+## AUGraph的驱动
 
 ## 参考
 1. [Audio Unit Hosting Guide for iOS](https://developer.apple.com/library/content/documentation/MusicAudio/Conceptual/AudioUnitHostingGuide_iOS/Introduction/Introduction.html)
