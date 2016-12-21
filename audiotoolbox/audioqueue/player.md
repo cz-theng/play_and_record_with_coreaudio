@@ -165,7 +165,7 @@
 	
 很直观的提供了几个接口，不过还是有些容易疑惑的地方。比如AudioQueueStart可以通过指定inStartTime，和AVAudioPlayer一样，表示相对于Device时间延迟的时间，从而可以精准的进行混音操作。而AudioQueueStop中的inImmediate表示是否立马停止播放，因为调用这个接口的时候，可能AudioQueue中已经有一些被压入的Buffer数据了，此时是播放完了在停止呢？还是立马停止。
 
-## SeeK动作
+## Seek动作
 如果去头文件中去找接口的话，会发现AudioQueue没有类似AudioPlayer快进、跳跃的接口。那要如何实现流媒体的拉动播放呢？
 
 答案就在上面的回调里面，要记住AudioQueue的灵魂就在这个回调，而回调的本质就是从Buffer队列中取数据进行播放，在上面的Demo中，我们是每次都从文件中读取下一段位置的数据并放入到Buffer队列中，如果在这个回调中往Buffer列中压入之前的或者之后的数据，就相当于进行了Seek动作了。

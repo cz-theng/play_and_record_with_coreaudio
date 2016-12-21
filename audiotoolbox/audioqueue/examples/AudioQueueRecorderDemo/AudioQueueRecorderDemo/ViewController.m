@@ -31,11 +31,14 @@
 } while(0)
 
 
-void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer, const AudioTimeStamp * inStartTime, UInt32                          inNumberPacketDescriptions, const AudioStreamPacketDescription *inPacketDescs)
+void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer, const AudioTimeStamp * inStartTime, UInt32 inNumberPacketDescriptions, const AudioStreamPacketDescription *inPacketDescs)
 {
     struct RecorderStat *recorderStat = (struct RecorderStat *) inUserData;
     
     if (! recorderStat->mIsRunning) {
+        OSStatus stts = AudioQueueStop(recorderStat->mQueue, true);
+        VStatus(stts, @"AudioQueueStop error");
+        AudioFileClose(recorderStat->mAudioFile);
         return ;
     }
     
@@ -67,18 +70,18 @@ void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQu
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    _filePath = [NSString stringWithFormat:@"%@/%@", docDir, @"voice.mp3"];
+    _filePath = [NSString stringWithFormat:@"%@/%@", docDir, @"voice.wav"];
 }
 
 - (void) setAudioSession: (int) mode {
     NSError *error;
     AVAudioSession *session = [AVAudioSession sharedInstance];
+
     [session setActive:YES error:&error];
     if (nil != error) {
         NSLog(@"AudioSession setActive error:%@", error.localizedDescription);
         return;
     }
-    
     
     error = nil;
     NSString *category;
@@ -88,10 +91,12 @@ void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQu
         category = AVAudioSessionCategorySoloAmbient;
     }
     
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryRecord error:&error];
+    [[AVAudioSession sharedInstance] setCategory:category error:&error];
     if (nil != error) {
         NSLog(@"AudioSession setCategory(AVAudioSessionCategoryPlayAndRecord) error:%@", error.localizedDescription);
         return;
+    } else {
+        NSLog(@"set category to %@", category);
     }
 }
 
@@ -102,6 +107,12 @@ void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQu
         NSLog(@"create player[%@] error:%@", fileName, error.localizedDescription);
         return NO;
     }
+    _player.delegate= self;
+    _player.numberOfLoops = 999;
+    BOOL rst = [_player prepareToPlay];
+    NSLog(@"Prepare with %d", rst);
+    NSLog(@"file length is %g", _player.duration);
+    NSLog(@"channle number %d", _player.numberOfChannels);
     return YES;
 }
 
@@ -110,7 +121,7 @@ void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQu
 - (BOOL) prepareAudioRecorder {
     OSStatus stts  = noErr;
     // step 1: set up the format of recording
-    recorderStat_.mDataFormat.mFormatID =  kAudioFormatMPEG4AAC;
+    recorderStat_.mDataFormat.mFormatID =  kAudioFormatLinearPCM;
     recorderStat_.mDataFormat.mSampleRate = 44100.0;
     recorderStat_.mDataFormat.mChannelsPerFrame = 2;
     recorderStat_.mDataFormat.mBitsPerChannel = 16;
@@ -131,8 +142,8 @@ void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQu
     // step 4: create audio file
     NSURL * tmpURL = [NSURL URLWithString:_filePath];
     CFURLRef url = (__bridge CFURLRef) tmpURL;    
-    stts = AudioFileCreateWithURL(url, kAudioFileAAC_ADTSType, &recorderStat_.mDataFormat, kAudioFileFlags_EraseFile, &recorderStat_.mAudioFile);
-    VStatusBOOL(stts, @"AudioFileOpenURL");
+    stts = AudioFileCreateWithURL(url, kAudioFileAIFFType, &recorderStat_.mDataFormat, kAudioFileFlags_EraseFile, &recorderStat_.mAudioFile);
+    VStatusBOOL(stts, @"AudioFileOpenURL");    
     NSLog(@"open file %@ success!", url);
     
     // step 5: prepare buffers and buffer queue
@@ -195,8 +206,7 @@ void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQu
 
 - (void) stopRecord {
     [self setAudioSession:2];
-    OSStatus stts = AudioQueueStop(recorderStat_.mQueue, true);
-    VStatus(stts, @"AudioQueueStop error");
+
     recorderStat_.mIsRunning = false;
 }
 
@@ -204,7 +214,8 @@ void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQu
     [self setAudioSession:2];
     [self preparePlayer:[NSURL URLWithString:_filePath]];
 
-    [_player play];
+    BOOL rst = [_player play];
+    NSLog(@"Play with %d", rst);
 }
 
 - (IBAction)onRecord:(id)sender {
@@ -218,6 +229,16 @@ void impAudioQueueInputCallback ( void * inUserData, AudioQueueRef inAQ, AudioQu
         [_recordBtn setImage:[UIImage imageNamed:@"btn_microphone_open"] forState:UIControlStateNormal];
         once = NO;
     }
+}
+
+#pragma mark AVAudioPlayerDelegate
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    NSLog(@"audioPlayerDidFinishPlaying rst: %d", flag);
+}
+
+
+- (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError * __nullable)error {
+    NSLog(@"audioPlayerDecodeErrorDidOccur error:%@", error.localizedDescription);
 }
 
 @end

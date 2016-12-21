@@ -25,23 +25,11 @@ struct RecorderStat
     AudioFileID                   mAudioFile;
     UInt32                        bufferByteSize;
     SInt64                        mCurrentPacket;
-    AudioStreamPacketDescription  *mPacketDescs;
     bool                           mIsRunning;
 };
 
-struct PlayerStat
-{
-    AudioStreamBasicDescription   mDataFormat;
-    AudioQueueRef                 mQueue;
-    AudioQueueBufferRef           mBuffers[kNumberBuffers];
-    AudioFileID                   mAudioFile;
-    UInt32                        bufferByteSize;
-    SInt64                        mCurrentSize;
-    AudioStreamPacketDescription  *mPacketDescs;
-    FILE *fp;
-};
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <AVAudioPlayerDelegate>
 
 
 @end
