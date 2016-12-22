@@ -157,10 +157,66 @@ AudioUnit实际上就是	AudioComponentInstance。所以在Apple的官方文档�
 ![augraph_structure](./images/augraph_structure.png)
 直接从麦克风获得采集到的数据，然后不做任何处理从输出scope送到麦克风进行播放。对于IO Unit来说，Element 1 表示输入，而Element 0表示输出。
 
-一个AUGraph通常至少需要一个IO Unit用来做输入输出功能
+一个AUGraph通常至少需要一个IO Unit用来做输入输出功能。那要如何构建一个AUGraph呢？
+
+1. 首先我们调用上面的AUGraph的创建AudioUnit的方法来创建AudioUnit，这样AudioUnit就自动加到Graph中了，假设加入了两个节点
+2. 然后我们要组织这些节点的关系。通过函数：
+
+	OSStatus AUGraphConnectNodeInput(AUGraph inGraph, AUNode inSourceNode, UInt32 inSourceOutputNumber, AUNode inDestNode, UInt32 inDestInputNumber);
+	
+将inGraph中的	inSourceNode节点的inSourceOutputNumber号bus的输出连接到 inDestNode节点的inDestInputNumber号bus的输入。
+
+
+
 
 
 ## AUGraph的驱动
+AUGraph将各个AudioComponentInstance实例按照Node的方式串成一个串后，数据要如何传递？整个图又是怎样被驱动的呢？这里先看一张结构图：
+
+![callback_drive](./images/callback_drive.png)
+
+当调用了“AUGraphStart”控制扬声器需要数据进行播放的时候，就会通过控制信号请求“Remote IO Unit”的输出scope中的数据，如果其中数据已经播放完了怎么办呢？
+
+1. 这个时候，他就会找到其输入域上连接的上一级节点设置的回调函数，通过上一级的输出域数据把数据送入到“Remote IO Unit”输入域中。
+2. 在这个例子中，“Remote IO Unit”的上一级是"Effect Unit"，这是时候就会请求从回调中请求“Effect Unit”输出的数据帧。
+3. 对于"Effect Unit"和“Remote IO Unit”的步骤也是一样，因为其在上级没有节点了，所以会从AUGraph的回调中也就是用户可以控制的回调中取数据
+4. 当取到数据后，首先从“Effect Unit”的输出scope给到“Remote IO Unit”的输入scope，最后从“Remote IO Unit”的输出scope中给到扬声器中播放。
+
+可以看到，整个过程中最重要的就是这个回调函数了，他的原型是这样的：
+
+	OSStatus (*AURenderCallback)(void *inRefCon, 
+												AudioUnitRenderActionFlags *ioActionFlags,
+												const AudioTimeStamp * inTimeStamp,
+												UInt32 inBusNumber,
+												UInt32 inNumberFrames,
+												AudioBufferList *ioData);
+
+各个参数的含义：
+
+* inRefConn： 回调执行的上下文
+* ioActionFlags ： 回调上下文的设置，比如没有数据了，设置成kAudioUnitRenderAction_OutputIsSilence
+* inTimeStamp ： 回调被执行的时间，但是不是绝对时间，而是采样帧的数目
+* inBusNumber ： 通道数
+* ioData  ： 具体的使用的数据，比如播放文件时，将文件内容填入。
+
+在回调中，我们可以对数据进行各种前处理后再进行送入，比如消除回声、降噪等。
+
+实现了上面的回调后，还需要调用：
+
+	OSStatus AUGraphSetNodeInputCallback(AUGraph inGraph, AUNode inDestNode, UInt32 inDestInputNumber, const AURenderCallbackStruct *inInputCallback);
+	
+将函数绑定到	inGraph中的节点inDestNode的inDestInputNumber号bus的输入上。需要注意的是这里回调是个结构体，其定义为：
+
+	typedef struct AURenderCallbackStruct {
+		AURenderCallback __nullable	inputProc;
+		void * __nullable			inputProcRefCon;
+	} AURenderCallbackStruct;
+其实就是跟了一个上下文。	
+
+
+## 总结
+
+通过上面的介绍，AudioUnit实际上是由7中组成单元根据需要组合成AUGraph，通过回调为其输送或者接受数据。因此需要首先构建符合场景的Graph，并且这个Graph还可以动态的修改。然后再对每个节点设置其属性以及回调函数，最终通过AUGraph接口来驱动数据的处理，而数据的处理则依赖我们实现的回调。
 
 ## 参考
 1. [Audio Unit Hosting Guide for iOS](https://developer.apple.com/library/content/documentation/MusicAudio/Conceptual/AudioUnitHostingGuide_iOS/Introduction/Introduction.html)
