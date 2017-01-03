@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @import AVFoundation;
 @import AudioToolbox;
+@import CoreAudio
 
 @interface ViewController : UIViewController
 

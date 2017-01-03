@@ -20,26 +20,64 @@
 
 ![loopback_graph](./images/loopback_graph.png)
 
-首先创建AUGraph，然后增加两个节点:
+首先创建AUGraph，然后增加一个RemoteIO节点，输入域的输入从系统麦克风获取数据，而输出域的输出输出到系统的扬声器进行播放:
 
+	- (void) buildAUGraph {
+	    OSStatus stts;
 	    NewAUGraph (&_processingGraph);
-    _micDesc.componentType = kAudioUnitType_Output;
-    _micDesc.componentSubType = kAudioUnitSubType_RemoteIO;
-    _micDesc.componentManufacturer = kAudioUnitManufacturer_Apple;
-    _micDesc.componentFlags = _micDesc.componentFlagsMask = 0;
+	    VStatus(stts, @"NewAUGraph Error!");
+	    _remoteIODesc.componentType = kAudioUnitType_Output;
+	    _remoteIODesc.componentSubType = kAudioUnitSubType_RemoteIO;
+	    _remoteIODesc.componentManufacturer = kAudioUnitManufacturer_Apple;
+	    _remoteIODesc.componentFlags = _remoteIODesc.componentFlagsMask = 0;
+	    
+	    
+	    stts = AUGraphAddNode(_processingGraph, &_remoteIODesc, &_remoteIONode);
+	    VStatus(stts, @"Add Node Error!");
+	    stts = AUGraphOpen (_processingGraph);
+	    VStatus(stts, @"Open Graph Error!");
+	    stts = AUGraphNodeInfo (_processingGraph, _remoteIONode, NULL, &_remoteIOUnit);
+	    VStatus(stts, @"Get Node Info Error!");
+	    
+	    UInt32 one = 1;
+	    stts = AudioUnitSetProperty(_remoteIOUnit, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Input, 1, &one, sizeof(one));
+	    VStatus(stts, @"could not enable input on AURemoteIO");
+	    stts = AudioUnitSetProperty(_remoteIOUnit, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Output, 0, &one, sizeof(one));
+	    VStatus(stts, @"could not enable output on AURemoteIO");    
+	}
     
-    _speakerDesc.componentType = kAudioUnitType_Output;
-    _speakerDesc.componentSubType = kAudioUnitSubType_RemoteIO;
-    _speakerDesc.componentManufacturer = kAudioUnitManufacturer_Apple;
-    _speakerDesc.componentFlags = _speakerDesc.componentFlagsMask = 0;
-    
-    
-    AUGraphAddNode(_processingGraph, &_micDesc, &_micNode);
-    AUGraphAddNode(_processingGraph, &_speakerDesc, &_speakerNode);
-    
-    AUGraphOpen (_processingGraph);
-    
-然后在获取每个Node并设置其属性：
+这里的函数在签名都有介绍，这里就不在赘述了。这里还要获取每个Node并设置其属性。
+
+在这个例子中我们，主要使用“Remote I/O unit”或者替换成“Voice-Processing I/O Unit”主要可以进行回声消除，防止啸叫产生。
+
+默认情况下“Remote I/O unit”的输入是关闭的，而输出则是打开的。这里我们要采集音频，所以需要把麦克风节点的输入打开。这里RemoteIO Unit有两个Element中，
+* “1”：表示麦克风，所以其输入为麦克风，输出为数据
+* “0”：表示扬声器，所以其输入为数据，而输出则为扬声器喇叭
+
+所以这里，我们显示的将两个Element的对应的输入和输出，也就是“1”麦克风的输入和“0”扬声器的输出分别都设成正"one"表示的打开状态。
+
+另外每个节点还需要设置输入和输出域的用数据格式。下面再上门的函数中再增加设置输入输出端的数据格式：
+
+	struct AudioStreamBasicDescription inFmt;
+	inFmt.mFormatID = kAudioFormatLinearPCM; // pcm data
+	inFmt.mBitsPerChannel = 16; // 16bit
+	inFmt.mChannelsPerFrame = 2; // double channel
+	inFmt.mSampleRate = 44100; // 44.1kbps sample rate
+	inFmt.mFramesPerPacket =1 ;
+	inFmt.mBytesPerFrame =inFmt.mBitsPerChannel*inFmt.mChannelsPerFrame/8;
+	inFmt.mBytesPerPacket = inFmt.mBytesPerFrame * inFmt.mFramesPerPacket;
+	stts = AudioUnitSetProperty(_remoteIOUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 0, &inFmt, sizeof(inFmt));
+	VStatus(stts, @"set kAudioUnitProperty_StreamFormat of input error");
+	    
+	struct AudioStreamBasicDescription outFmt = inFmt;
+	stts = AudioUnitSetProperty(_remoteIOUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &outFmt, sizeof(outFmt));
+	VStatus(stts, @"set kAudioUnitProperty_StreamFormat of output error");
+	
+这里接着将Element 1 麦克风的输出数据设置成44.1K的PCM数据而Element 0扬声器的输入设置成同样的格式。	
+
+
+
+
 
 
 ## 实现回调

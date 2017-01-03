@@ -218,6 +218,8 @@ AUGraph将各个AudioComponentInstance实例按照Node的方式串成一个串�
 
 通过上面的介绍，AudioUnit实际上是由7中组成单元根据需要组合成AUGraph，通过回调为其输送或者接受数据。因此需要首先构建符合场景的Graph，并且这个Graph还可以动态的修改。然后再对每个节点设置其属性以及回调函数，最终通过AUGraph接口来驱动数据的处理，而数据的处理则依赖我们实现的回调。
 
+在后面的章节中我们会对每个类型的Node进行介绍。比如本地回环主要使用了IO Node；而混音则结合Mix Node和IONode；播放MP3则结合了Format Node和IO Node。
+
 ## 参考
 1. [Audio Unit Hosting Guide for iOS](https://developer.apple.com/library/content/documentation/MusicAudio/Conceptual/AudioUnitHostingGuide_iOS/Introduction/Introduction.html)
 2. [Audio Unit Programming Guide](https://developer.apple.com/library/content/documentation/MusicAudio/Conceptual/AudioUnitProgrammingGuide/AudioUnitDevelopmentFundamentals/AudioUnitDevelopmentFundamentals.html#//apple_ref/doc/uid/TP40003278-CH7-SW5)

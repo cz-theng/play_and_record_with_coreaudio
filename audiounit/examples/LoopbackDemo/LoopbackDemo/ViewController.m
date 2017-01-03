@@ -8,18 +8,37 @@
 
 #import "ViewController.h"
 
+
+#define VErr(err, msg)  do {\
+    if(nil != err) {\
+        NSLog(@"[ERR]:%@--%@", (msg), [err localizedDescription]);\
+        return ;\
+    }\
+} while(0)
+
+#define VStatus(err, msg) do {\
+    if(noErr != err) {\
+        NSLog(@"[ERR-%d]:%@", err, (msg));\
+        return ;\
+    }\
+} while(0)
+
+#define VStatusBOOL(err, msg) do {\
+    if(noErr != err) {\
+        NSLog(@"[ERR-%d]:%@", err, (msg));\
+        return NO;\
+    }\
+} while(0)
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController {
     AUGraph _processingGraph;
-    AUNode _micNode;
-    AUNode _speakerNode;
-    AudioUnit _micUnit;
-    AudioUnit _speakerUnit;
-    AudioComponentDescription _micDesc;
-    AudioComponentDescription _speakerDesc;
+    AUNode _remoteIONode;
+    AudioUnit _remoteIOUnit;
+    AudioComponentDescription _remoteIODesc;
 }
 
 - (void)viewDidLoad {
@@ -61,25 +80,43 @@
 
 
 - (void) buildAUGraph {
+    OSStatus stts;
     NewAUGraph (&_processingGraph);
-    _micDesc.componentType = kAudioUnitType_Output;
-    _micDesc.componentSubType = kAudioUnitSubType_RemoteIO;
-    _micDesc.componentManufacturer = kAudioUnitManufacturer_Apple;
-    _micDesc.componentFlags = _micDesc.componentFlagsMask = 0;
-    
-    _speakerDesc.componentType = kAudioUnitType_Output;
-    _speakerDesc.componentSubType = kAudioUnitSubType_RemoteIO;
-    _speakerDesc.componentManufacturer = kAudioUnitManufacturer_Apple;
-    _speakerDesc.componentFlags = _speakerDesc.componentFlagsMask = 0;
+    VStatus(stts, @"NewAUGraph Error!");
+    _remoteIODesc.componentType = kAudioUnitType_Output;
+    _remoteIODesc.componentSubType = kAudioUnitSubType_RemoteIO;
+    _remoteIODesc.componentManufacturer = kAudioUnitManufacturer_Apple;
+    _remoteIODesc.componentFlags = _remoteIODesc.componentFlagsMask = 0;
     
     
-    AUGraphAddNode(_processingGraph, &_micDesc, &_micNode);
-    AUGraphAddNode(_processingGraph, &_speakerDesc, &_speakerNode);
+    stts = AUGraphAddNode(_processingGraph, &_remoteIODesc, &_remoteIONode);
+    VStatus(stts, @"Add Node Error!");
+    stts = AUGraphOpen (_processingGraph);
+    VStatus(stts, @"Open Graph Error!");
+    stts = AUGraphNodeInfo (_processingGraph, _remoteIONode, NULL, &_remoteIOUnit);
+    VStatus(stts, @"Get Node Info Error!");
     
-    AUGraphOpen (_processingGraph);
+    UInt32 one = 1;
+    stts = AudioUnitSetProperty(_remoteIOUnit, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Input, 1, &one, sizeof(one));
+    VStatus(stts, @"could not enable input on AURemoteIO");
+    stts = AudioUnitSetProperty(_remoteIOUnit, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Output, 0, &one, sizeof(one));
+    VStatus(stts, @"could not enable output on AURemoteIO");
     
-    AUGraphNodeInfo (_processingGraph, _micNode, &_micDesc, &_micUnit);
-    AUGraphNodeInfo (_processingGraph, _speakerNode, &_speakerDesc, &_speakerUnit);
+    
+    struct AudioStreamBasicDescription inFmt;
+    inFmt.mFormatID = kAudioFormatLinearPCM; // pcm data
+    inFmt.mBitsPerChannel = 16; // 16bit
+    inFmt.mChannelsPerFrame = 2; // double channel
+    inFmt.mSampleRate = 44100; // 44.1kbps sample rate
+    inFmt.mFramesPerPacket =1 ;
+    inFmt.mBytesPerFrame =inFmt.mBitsPerChannel*inFmt.mChannelsPerFrame/8;
+    inFmt.mBytesPerPacket = inFmt.mBytesPerFrame * inFmt.mFramesPerPacket;
+    stts = AudioUnitSetProperty(_remoteIOUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 0, &inFmt, sizeof(inFmt));
+    VStatus(stts, @"set kAudioUnitProperty_StreamFormat of input error");
+    
+    struct AudioStreamBasicDescription outFmt = inFmt;
+    stts = AudioUnitSetProperty(_remoteIOUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &outFmt, sizeof(outFmt));
+    VStatus(stts, @"set kAudioUnitProperty_StreamFormat of output error");
 }
 
 
